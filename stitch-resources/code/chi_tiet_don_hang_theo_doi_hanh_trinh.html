@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details | AgriSmart Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f9f9f9",
+                    "surface-container-high": "#e8e8e8",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005318",
+                    "on-tertiary-fixed": "#2b160f",
+                    "tertiary-container": "#85675c",
+                    "outline-variant": "#bfcaba",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#88d982",
+                    "surface-dim": "#dadada",
+                    "primary-container": "#2e7d32",
+                    "surface-tint": "#1b6d24",
+                    "tertiary-fixed": "#ffdbce",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#cbffc2",
+                    "on-primary-fixed": "#002204",
+                    "secondary-fixed": "#9ff79f",
+                    "secondary-container": "#9cf49c",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-container": "#19722b",
+                    "surface-container": "#eeeeee",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-low": "#f3f3f3",
+                    "primary": "#0d631b",
+                    "secondary": "#126d27",
+                    "on-secondary-fixed": "#002105",
+                    "on-background": "#1a1c1c",
+                    "on-primary-fixed-variant": "#005312",
+                    "on-surface-variant": "#40493d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#a3f69c",
+                    "secondary-fixed-dim": "#83da85",
+                    "outline": "#707a6c",
+                    "primary-fixed-dim": "#88d982",
+                    "on-surface": "#1a1c1c",
+                    "tertiary-fixed-dim": "#e4beb2",
+                    "tertiary": "#6b4f45",
+                    "on-tertiary-fixed-variant": "#5b4137",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "background": "#f9f9f9",
+                    "surface-variant": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffeee8",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #bfcaba; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-md">
+<span class="text-title-md font-title-md font-bold text-primary dark:text-primary-fixed">AgriSmart Pro</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-sm rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">thermostat</span></button>
+<button class="p-sm rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">language</span></button>
+<div class="h-8 w-[1px] bg-outline-variant mx-sm"></div>
+<button class="px-md py-sm bg-primary text-on-primary rounded-lg font-label-sm text-label-sm">Role Switcher</button>
+<img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional headshot of a middle-aged male agronomist in a clean, modern laboratory setting. He is wearing a crisp white lab coat with a subtle green embroidered logo. The lighting is soft and diffused, creating a high-end, trustworthy corporate feel consistent with a premium digital agriculture platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwigNBSqUJlBlxcYGh_RCb4AgJfU8qr9Ou3ANmhxwt2nGEyw_PrYqYKUJ45b1a-vHXxtO2pkS9uA_0mYRKrZz3FP2_ZnjAFal3F4_5De9dbVj23xAbDSqWuXNxXVLFOc85fP4SuCXPI08gDSCRA1vjT11OFAcCyzjlpQcKuvLw_kEX94rwReUMZROyoFLrIuhDlEzaxkKYcvXHe2hzoZ_ZmF_DGkkDNVrzeZTTb1jHKCQ36dMhjqE7vAwpDgFVI_Qv3o3e5w0dAA"/>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-72px)] sticky top-[72px] w-64 p-md gap-sm border-r border-outline-variant dark:border-outline bg-surface-container-low dark:bg-surface-container-lowest">
+<div class="mb-lg px-md">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+</div>
+<div>
+<p class="text-title-md font-title-md font-bold text-primary">Farm Manager</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Premium Tier</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<a class="flex items-center gap-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<!-- Active State: Marketplace (Assumed based on Order Details context) -->
+<a class="flex items-center gap-md bg-secondary-container dark:bg-on-secondary-container text-on-secondary-container dark:text-secondary-container rounded-lg px-md py-sm scale-[0.98] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="text-label-sm font-label-sm">Marketplace</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-label-sm font-label-sm">Community</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-label-sm font-label-sm">Knowledge Center</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-sm font-label-sm">AI Tools</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-xs pt-md border-t border-outline-variant">
+<button class="w-full mb-md py-sm bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center gap-sm font-label-sm text-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span> AI Assistant
+                </button>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-label-sm font-label-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-lg md:p-xl overflow-y-auto">
+<div class="max-w-6xl mx-auto space-y-lg">
+<!-- Page Header & Quick Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<nav class="flex items-center gap-sm text-label-sm font-label-sm text-on-surface-variant mb-sm">
+<a class="hover:text-primary" href="#">Marketplace</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Order History</a>
+</nav>
+<h1 class="text-headline-lg font-headline-lg text-on-surface flex items-center gap-md">
+                            Order #ORD-2024-8842
+                            <span class="text-label-sm bg-secondary-container text-on-secondary-container px-md py-1 rounded-full">In Transit</span>
+</h1>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-sm px-md py-sm border border-outline-variant rounded-lg font-label-sm text-label-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">print</span> Print Invoice
+                        </button>
+<button class="flex items-center gap-sm px-md py-sm bg-primary text-on-primary rounded-lg font-label-sm text-label-sm hover:opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined text-[18px]">package_2</span> Edit Order
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- LEFT COLUMN: Order Items & Tracking (Col 8) -->
+<div class="md:col-span-8 space-y-lg">
+<!-- Visual Shipping Tracker -->
+<section class="bg-surface-container-lowest p-xl rounded-xl border border-outline-variant shadow-sm">
+<h2 class="text-title-md font-title-md text-on-surface mb-xl">Shipping Progress</h2>
+<div class="relative px-md">
+<div class="absolute top-[18px] left-[40px] right-[40px] h-[2px] bg-outline-variant"></div>
+<div class="absolute top-[18px] left-[40px] w-2/3 h-[2px] bg-primary"></div>
+<div class="relative flex justify-between">
+<div class="flex flex-col items-center text-center gap-base">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary z-10 shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-label-sm font-label-sm font-bold text-primary">Confirmed</p>
+<p class="text-xs text-on-surface-variant">Oct 12, 09:30 AM</p>
+</div>
+<div class="flex flex-col items-center text-center gap-base">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary z-10 shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-label-sm font-label-sm font-bold text-primary">Processing</p>
+<p class="text-xs text-on-surface-variant">Oct 12, 02:45 PM</p>
+</div>
+<div class="flex flex-col items-center text-center gap-base">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary z-10 ring-4 ring-primary-container ring-opacity-30 animate-pulse">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<p class="text-label-sm font-label-sm font-bold text-primary">In Transit</p>
+<p class="text-xs text-on-surface-variant">Est. Oct 15</p>
+</div>
+<div class="flex flex-col items-center text-center gap-base">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-outline z-10">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<p class="text-label-sm font-label-sm font-medium text-outline">Delivered</p>
+<p class="text-xs text-on-surface-variant">-</p>
+</div>
+</div>
+</div>
+<div class="mt-xl p-md bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">info</span>
+<span class="text-body-md font-body-md text-on-surface-variant">Current Status: Your shipment has left the Kansas City distribution hub.</span>
+</div>
+<a class="text-primary font-bold text-label-sm hover:underline" href="#">Track on Map</a>
+</div>
+</section>
+<!-- Itemized List Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h2 class="text-title-md font-title-md text-on-surface">Order Items (3)</h2>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Weight: 42.5 kg</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-sm text-label-sm font-label-sm text-on-surface-variant">Product Details</th>
+<th class="px-lg py-sm text-label-sm font-label-sm text-on-surface-variant">SKU</th>
+<th class="px-lg py-sm text-label-sm font-label-sm text-on-surface-variant">Qty</th>
+<th class="px-lg py-sm text-label-sm font-label-sm text-on-surface-variant">Price</th>
+<th class="px-lg py-sm text-label-sm font-label-sm text-on-surface-variant text-right">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Bio-Organic Nitrogen Fertilizer" class="w-full h-full object-cover" data-alt="A macro studio photograph of premium organic fertilizer pellets on a clean, light surface. The lighting is crisp and editorial, highlighting the texture and quality of the product. The color palette features natural earthy tones against a high-key, minimalist white background suitable for a high-end agri-tech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHXfUCkTuFrJKuaLQHg_LM-lxhsM9EPmN6GaW0FS_ec4xEjOMSq2fRl8MxwvrseG1amEMb8ByHuOkw2SfHzoFmqsHogy2Nf8Jp-mTXYHDSZ-jlVkLpHm0QlrPVLoIzd2wtch0hHJFA4gHZlHePvjCi33H5tP5ObGAtzsAzak7RxFPlTjbzkLQC3tQTxcSYpEmWv4m8n5XXey5PrafYIzRtQoCrC8-sFHafNqJAUI2qemgJr-wQWdxYgnSIeEG1RVdYq31-x-KeZA"/>
+</div>
+<div>
+<p class="text-body-lg font-body-lg font-bold text-on-surface group-hover:text-primary transition-colors">Bio-Organic Nitrogen Fertilizer</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">25kg Bag - Sustained Release</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-body-md font-body-md text-on-surface-variant">AGRI-FERT-042</td>
+<td class="px-lg py-md text-body-md font-body-md">1</td>
+<td class="px-lg py-md text-body-md font-body-md">$124.00</td>
+<td class="px-lg py-md text-body-md font-body-md font-bold text-right">$124.00</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Moisture Probe Sensor" class="w-full h-full object-cover" data-alt="A close-up shot of a high-tech agricultural soil moisture sensor with metallic probes and a sleek green durable plastic housing. The sensor is set against a clean, modern lab bench. The image has a professional, technological feel with cool lighting and deep depth of field to emphasize precision and engineering quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLZMA3AMb5rsvfg1Iy-gA1JEBcT9Xy88uczddhhcjC_0je0cob6YZ5b6Fm0Jzh5Mq7mtrmOIowEVI42lJFD0FmmndEKkmtZy7z7FDMb64b6_acU__gftwVeB30BqsPu93fhQR05lqOMCdUsO9OC8cXzSEA18wAei09c34CcWirA4Rfa2dS1JpMjd_d3POvjStPcYCJVzSHKqUX0kifgpDPLbFzXo7MGD_jYiwOGAnC4SHFrDdMqAwF0Z07H7Xj5hR_cRYuzTHWOw"/>
+</div>
+<div>
+<p class="text-body-lg font-body-lg font-bold text-on-surface group-hover:text-primary transition-colors">Precision Soil Moisture Sensor</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Gen 4 Wireless - IoT Mesh Ready</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-body-md font-body-md text-on-surface-variant">IOT-SOIL-981</td>
+<td class="px-lg py-md text-body-md font-body-md">2</td>
+<td class="px-lg py-md text-body-md font-body-md">$89.50</td>
+<td class="px-lg py-md text-body-md font-body-md font-bold text-right">$179.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-lg bg-surface-container-low flex justify-end">
+<div class="w-64 space-y-sm">
+<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$303.00</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
+<span>Shipping (Ground)</span>
+<span>$15.00</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md text-on-surface-variant">
+<span>Tax (8%)</span>
+<span>$24.24</span>
+</div>
+<div class="flex justify-between text-title-md font-title-md font-bold text-primary pt-sm border-t border-outline-variant">
+<span>Order Total</span>
+<span>$342.24</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: Customer & Internal (Col 4) -->
+<div class="md:col-span-4 space-y-lg">
+<!-- Customer Info Card -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<h2 class="text-title-md font-title-md text-on-surface mb-md">Customer Information</h2>
+<div class="flex items-center gap-md mb-lg">
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="text-on-secondary-container font-bold text-headline-lg-mobile">SR</span>
+</div>
+<div>
+<p class="text-body-lg font-body-lg font-bold text-on-surface">Silas Thorne</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Premium Member since 2019</p>
+</div>
+</div>
+<div class="space-y-md">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Contact</p>
+<p class="text-body-md font-body-md text-on-surface">silas.thorne@prairiefarms.com</p>
+<p class="text-body-md font-body-md text-on-surface">+1 (555) 382-9012</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Shipping Address</p>
+<p class="text-body-md font-body-md text-on-surface">4920 Harvest Moon Lane<br/>Wichita, KS 67201<br/>United States</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Payment Status</p>
+<div class="flex items-center gap-sm mt-xs">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="text-body-md font-body-md font-bold text-primary">Paid via Visa ending in 4429</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Communication History -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col h-[400px]">
+<div class="p-lg border-b border-outline-variant flex items-center justify-between">
+<h2 class="text-title-md font-title-md text-on-surface">Communication</h2>
+<span class="bg-error-container text-on-error-container text-[10px] font-bold px-2 py-0.5 rounded-full">2 Unread</span>
+</div>
+<div class="flex-1 overflow-y-auto p-md space-y-md custom-scrollbar">
+<div class="bg-surface-container-low p-sm rounded-lg">
+<p class="text-xs font-bold text-primary mb-xs">Support Agent • 2h ago</p>
+<p class="text-body-md font-body-md text-on-surface">Update sent to customer regarding carrier delay in Kansas City.</p>
+</div>
+<div class="bg-primary-container/10 p-sm rounded-lg border-l-4 border-primary ml-md">
+<p class="text-xs font-bold text-on-surface mb-xs">Customer Silas T. • 4h ago</p>
+<p class="text-body-md font-body-md text-on-surface italic">"Will these sensors be calibrated for high-clay soil out of the box?"</p>
+</div>
+<div class="bg-surface-container-low p-sm rounded-lg">
+<p class="text-xs font-bold text-primary mb-xs">System Message • Oct 12</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Auto-email: Order confirmation sent to silas.thorne@prairiefarms.com</p>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant">
+<div class="relative">
+<input class="w-full bg-surface-container border border-outline-variant rounded-full py-2 pl-md pr-xl text-body-md focus:ring-primary focus:border-primary" placeholder="Send message..." type="text"/>
+<button class="absolute right-2 top-1.5 p-1 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Internal Notes -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<h2 class="text-title-md font-title-md text-on-surface">Internal Notes</h2>
+<button class="text-primary font-bold text-label-sm hover:underline flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Note
+                                </button>
+</div>
+<div class="space-y-md">
+<div class="border-l-4 border-outline-variant pl-md py-sm">
+<p class="text-body-md font-body-md text-on-surface">Check calibration certificates for Gen 4 probes before warehouse dispatch.</p>
+<p class="text-xs text-on-surface-variant mt-sm">Mark J. • Oct 12, 10:15 AM</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim dark:bg-inverse-surface border-t border-outline-variant">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="text-title-md font-title-md font-bold text-primary dark:text-primary-fixed">AgriSmart Ecosystem</span>
+<p class="text-body-md font-body-md text-on-surface-variant">© 2024 AgriSmart Ecosystem. Data-Driven Growth.</p>
+</div>
+<div class="flex gap-lg">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-all" href="#">Privacy Policy</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-all" href="#">Terms of Service</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-all" href="#">Sustainability</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-all" href="#">Contact</a>
+</div>
+</footer>
+<script>
+        // Simple Micro-interaction for the Tracking Timeline
+        document.addEventListener('DOMContentLoaded', () => {
+            const steps = document.querySelectorAll('.timeline-step');
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add('opacity-100', 'translate-y-0');
+                }, index * 200);
+            });
+        });
+
+        // Theme Toggle Logic (Placeholder for actual implementation)
+        const roleSwitcher = document.querySelector('button:contains("Role Switcher")');
+        if(roleSwitcher) {
+            roleSwitcher.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+            });
+        }
+    </script>
+</body></html>

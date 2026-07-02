@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgriSmart Pro | Cultivate the Future</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#cbffc2",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "on-background": "#1a1c1c",
+                        "outline": "#707a6c",
+                        "surface-dim": "#dadada",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed": "#2b160f",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#9cf49c",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-fixed": "#002105",
+                        "tertiary-fixed": "#ffdbce",
+                        "primary": "#0d631b",
+                        "surface-bright": "#f9f9f9",
+                        "primary-container": "#2e7d32",
+                        "primary-fixed-dim": "#88d982",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary-fixed-variant": "#5b4137",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#005312",
+                        "primary-fixed": "#a3f69c",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-container": "#19722b",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bfcaba",
+                        "secondary-fixed-dim": "#83da85",
+                        "on-surface-variant": "#40493d",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed": "#9ff79f",
+                        "surface-container-low": "#f3f3f3",
+                        "tertiary": "#6b4f45",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#126d27",
+                        "tertiary-container": "#85675c",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#88d982",
+                        "on-secondary-fixed-variant": "#005318",
+                        "tertiary-fixed-dim": "#e4beb2",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-container": "#ffeee8",
+                        "surface": "#f9f9f9",
+                        "surface-tint": "#1b6d24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface shadow-sm">
+<div class="flex items-center gap-xl">
+<span class="text-title-md font-title-md font-bold text-primary">AgriSmart Pro</span>
+<nav class="hidden lg:flex gap-lg items-center">
+<a class="text-primary font-bold border-b-2 border-primary text-label-sm font-label-sm" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-medium hover:bg-surface-container transition-colors px-sm py-xs rounded text-label-sm font-label-sm" href="#">Marketplace</a>
+<a class="text-on-surface-variant font-medium hover:bg-surface-container transition-colors px-sm py-xs rounded text-label-sm font-label-sm" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex items-center bg-surface-container rounded-full px-md py-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md" placeholder="Search ecosystem..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container p-xs rounded-full">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container p-xs rounded-full">thermostat</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container p-xs rounded-full">language</span>
+</div>
+<button class="bg-primary-container text-on-primary px-lg py-sm rounded-full font-bold text-label-sm hover:opacity-80 transition-opacity">Role Switcher</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden px-margin-mobile md:px-xxl py-xl">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.85]" data-alt="A cinematic, wide-angle shot of a lush, high-tech emerald green farm at sunrise. Golden sunlight pierces through soft mist, illuminating rows of perfectly aligned crops and distant automated machinery. The overall atmosphere is serene and futuristic, blending the organic vitality of deep green agriculture with clean, modern precision. The composition emphasizes a balanced, premium aesthetic with high-key lighting and natural textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAYQsOBUfBEyxDdO9bewLFBld_CKsS_xmWxQIY9is5ourEWFBmZDxyxGZs7FNYEIVJ2a-RQTDKUTRIIiPn-Qq5MqWwqQ71SQuOJ2wfD3S4KNRyqaKxmpwdH7XR1j_B8brLbTih3jNEYTPe_ceULwzBW2ikkTujeAlM4LRAgYyuJnekod8KD7VKk7VixuQQsUTX-YAMn1XBFjRWOHrGwwMyW-aT2CHTNLaAoEqV8PgBmEXdaEFIOib3inwR6eTgQrEJEtbD8gkeEA"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block bg-primary-container text-on-primary px-md py-xs rounded-full text-label-sm font-bold mb-md">REVOLUTIONIZING AGRICULTURE</span>
+<h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface leading-tight mb-md">Cultivate the Future with Intelligence</h1>
+<p class="text-body-lg text-on-surface-variant mb-xl max-w-lg">
+                    AgriSmart Pro integrates real-time IoT data, AI diagnostics, and a global marketplace to empower modern growers with unprecedented control and profitability.
+                </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary text-on-primary px-xxl py-lg rounded-xl font-bold hover:scale-[1.02] transition-transform shadow-lg">Join the Ecosystem</button>
+<button class="bg-surface-container-lowest text-primary border border-outline-variant px-xxl py-lg rounded-xl font-bold hover:bg-surface-container-low transition-colors">Watch Demo</button>
+</div>
+</div>
+</section>
+<!-- Live Ticker -->
+<section class="bg-surface-container-low py-sm border-y border-outline-variant overflow-hidden">
+<div class="flex animate-marquee whitespace-nowrap">
+<div class="flex gap-xl px-xl items-center">
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">CORN (C1):</span> <span class="text-body-md">$4.52</span> <span class="text-secondary text-label-sm">▲ 1.2%</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">WHEAT (W1):</span> <span class="text-body-md">$6.18</span> <span class="text-error text-label-sm">▼ 0.4%</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">SOY:</span> <span class="text-body-md">$13.40</span> <span class="text-secondary text-label-sm">▲ 0.8%</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">LOCAL TEMP:</span> <span class="text-body-md">24°C</span> <span class="material-symbols-outlined text-secondary text-sm">wb_sunny</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">HUMIDITY:</span> <span class="text-body-md">62%</span> <span class="text-on-surface-variant text-label-sm">Optimal</span></div>
+</div>
+<!-- Duplicate for seamless loop -->
+<div class="flex gap-xl px-xl items-center">
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">CORN (C1):</span> <span class="text-body-md">$4.52</span> <span class="text-secondary text-label-sm">▲ 1.2%</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">WHEAT (W1):</span> <span class="text-body-md">$6.18</span> <span class="text-error text-label-sm">▼ 0.4%</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">SOY:</span> <span class="text-body-md">$13.40</span> <span class="text-secondary text-label-sm">▲ 0.8%</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">LOCAL TEMP:</span> <span class="text-body-md">24°C</span> <span class="material-symbols-outlined text-secondary text-sm">wb_sunny</span></div>
+<div class="flex items-center gap-xs"><span class="font-bold text-primary">HUMIDITY:</span> <span class="text-body-md">62%</span> <span class="text-on-surface-variant text-label-sm">Optimal</span></div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-xxl px-margin-mobile md:px-xxl max-w-container-max mx-auto">
+<div class="mb-xl text-center">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Intelligent Growth Tools</h2>
+<p class="text-body-lg text-on-surface-variant">Precision technology designed for the modern farm environment.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg auto-rows-[280px]">
+<!-- Feature 1 -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-lg border border-outline-variant flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-[40px] mb-md" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="text-title-md font-title-md mb-sm">AI-Powered Farming</h3>
+<p class="text-body-md text-on-surface-variant max-w-md">Our neural networks analyze soil moisture, nitrogen levels, and pest migration patterns to provide actionable daily reports.</p>
+</div>
+<div class="mt-lg z-10">
+<button class="text-primary font-bold flex items-center gap-sm">Explore Models <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="absolute bottom-0 right-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover translate-y-12 transition-transform duration-500 group-hover:translate-y-8" data-alt="Close-up of a digital tablet displaying high-resolution crop health data overlaid with glowing green neural network paths. The aesthetic is clean and high-tech, focusing on data visualization in a bright laboratory environment. The lighting is soft and professional, highlighting the integration of AI with organic agriculture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-OmZDO93Ut6gqDDvTNKBIaJE-_vDlOLJ79fsOYazP50SozOqI8WpMBgWTe3vsKeatB_P05mIf1qQQQHtXtb6wSjO_7UxBsNXpBeJ4gVvXk9vmV2saycL19X85xtw7U5wIqCSvuLYn66J8FZhkYRz8u5dM1-hk-zwPRmKtFpwjIrksB_M437DnDNcyVbvMthSAju-aCe5Gilp1HWLYz_i4ANCksQw65vt5yrZZdoOZ_miJ9bybL7DCVEnEkJocrBABKqZN601AqQ"/>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-xl p-lg flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-[40px] mb-md">trending_up</span>
+<h3 class="text-title-md font-title-md mb-sm">Market Intelligence</h3>
+<p class="text-body-md opacity-90">Real-time futures, historical pricing trends, and logistical route optimization for maximum profit.</p>
+</div>
+<button class="bg-on-primary text-primary px-lg py-sm rounded-lg font-bold text-label-sm w-fit">Live Dashboard</button>
+</div>
+<!-- Feature 3 -->
+<div class="md:col-span-4 bg-secondary-container text-on-secondary-container rounded-xl p-lg flex flex-col justify-between overflow-hidden relative">
+<div>
+<span class="material-symbols-outlined text-[40px] mb-md">groups</span>
+<h3 class="text-title-md font-title-md mb-sm">Expert Consultation</h3>
+<p class="text-body-md opacity-80">Connect with certified agronomists for personalized soil reports and climate adaptation strategies.</p>
+</div>
+<button class="underline font-bold">Book a session</button>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-8 bg-surface-container rounded-xl p-lg flex flex-col md:flex-row gap-lg items-center">
+<div class="flex-1">
+<h3 class="text-title-md font-title-md mb-sm">Satellite Monitoring</h3>
+<p class="text-body-md text-on-surface-variant">Continuous field monitoring with sub-meter resolution, providing real-time alerts on crop stress or irrigation leaks.</p>
+</div>
+<div class="w-full md:w-1/2 h-full rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A high-altitude aerial view of vast, geometrically patterned farm fields in various shades of vibrant green and earthy brown. The landscape is crisp and clear under bright sunlight, conveying a sense of scale and order. The image is clean and professional, suited for a high-end agricultural technology platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACQX02ZEMV7GcDNBkJd_vFfflAT5OHsDvyi91YLHyDQ6X_5nD0mJY9UuGrYWb9agu2KQkVuZbB8YiHuQ617j71nRK5dRTw2PD5prSBeZIWkfhsrnDSm3R5tWyhYjLbg53NXpF_sA3fZpTptgNaFVXlho8-EhEQpPJDBnUusAjabccV08QNn04XOH0dLRvCUj25A_upUdVQM9eAtO1Ckfg8DUu2yuVWnt4aIVZAXkzGNSjFhj3GcK3xhuXjP6gu-Nf82sGlGRV7xw"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Marketplace Preview -->
+<section class="bg-surface-dim py-xxl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-xxl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">AgroStream Marketplace</h2>
+<p class="text-body-lg text-on-surface-variant">The direct bridge between premium producers and institutional buyers.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded-xl font-bold flex items-center gap-sm">View Full Marketplace <span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Category Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up photography of high-quality, vibrant orange wheat grains being poured into a storage container. The lighting is warm and natural, emphasizing the texture and purity of the seeds. The style is premium and minimalist, reflecting the reliability of agricultural data and quality control." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyGD_hwixvXzDuaFIBIP-vW5JxqbWwHwrSijNGdZs_rCf4n-rVENOelte7-k2BJRbs5h_oNuUaD31l4vmH43xJOSdkDDLeT7FA5U-fdLVkJup3qKuPEZ-IaHzuq_SwBD1eLPu-x_tVfNrGg1CWOLmYLSymiyqPsRSoWLY94RNkgy_vcBVcsHKNi_Wi6ltUAEK_qHkdM5RoU2HfAU_GAlCmfiGke4xhQ_ec4_iEh__p0lpp8cXJEOnELOQCwJKr7bF-juftWjwPtA"/>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-center mb-xs">
+<h4 class="text-title-md font-bold">Premium Seeds</h4>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-sm py-[2px] rounded-full font-bold">TOP CATEGORY</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-md">Drought-resistant hybrids and heritage varieties.</p>
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-primary">1,240+ Listings</span>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Category Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautiful, organized display of fresh, vibrant vegetables including crisp greens, bright peppers, and deep purple cabbages. The colors are highly saturated and the lighting is bright and clean, emphasizing freshness and high agricultural yield in a modern marketplace setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrI7LKdFuxc8l9s5rNu20C9TJtxXvEKU33l6GVbjhigU7BCrMIx43ZbkEO0MTiBcMESzhKfxjeFRs17zGB_c-NyqD7kdcWPse_LqbA_XAi0Gf9LkhFK554AuLRUxzdGNgqgh9ioyukFVLXQbF7LoebElMB3--APpyv7Ri3FbiivjfCyEIOdLsnRreWj5A4icwE9xnokit0tAa3NmWOhcWjTHb9zvR0V4_-NbqOQgs9kIvl0T64fAKKetuVR2y3Ka3xrjXkvf9Sbw"/>
+</div>
+<div class="p-md">
+<h4 class="text-title-md font-bold mb-xs">Wholesale Crops</h4>
+<p class="text-body-md text-on-surface-variant mb-md">Bulk contracts for seasonal harvests and futures.</p>
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-primary">850+ Active Deals</span>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Category Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a modern autonomous tractor working in a vast, sun-drenched field. The focus is on the metallic textures and technological sensors of the machine against the soft, organic backdrop of the farm. The lighting is crisp and natural, highlighting a premium minimalist industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCihAu5Zi9ma7tDzJAwvBM1yY9dRwdN2vt3aydBXTY_UhrX6-_W4Z46SkjPi7qXSvMIjAGoOlV82_kal1MMXu3Yq_4k3Rzn5SKFbd_aSPoCKnz5JMT6BFt4FlyjOs0MxBFbJ56tVwgaCecmKdC0Jo2ta6qnhSs_pHPJNA75R7LNB6GUHQJIF5ac-bEOBpeviBKXZBHtktGQrGZTq54N0VqC0fAoLzDUWh_dQxnaqPc7QANvhVDm0x1uvR_VtdVLtYeG-6FAIcXq0g"/>
+</div>
+<div class="p-md">
+<h4 class="text-title-md font-bold mb-xs">Machinery</h4>
+<p class="text-body-md text-on-surface-variant mb-md">Leasing and purchase for AI-driven equipment.</p>
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-primary">320+ Available</span>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Category Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-tech agricultural laboratory showing rows of seedlings under controlled, futuristic LED lighting. The environment is sterile and bright, using a cool blue and white palette punctuated by the vibrant green of the plants. The composition is clean and orderly, suggesting precision and scientific rigor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqEfw5llNyH-i-jYypLaHIwp3x-R1girGc25uL_es6tNkfOLZjgKooHRz5boyoaktCdolhLXFuI3FmD0aC9EtbRl6X74xCBotMTfsrKvZnmRx0Hkbj194XuJRI-AzrFt-Cx3Y6twPibiOio-bZBGIFzBROEYbbTVZJ5jxc400_v-Y3DucmDr36xtwcLVbXDGMpJkDELtGbz_egvJb8E5Rv53h8yoDihwh02RegYoraxgD-EsMhBCynC7WL8Kz-bVs9r1WQeBuOYw"/>
+</div>
+<div class="p-md">
+<h4 class="text-title-md font-bold mb-xs">Organic Inputs</h4>
+<p class="text-body-md text-on-surface-variant mb-md">Sustainable fertilizers and biological control agents.</p>
+<div class="flex justify-between items-center">
+<span class="text-label-sm font-bold text-primary">2,100+ Products</span>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof & Community -->
+<section class="py-xxl px-margin-mobile md:px-xxl max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xxl items-center">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-lg">Rooted in Global Trust</h2>
+<div class="space-y-lg">
+<div class="glass-card p-lg rounded-xl border-l-4 border-primary">
+<p class="text-body-lg italic mb-md">"AgriSmart Pro transformed our 500-acre corn operation. We've seen a 22% increase in yield while reducing irrigation costs by nearly a third."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged farmer with a confident and satisfied expression, wearing a clean work shirt. The background is a soft-focus sunny field, using high-key lighting to maintain a bright, trustworthy, and modern feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2TrkzicQyQk-E0UxFL7IHxOKL0O1WpUya5IDb0WvMpHZSM0bTi401IHrRu9KiX5bX3MKGGGiFFuldOPxwwXSMnn4dInOnqrVEImDVwBspCiuTecJjoJkdlOF6NnQ1ozzgKnGdyBGOdhnEBN3sVwdbrC_U7qQHKHbxJnnsrsy0A4ixvzC7zCxaOy9JTQw-d8_6yoc0_2RhboLj_3k0ocR9qeKN3JBRQIWDFcq1QDKqf8s3j2jxZvEyITpLuFlLIU6Xsbav7SbtkA"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Mark Henderson</h5>
+<p class="text-label-sm text-on-surface-variant">Principal, Henderson Bio-Farms</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl border-l-4 border-secondary">
+<p class="text-body-lg italic mb-md">"The market intelligence platform gave us the edge we needed for grain futures this season. Absolute game-changer for mid-size exporters."</p>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a woman in an office setting with agricultural maps in the background. She is smiling confidently, dressed in modern business casual. The lighting is clean and professional, using a bright and minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDSbTywgEpTxfpR49wzmbGp6Yc5jtZayUFFrw4SM5PdgzIhuuDO9ybu-23tEoV7nxOtxO_Pv8qd5r3clhVwsmxKfIOOOIUyaRpMq1azYuYunrbz5EgwNwb5yt0Db4hkQdc3UImiwtNpoY2XnfUNgIZSH2NNvHHIxxfJjze31CgR-cVPc8PmkqZjS_09rSOL70ENTnsBcDcn1wFsLBtWBJv6zizAV5soxoeTMUAz0XHJulHfVNRXUPDGT66o3XwMADuiVXA8yIMxQ"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Elena Rodriguez</h5>
+<p class="text-label-sm text-on-surface-variant">Chief Operations, Global Harvest Co.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xxl p-xl shadow-xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg mb-md">Thriving Community</h3>
+<p class="text-body-lg text-on-surface-variant mb-xl">Join 50,000+ agricultural professionals sharing insights daily.</p>
+<div class="grid grid-cols-2 gap-lg">
+<div class="text-center p-md bg-surface-container rounded-xl">
+<div class="text-display-lg font-display-lg text-primary">12K+</div>
+<div class="text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Active Discussions</div>
+</div>
+<div class="text-center p-md bg-surface-container rounded-xl">
+<div class="text-display-lg font-display-lg text-secondary">4.9/5</div>
+<div class="text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Expert Rating</div>
+</div>
+<div class="text-center p-md bg-surface-container rounded-xl">
+<div class="text-display-lg font-display-lg text-primary">150+</div>
+<div class="text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Weekly Webinars</div>
+</div>
+<div class="text-center p-md bg-surface-container rounded-xl">
+<div class="text-display-lg font-display-lg text-secondary">24/7</div>
+<div class="text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Expert Support</div>
+</div>
+</div>
+<button class="w-full mt-xl bg-primary-container text-on-primary py-lg rounded-xl font-bold hover:opacity-90 transition-opacity">Enter the Forum</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-xxl px-margin-mobile relative overflow-hidden">
+<div class="max-w-container-max mx-auto bg-primary text-on-primary rounded-[32px] p-xl md:p-xxl relative overflow-hidden flex flex-col md:flex-row items-center gap-xxl">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+</div>
+<div class="relative z-10 flex-1">
+<h2 class="text-headline-lg font-headline-lg mb-md">Ready to scale your farm's potential?</h2>
+<p class="text-body-lg opacity-80 mb-xl max-w-lg">Get started with a free field audit and experience the precision of AgriSmart Pro's ecosystem today.</p>
+<div class="flex flex-wrap gap-md">
+<button class="bg-on-primary text-primary px-xxl py-lg rounded-xl font-bold text-title-md hover:scale-[1.02] transition-transform">Get Started for Free</button>
+<button class="bg-transparent text-on-primary border border-on-primary/30 px-xxl py-lg rounded-xl font-bold text-title-md hover:bg-on-primary/10 transition-colors">Talk to Sales</button>
+</div>
+</div>
+<div class="relative z-10 w-full md:w-1/3">
+<div class="bg-white/10 backdrop-blur-md p-lg rounded-xxl border border-white/20">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-[32px] text-secondary-container">shield_lock</span>
+<h4 class="font-bold">Enterprise Security</h4>
+</div>
+<p class="text-body-md opacity-80">Your data is yours. We use industry-standard encryption and transparent data sovereignty protocols.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim border-t border-outline-variant">
+<div class="flex flex-col gap-sm items-center md:items-start">
+<span class="text-title-md font-title-md font-bold text-primary">AgriSmart Pro</span>
+<p class="text-body-md font-body-md text-on-surface-variant">© 2024 AgriSmart Ecosystem. Data-Driven Growth.</p>
+</div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="text-on-surface-variant dark:text-surface-variant text-label-sm font-label-sm hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-sm font-label-sm hover:text-primary underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-sm font-label-sm hover:text-primary underline transition-all" href="#">Sustainability</a>
+<a class="text-on-surface-variant dark:text-surface-variant text-label-sm font-label-sm hover:text-primary underline transition-all" href="#">Contact</a>
+</div>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">face_nod</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">grid_view</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">public</span>
+</div>
+</footer>
+<script>
+        // Micro-interaction for feature cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple ticker adjustment if window resizes
+        window.addEventListener('resize', () => {
+            const marquee = document.querySelector('.animate-marquee');
+            // Recalculate duration if needed or handle pause/resume
+        });
+    </script>
+</body></html>

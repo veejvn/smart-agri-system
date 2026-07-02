@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expert Profile - AgriSmart Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f9f9f9",
+                    "surface-container-high": "#e8e8e8",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005318",
+                    "on-tertiary-fixed": "#2b160f",
+                    "tertiary-container": "#85675c",
+                    "outline-variant": "#bfcaba",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#88d982",
+                    "surface-dim": "#dadada",
+                    "primary-container": "#2e7d32",
+                    "surface-tint": "#1b6d24",
+                    "tertiary-fixed": "#ffdbce",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#cbffc2",
+                    "on-primary-fixed": "#002204",
+                    "secondary-fixed": "#9ff79f",
+                    "secondary-container": "#9cf49c",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-container": "#19722b",
+                    "surface-container": "#eeeeee",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-low": "#f3f3f3",
+                    "primary": "#0d631b",
+                    "secondary": "#126d27",
+                    "on-secondary-fixed": "#002105",
+                    "on-background": "#1a1c1c",
+                    "on-primary-fixed-variant": "#005312",
+                    "on-surface-variant": "#40493d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#a3f69c",
+                    "secondary-fixed-dim": "#83da85",
+                    "outline": "#707a6c",
+                    "primary-fixed-dim": "#88d982",
+                    "on-surface": "#1a1c1c",
+                    "tertiary-fixed-dim": "#e4beb2",
+                    "tertiary": "#6b4f45",
+                    "on-tertiary-fixed-variant": "#5b4137",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1f1",
+                    "background": "#f9f9f9",
+                    "surface-variant": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffeee8",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e2e2e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "container-max": "1280px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-md">
+<span class="text-title-md font-title-md font-bold text-primary dark:text-primary-fixed">AgriSmart Pro</span>
+</div>
+<div class="hidden md:flex items-center bg-surface-container-high rounded-full px-md py-xs w-96">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md" placeholder="Search experts, articles, tools..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex gap-sm">
+<button class="p-xs rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-primary">notifications</span></button>
+<button class="p-xs rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-primary">thermostat</span></button>
+<button class="p-xs rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-primary">language</span></button>
+</div>
+<button class="bg-primary-container text-on-primary-container px-md py-xs rounded-full font-label-sm">Role Switcher</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-outline-variant">
+<img alt="User profile photo" data-alt="A professional headshot of a middle-aged male agronomist with a friendly expression, set against a clean, softly lit office background. He is wearing a crisp white shirt, symbolizing professionalism and clarity. The lighting is soft and high-key, aligning with a premium minimalist light-mode interface design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJOqVwLnCkLIlUgLvnJjx9ygutEkyGXVorf5SGP0xHXAoxrwO1tmSDiVWBvGV7apXF6KI1JcCtu5lsSoBtQYFfv8Bnj_8akxxI2AjXle6MOuuuPbFyR41GTA4Zy0ve_DYnX1QF5Va7OtteyQ87Uof7MCDCivuukxein8QgZvhePLT0eRTPZMkQ2mMRWqjIzToFOBpwDiL_OruwTUd0D-swIj04MVOcq9hNOWrROEwdrR1kBDs41Jq7XuqN7tGEkikUcG2QpRqsw"/>
+</div>
+</div>
+</header>
+<div class="flex max-w-container-max mx-auto min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 sticky top-16 p-md gap-sm border-r border-outline-variant dark:border-outline bg-surface-container-low">
+<div class="flex flex-col gap-xs mb-lg">
+<div class="flex items-center gap-md px-md py-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">agriculture</span>
+</div>
+<div>
+<p class="text-title-md font-title-md font-bold text-primary">Farm Manager</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Premium Tier</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-base flex-1">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm scale-[0.98]" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-label-sm font-label-sm font-bold">Community</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-label-sm font-label-sm">Marketplace</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-label-sm font-label-sm">Knowledge Center</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-sm font-label-sm">AI Tools</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-base pb-md">
+<button class="bg-primary text-on-primary rounded-xl py-sm px-md flex items-center justify-center gap-sm mb-md shadow-sm hover:opacity-90">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm">AI Assistant</span>
+</button>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-label-sm font-label-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-xl overflow-x-hidden">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs text-on-surface-variant font-label-sm mb-lg">
+<a class="hover:text-primary" href="#">Community</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Experts</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-bold">Dr. Elena Vance</span>
+</nav>
+<!-- Expert Profile Header -->
+<section class="bento-grid mb-xxl">
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<div class="flex flex-col md:flex-row gap-xl items-start">
+<div class="relative w-32 h-32 md:w-48 md:h-48 shrink-0">
+<img class="w-full h-full rounded-xxl object-cover shadow-lg border-4 border-white" data-alt="A professional portrait of Dr. Elena Vance, a female agricultural scientist in her late 30s with a confident and approachable smile. She is standing in a lush green experimental wheat field during the golden hour, with soft, warm sunlight illuminating her. The photography is sharp with a shallow depth of field, emphasizing her expertise and grounded connection to nature within a premium digital context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxK90Y4a-XRdTKXOkTS5jWrf8Y_MLFJWPoWzPivIax0oeAiecafxyfpfWV_SUmWRIGfKc4fT-I1nr9brZJ9yff2Z4_WFfUL1Kgbn_O2wDVbdhcB_6Cowp5oOopsr66qxW7vJzc_aA016Gkfr9WYnWML_kkZdqViZPABwl8bn37GPV237S3fmDu4UxfWSSnRcs8vDjv91kN008afjMoZHt9QW0-FRmt3ThofZa25nyVoV8yIVUlNv3KyB1yyVmXmuEd9AglPLE_WA"/>
+<div class="absolute -bottom-2 -right-2 bg-primary text-on-primary p-xs rounded-full border-4 border-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 space-y-md">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Dr. Elena Vance</h1>
+<p class="text-title-md font-title-md text-secondary">Senior Soil Pathologist &amp; Regenerative Specialist</p>
+</div>
+<div class="flex flex-wrap gap-sm">
+<span class="bg-secondary-container/20 text-on-secondary-container px-md py-xs rounded-full font-label-sm border border-secondary-container">15+ Years Experience</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-md py-xs rounded-full font-label-sm">PhD Agronomy</span>
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm">98% Satisfaction</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                                Pioneering research in microbial soil health and carbon sequestration strategies. Helping large-scale commercial farms transition to regenerative practices without compromising yield stability. Specialist in high-latitude cereal crops.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Fast Stats -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Next Available</p>
+<p class="text-body-md font-bold text-on-surface">Tomorrow, 09:00 AM</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Response Time</p>
+<p class="text-body-md font-bold text-on-surface">&lt; 2 Hours</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">bolt</span>
+</div>
+<div class="p-md bg-inverse-surface rounded-xl flex items-center gap-md text-inverse-on-surface shadow-md">
+<span class="material-symbols-outlined text-primary-fixed">stars</span>
+<p class="font-bold">AgriSmart Top Rated 2024</p>
+</div>
+</div>
+</section>
+<!-- Booking and Knowledge Center Section -->
+<div class="bento-grid">
+<!-- Left: Booking Engine -->
+<div class="col-span-12 lg:col-span-8 space-y-xl">
+<div class="bg-surface-container-lowest rounded-xxl p-xl border border-outline-variant shadow-sm">
+<h2 class="text-title-md font-title-md text-on-surface mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+                            Schedule a Consultation
+                        </h2>
+<!-- Consultation Type Selection -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<button class="flex flex-col items-center gap-sm p-lg rounded-xl border-2 border-primary bg-primary-container/5 text-primary transition-all">
+<span class="material-symbols-outlined text-display-lg">videocam</span>
+<p class="font-bold">Video Call</p>
+<p class="text-label-sm">$120 / hr</p>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg rounded-xl border border-outline-variant hover:border-primary/40 hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-display-lg text-outline">chat</span>
+<p class="font-bold text-on-surface">Messaging</p>
+<p class="text-label-sm text-on-surface-variant">$45 / query</p>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg rounded-xl border border-outline-variant hover:border-primary/40 hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-display-lg text-outline">location_on</span>
+<p class="font-bold text-on-surface">Field Visit</p>
+<p class="text-label-sm text-on-surface-variant">Custom Quote</p>
+</button>
+</div>
+<!-- Interactive Calendar (Mock) -->
+<div class="bg-surface-container-low p-xl rounded-xl">
+<div class="flex justify-between items-center mb-md">
+<p class="font-bold text-on-surface">September 2024</p>
+<div class="flex gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-xs hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="calendar-grid text-center font-label-sm text-on-surface-variant mb-sm">
+<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+</div>
+<div class="calendar-grid gap-sm">
+<!-- Calendar filler -->
+<div class="p-md text-on-surface-variant opacity-20">26</div>
+<div class="p-md text-on-surface-variant opacity-20">27</div>
+<div class="p-md text-on-surface-variant opacity-20">28</div>
+<div class="p-md text-on-surface-variant opacity-20">29</div>
+<div class="p-md text-on-surface-variant opacity-20">30</div>
+<div class="p-md text-on-surface-variant opacity-20">31</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">1</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">2</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">3</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">4</div>
+<div class="p-md bg-primary-container text-on-primary-container rounded-lg font-bold shadow-md cursor-pointer">5</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">6</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">7</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">8</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">9</div>
+<div class="p-md bg-primary-container text-on-primary-container rounded-lg font-bold shadow-md cursor-pointer">10</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">11</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant font-bold">12</div>
+</div>
+<div class="mt-xl space-y-md">
+<p class="font-bold text-on-surface">Available Slots for Sept 5</p>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-sm bg-white border border-outline-variant rounded-lg hover:border-primary transition-colors">09:00 AM</button>
+<button class="px-md py-sm bg-white border border-outline-variant rounded-lg hover:border-primary transition-colors">11:30 AM</button>
+<button class="px-md py-sm bg-primary text-on-primary rounded-lg border border-primary">02:00 PM</button>
+<button class="px-md py-sm bg-white border border-outline-variant rounded-lg hover:border-primary transition-colors">04:30 PM</button>
+</div>
+</div>
+</div>
+<div class="mt-xl flex justify-end">
+<button class="bg-primary text-on-primary px-xxl py-md rounded-full font-bold shadow-lg hover:opacity-90 transition-opacity flex items-center gap-sm">
+                                Proceed to Payment <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Reviews -->
+<div class="bg-white rounded-xxl p-xl border border-outline-variant">
+<h2 class="text-title-md font-title-md text-on-surface mb-lg">What Farmers Say</h2>
+<div class="space-y-xl">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container flex-shrink-0"></div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm">
+<span class="font-bold">Jacob Miller</span>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant italic">"Dr. Vance provided a soil health roadmap that transformed our corn yields within two seasons. Extremely professional and data-driven."</p>
+</div>
+</div>
+<div class="flex gap-md border-t border-outline-variant pt-xl">
+<div class="w-12 h-12 rounded-full bg-surface-container flex-shrink-0"></div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm">
+<span class="font-bold">Sarah Chen</span>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant italic">"The remote video consultation saved us thousands in travel costs. Her diagnostic skills through high-res video are impressive."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Knowledge Center Publications -->
+<div class="col-span-12 lg:col-span-4 space-y-xl">
+<div class="bg-surface-container-low rounded-xxl p-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-title-md font-title-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+                                Knowledge Center
+                            </h2>
+<a class="text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-lg">
+<!-- Publication 1 -->
+<div class="group cursor-pointer">
+<div class="h-40 rounded-xl overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of healthy soil with diverse micro-organisms, presented as a scientific photographic study. The image uses natural, earth-toned colors and sharp focus, reflecting a high-end educational aesthetic. It is styled to fit within a professional agriculture knowledge platform, using high-contrast lighting to highlight texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCIYi_d-G8nWeuykdXs3FCUO5y1l1JfwIBbYn8ukIeGN31GjXwYp42QxmcgsBChOTuP6pzQcy8ocMN5dvKsCTinAfGXzq38JgNbd0vuDXPLmsW4mYF4yqf1nZrik_0_FFP22TQWUPsmycp3EIqHzIO4Pm1yoHstfy6Z-AjhNy8XbNLCfppVOGdWw6UhI6uNXNqzJtZ7U0NiT4-ur2eCOi6-Se_Zm9rEpoeeyu72XF3IKmIwNcf6-sOOyEPJZPj_7BRklVK7vF5rw"/>
+</div>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Research Paper • 12 min read</span>
+<h3 class="text-body-lg font-bold text-on-surface mt-xs group-hover:text-primary transition-colors">Microbial Resilience in Semi-Arid Climates</h3>
+<p class="text-body-md text-on-surface-variant mt-xs line-clamp-2">A study on how specific fungal networks improve water retention in wheat production.</p>
+</div>
+<!-- Publication 2 -->
+<div class="group cursor-pointer">
+<div class="h-40 rounded-xl overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vast, high-latitude cereal crop field under a dramatic evening sky. The rows of crops are perfectly aligned, showing precision agriculture in action. The lighting is low and moody, creating deep shadows and bright highlights on the golden grains. This is a cinematic landscape photograph that underscores the professional and technological scale of modern farming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs3Obyu1knev0LcYRhLaoi-aZFqhLcnqI2sOP2_DGg-LzA158OUS8pfeXlrjGFIrpPOGs8qVeUQOXZvE27E_sGNR8304Z_WvhncJRq-H68F9K3IO25vit8wuyFdq0Jdl_xf6jcJDHLaVfcDGsG1kbuiG61JmI7KVn84dr7kpamQss1mNMgf6djSNWYalCLW23KLmzWKYly9JHuRy1lPO2bynYXhOYfKiN5t4hVkWKP-CZUOfkjaTLdXhdKvR2lsjDVncL1HprVQA"/>
+</div>
+<span class="text-label-sm font-label-sm text-secondary font-bold">Technical Guide • 8 min read</span>
+<h3 class="text-body-lg font-bold text-on-surface mt-xs group-hover:text-primary transition-colors">Transitioning to No-Till: A Case Study</h3>
+<p class="text-body-md text-on-surface-variant mt-xs line-clamp-2">Lessons learned from a 5,000-acre transition over three harvest cycles.</p>
+</div>
+<!-- Publication 3 -->
+<div class="p-md bg-white rounded-xl border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-tertiary text-display-lg">description</span>
+<div>
+<p class="font-bold text-on-surface">Soil Health Checklist (PDF)</p>
+<p class="text-label-sm text-on-surface-variant">Free Download • 2MB</p>
+</div>
+<button class="ml-auto p-xs rounded-full hover:bg-surface-container"><span class="material-symbols-outlined">download</span></button>
+</div>
+</div>
+</div>
+<!-- Specialty Card -->
+<div class="glass-card p-xl rounded-xxl border border-outline shadow-xl relative overflow-hidden">
+<div class="relative z-10 space-y-md">
+<h4 class="text-title-md font-bold text-primary">Need a Custom Quote?</h4>
+<p class="text-body-md text-on-surface-variant">For corporate advisory, long-term soil monitoring programs, or speaking engagements.</p>
+<button class="w-full py-md border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition-colors">Inquire Today</button>
+</div>
+<!-- Subtle graphic element -->
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[160px]">biotech</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim dark:bg-inverse-surface border-t border-outline-variant">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="text-title-md font-title-md font-bold text-primary dark:text-primary-fixed">AgriSmart Ecosystem</span>
+<p class="text-body-md font-body-md text-on-surface-variant dark:text-surface-variant">© 2024 AgriSmart Ecosystem. Data-Driven Growth.</p>
+</div>
+<div class="flex gap-xl">
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Privacy Policy</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Terms of Service</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Sustainability</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Contact</a>
+</div>
+</footer>
+<script>
+        // Interactive Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Calendar selection logic (simplified)
+        const calendarSlots = document.querySelectorAll('.calendar-grid .cursor-pointer');
+        calendarSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                calendarSlots.forEach(s => {
+                    s.classList.remove('bg-primary', 'text-on-primary');
+                    s.classList.add('bg-primary-container', 'text-on-primary-container');
+                });
+                slot.classList.remove('bg-primary-container', 'text-on-primary-container');
+                slot.classList.add('bg-primary', 'text-on-primary');
+            });
+        });
+    </script>
+</body></html>

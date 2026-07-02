@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgriSmart Pro - Farmer Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#cbffc2",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9f9",
+                        "on-background": "#1a1c1c",
+                        "outline": "#707a6c",
+                        "surface-dim": "#dadada",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed": "#2b160f",
+                        "on-surface": "#1a1c1c",
+                        "secondary-container": "#9cf49c",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary-fixed": "#002105",
+                        "tertiary-fixed": "#ffdbce",
+                        "primary": "#0d631b",
+                        "surface-bright": "#f9f9f9",
+                        "primary-container": "#2e7d32",
+                        "primary-fixed-dim": "#88d982",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#002204",
+                        "on-tertiary-fixed-variant": "#5b4137",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#005312",
+                        "primary-fixed": "#a3f69c",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-container": "#19722b",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bfcaba",
+                        "secondary-fixed-dim": "#83da85",
+                        "on-surface-variant": "#40493d",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "secondary-fixed": "#9ff79f",
+                        "surface-container-low": "#f3f3f3",
+                        "tertiary": "#6b4f45",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#126d27",
+                        "tertiary-container": "#85675c",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#88d982",
+                        "on-secondary-fixed-variant": "#005318",
+                        "tertiary-fixed-dim": "#e4beb2",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-container": "#ffeee8",
+                        "surface": "#f9f9f9",
+                        "surface-tint": "#1b6d24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); border: 1px solid #E0E0E0; }
+        .chart-bar { transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar (Desktop Only via style_shell_layout) -->
+<aside class="hidden md:flex flex-col h-full p-md gap-sm border-r border-outline-variant h-screen w-64 fixed left-0 top-0 bg-surface-container-low">
+<div class="flex flex-col gap-xs mb-lg">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">agriculture</span>
+</div>
+<div>
+<h2 class="text-title-md font-title-md font-bold text-primary">Farm Manager</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Premium Tier</p>
+</div>
+</div>
+<nav class="flex flex-col gap-base">
+<!-- Active Item -->
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm scale-[0.98] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-label-sm font-label-sm">Marketplace</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-label-sm font-label-sm">Community</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-label-sm font-label-sm">Knowledge Center</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-sm font-label-sm">AI Tools</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto flex flex-col gap-base border-t border-outline-variant pt-md">
+<button class="w-full bg-primary text-on-primary py-sm px-md rounded-xl flex items-center justify-center gap-sm mb-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-label-sm">AI Assistant</span>
+</button>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest px-md py-sm rounded-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-label-sm font-label-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface shadow-sm">
+<div class="flex items-center gap-lg">
+<span class="text-title-md font-title-md font-bold text-primary">AgriSmart Pro</span>
+<div class="hidden sm:flex items-center bg-surface-container px-md py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-body-md mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="Search farm data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm pr-md border-r border-outline-variant">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">thermostat</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">language</span>
+</button>
+</div>
+<div class="flex items-center gap-md pl-sm">
+<span class="hidden lg:block text-label-sm font-label-sm text-primary font-bold bg-primary-fixed px-sm py-1 rounded-full">Role Switcher</span>
+<img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional close-up portrait of a modern agronomist wearing a clean denim shirt. The lighting is soft and natural, suggesting an early morning outdoor setting. The background is slightly blurred showing a lush green field under a clear blue sky. The overall aesthetic is clean, professional, and captures a sense of reliable expertise and high-tech farming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFggpoE1gb4uJ_24FX6BDlA8zsjw7gfTmfuBFqRl0ATSra7867WXBuMhPzfivqV2Yovcsu--7bHy-HgQ2RuO_UWJBadpKLBHQsK2ZLIPbdgrHF8CjVm7_C9pND9nZwS3OFS2DaIPAUN_wW7KXIr4UMriSMMTLtXTRaS_16q0P97kRLDx3Zh6FeahyZEWe74S5Lr-GIRAmDMd1-YHlrl_xMQhhB6AJaiUm8llcgwmZh9H7YTgZxSJfc8r1TTYflsO9WecCfoXq7Nw"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-lg md:p-xl space-y-lg">
+<!-- Welcome Header -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Welcome back, Marcus</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Harvest outlook is optimal for your South Quadrant crops.</p>
+</div>
+<div class="flex gap-sm">
+<span class="bg-secondary-container text-on-secondary-container px-md py-sm rounded-xl text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-md">eco</span> Healthy Soil
+                    </span>
+<span class="bg-primary-container text-on-primary-container px-md py-sm rounded-xl text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-md">trending_up</span> +12% Growth
+                    </span>
+</div>
+</section>
+<!-- Quick Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Revenue Chart Widget -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-[160px]">
+<div class="flex justify-between items-start">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Weekly Revenue</span>
+<span class="text-primary font-bold">+8.4%</span>
+</div>
+<div class="flex items-end gap-1 h-12 mb-sm">
+<div class="bg-primary w-full h-[40%] rounded-t-sm chart-bar"></div>
+<div class="bg-primary w-full h-[60%] rounded-t-sm chart-bar"></div>
+<div class="bg-primary w-full h-[45%] rounded-t-sm chart-bar"></div>
+<div class="bg-primary w-full h-[75%] rounded-t-sm chart-bar"></div>
+<div class="bg-primary w-full h-[55%] rounded-t-sm chart-bar"></div>
+<div class="bg-primary w-full h-[90%] rounded-t-sm chart-bar"></div>
+<div class="bg-primary-container w-full h-[30%] rounded-t-sm chart-bar"></div>
+</div>
+<div class="text-title-md font-title-md">$42,890.00</div>
+</div>
+<!-- Active Orders -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-[160px]">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed text-md">shopping_cart</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Active Orders</span>
+</div>
+<div class="py-md">
+<span class="text-display-lg font-display-lg leading-none">24</span>
+</div>
+<div class="text-label-sm text-on-surface-variant">8 items pending shipment</div>
+</div>
+<!-- Weather Alert -->
+<div class="bg-error-container text-on-error-container p-md rounded-xl shadow-sm border border-error/20 flex flex-col justify-between min-h-[160px]">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm font-bold uppercase tracking-wider">Alert</span>
+<span class="material-symbols-outlined">thunderstorm</span>
+</div>
+<div class="py-sm">
+<p class="text-title-md font-title-md font-bold">Rain in 2h</p>
+<p class="text-body-md">Prepare grain coverage</p>
+</div>
+<button class="w-full py-xs bg-on-error-container text-on-error rounded-lg text-label-sm">View Radar</button>
+</div>
+<!-- AI Recommendation -->
+<div class="bg-tertiary-container text-on-tertiary-container p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-[160px]">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-sm font-label-sm">AI Advice</span>
+</div>
+<div class="py-sm">
+<p class="text-body-md font-bold">Apply Fertilizer X</p>
+<p class="text-label-sm opacity-90">Soil nitrate levels are at 12%, below the seasonal threshold.</p>
+</div>
+<a class="text-label-sm underline font-bold" href="#">Details</a>
+</div>
+</section>
+<!-- Main Analytics & Notification Split -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Main Analytics Chart (Stripe-style) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="p-lg flex justify-between items-center border-b border-outline-variant">
+<div>
+<h3 class="text-title-md font-title-md text-on-surface">Yield Performance</h3>
+<p class="text-label-sm text-on-surface-variant">Production vs. Market Forecast</p>
+</div>
+<div class="flex bg-surface-container rounded-lg p-1">
+<button class="px-md py-1 text-label-sm bg-white rounded-md shadow-sm">Sales</button>
+<button class="px-md py-1 text-label-sm hover:bg-surface-container-high transition-colors">Volume</button>
+</div>
+</div>
+<div class="p-lg flex-grow relative h-64 bg-slate-50/30 flex items-end justify-between px-xxl">
+<!-- Simulated Chart Path -->
+<div class="absolute inset-0 flex items-center justify-center opacity-10">
+<span class="material-symbols-outlined text-[200px]">stacked_line_chart</span>
+</div>
+<!-- Grid lines -->
+<div class="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-between py-md px-lg pointer-events-none">
+<div class="w-full border-t border-outline-variant/30"></div>
+<div class="w-full border-t border-outline-variant/30"></div>
+<div class="w-full border-t border-outline-variant/30"></div>
+<div class="w-full border-t border-outline-variant/30"></div>
+</div>
+<!-- Bars -->
+<div class="relative z-10 w-12 bg-primary-fixed-dim h-32 rounded-t-lg"></div>
+<div class="relative z-10 w-12 bg-primary-fixed-dim h-48 rounded-t-lg"></div>
+<div class="relative z-10 w-12 bg-primary-container h-56 rounded-t-lg"></div>
+<div class="relative z-10 w-12 bg-primary-fixed-dim h-40 rounded-t-lg"></div>
+<div class="relative z-10 w-12 bg-primary-fixed-dim h-36 rounded-t-lg"></div>
+<div class="relative z-10 w-12 bg-primary-fixed-dim h-52 rounded-t-lg"></div>
+</div>
+</div>
+<!-- Notifications Center -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-title-md font-title-md text-on-surface">Updates</h3>
+<span class="w-6 h-6 bg-error text-on-error rounded-full flex items-center justify-center text-[10px] font-bold">3</span>
+</div>
+<div class="flex-grow overflow-y-auto max-h-[350px]">
+<!-- Notification Item -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-md">
+<div class="shrink-0 w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-sm">reply</span>
+</div>
+<div class="space-y-1">
+<p class="text-body-md font-bold">Community Reply</p>
+<p class="text-label-sm text-on-surface-variant">Sara M. replied to your post on "Pest Control Strategies".</p>
+<p class="text-[10px] text-outline">12 min ago</p>
+</div>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-md">
+<div class="shrink-0 w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-sm">trending_up</span>
+</div>
+<div class="space-y-1">
+<p class="text-body-md font-bold">Market Update</p>
+<p class="text-label-sm text-on-surface-variant">Corn futures up by 3.2% today. Optimal selling window opening.</p>
+<p class="text-[10px] text-outline">2 hours ago</p>
+</div>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-md">
+<div class="shrink-0 w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed text-sm">verified_user</span>
+</div>
+<div class="space-y-1">
+<p class="text-body-md font-bold">System Status</p>
+<p class="text-label-sm text-on-surface-variant">Drone fleet #4 diagnostics completed. All systems nominal.</p>
+<p class="text-[10px] text-outline">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-md text-center">
+<button class="text-label-sm font-bold text-primary hover:underline">View All Notifications</button>
+</div>
+</div>
+</section>
+<!-- Recent Orders Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+<h3 class="text-title-md font-title-md text-on-surface">Recent Orders</h3>
+<div class="flex gap-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-md py-sm border border-outline-variant rounded-lg text-label-sm hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                        </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-xs px-md py-sm bg-primary text-on-primary rounded-lg text-label-sm hover:opacity-90">
+<span class="material-symbols-outlined text-sm">download</span> Export
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant">
+<th class="px-lg py-md text-label-sm font-bold uppercase tracking-wider">Product</th>
+<th class="px-lg py-md text-label-sm font-bold uppercase tracking-wider">Order ID</th>
+<th class="px-lg py-md text-label-sm font-bold uppercase tracking-wider">Date</th>
+<th class="px-lg py-md text-label-sm font-bold uppercase tracking-wider">Quantity</th>
+<th class="px-lg py-md text-label-sm font-bold uppercase tracking-wider">Amount</th>
+<th class="px-lg py-md text-label-sm font-bold uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface-dim rounded-md overflow-hidden">
+<img alt="Organic Wheat" class="w-full h-full object-cover" data-alt="A close-up shot of high-quality organic golden wheat grains being poured into a wooden container. The lighting is bright and crisp, highlighting the textures of each grain. The background is a clean, modern agricultural setting. The overall mood is one of harvest abundance and premium quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeEnC6gMpOVDzOsl-Xy7Zr8O5nq-ohbn8j43JVjsaCHdoQxFsM54nf7YSfnb_cJ0BD1BAMMNjY2dVypciiT8spewOS_g1smbtWqA_oMan8dU7d7eX-zHLT4P4e5T58TMAcH3DstJYgA42V_38WkVOPPVNrgJArexHPrl1I45NA7jCYCWNN7rPSSnZCTUISQPXZAYsuKDWO8dBfyBNAa-bQOzp2P7LITo3KsXf9Qk5frBmgr_iQRHbyFIvMobEj9plA4iIUA8WAIg"/>
+</div>
+<span class="text-body-md font-medium">Organic Wheat</span>
+</div>
+</td>
+<td class="px-lg py-md text-body-md font-mono text-on-surface-variant">#ORD-7721</td>
+<td class="px-lg py-md text-body-md text-on-surface-variant">Oct 24, 2024</td>
+<td class="px-lg py-md text-body-md text-on-surface-variant">1,200 kg</td>
+<td class="px-lg py-md text-body-md font-bold">$3,450.00</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase">Shipped</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface-dim rounded-md overflow-hidden">
+<img alt="Soybeans" class="w-full h-full object-cover" data-alt="Macro photography of fresh, vibrant green soybeans in their pods, arranged neatly on a sleek white surface. The lighting is high-key and professional, accentuating the natural texture and color. The aesthetic is minimal and high-end, representing fresh produce and technological agricultural precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Xu3JxdJiVoM7TazGDXqglZb1tmThhy-YhYUfdipgpItyDUU-jFY09UbnHVpJeasAjmNRkbhqn9tCne1P9EfmdUeOTrTDyUtvpTkZ5pHlhqN0J64rUZnPX-e9a09YkXKXTSZWBsHL_MNvi-cAQ8WSD4y4wem6XAX9I3dv9rH1k7Adl7_T7MCLQnUfvpncwWuBk2r6qxKERkK-xP2q9-ZEZuZ7eliB-StnqUbFuIMGLibAKPv2Kq2AQ5CDSTbWmeOa13syGEfJ2w"/>
+</div>
+<span class="text-body-md font-medium">Soybeans (A Grade)</span>
+</div>
+</td>
+<td class="px-lg py-md text-body-md font-mono text-on-surface-variant">#ORD-7719</td>
+<td class="px-lg py-md text-body-md text-on-surface-variant">Oct 23, 2024</td>
+<td class="px-lg py-md text-body-md text-on-surface-variant">850 kg</td>
+<td class="px-lg py-md text-body-md font-bold">$2,100.00</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-[10px] font-bold uppercase">Processing</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface-dim rounded-md overflow-hidden">
+<img alt="Barley" class="w-full h-full object-cover" data-alt="A detailed shot of premium barley stalks swaying gently in a golden hour light. The sun is setting in the background, creating a warm, hazy glow that feels both organic and peaceful. The focus is sharp on the foreground grains, highlighting their high quality. The overall design is clean and high-fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJZWdm792YkS2KDmDh-s4wQoUaz1PEzKLsPepJPkiLQBGp14aC83sMB7_q8I6g-qbDYzSQ176HICa_vz9x5dJTVu6Osgeo791UtW4HJoh1w9bGvdQU4fVSniRw4_gQ5yZXTBlkD6X8ZbYsUz4Dbzy6f0E0BZ1fCRoKeVNUODkZ0qDUYRwO7sNAEdFAggZr4rASKfoX0YK3JQjr2ti21T8_QVYAYG_PvCw2App7MUwqBI2NVBQRyhv7oY85h4jvZjDTstJ1XsVHyQ"/>
+</div>
+<span class="text-body-md font-medium">Premium Barley</span>
+</div>
+</td>
+<td class="px-lg py-md text-body-md font-mono text-on-surface-variant">#ORD-7715</td>
+<td class="px-lg py-md text-body-md text-on-surface-variant">Oct 22, 2024</td>
+<td class="px-lg py-md text-body-md text-on-surface-variant">2,000 kg</td>
+<td class="px-lg py-md text-body-md font-bold">$5,820.00</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase">Delivered</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim border-t border-outline-variant mt-xxl">
+<div class="flex flex-col items-center md:items-start gap-sm">
+<span class="text-title-md font-title-md font-bold text-primary">AgriSmart Pro</span>
+<p class="text-body-md font-body-md text-on-surface-variant">© 2024 AgriSmart Ecosystem. Data-Driven Growth.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Terms of Service</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Sustainability</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Contact</a>
+</div>
+</footer>
+</main>
+<!-- FAB for AI Assistant (Contextual for Dashboard) -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-50 md:hidden">
+<span class="material-symbols-outlined">smart_toy</span>
+</button>
+<script>
+        // Simple Micro-interaction: Update chart bar heights on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const originalHeight = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = originalHeight;
+                }, 100);
+            });
+        });
+
+        // Toggle search highlight
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('border-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('border-primary');
+        });
+    </script>
+</body></html>

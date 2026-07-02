@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Hoàn tất Đơn hàng - AgriSmart Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#bfcaba",
+                        "on-secondary-fixed-variant": "#005318",
+                        "on-primary-container": "#cbffc2",
+                        "on-tertiary-fixed": "#2b160f",
+                        "surface-container": "#eeeeee",
+                        "on-primary-fixed": "#002204",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#83da85",
+                        "on-secondary-container": "#19722b",
+                        "inverse-on-surface": "#f1f1f1",
+                        "tertiary-container": "#85675c",
+                        "on-surface-variant": "#40493d",
+                        "on-secondary-fixed": "#002105",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#2e7d32",
+                        "inverse-primary": "#88d982",
+                        "background": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-fixed-dim": "#e4beb2",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#0d631b",
+                        "surface-container-high": "#e8e8e8",
+                        "error": "#ba1a1a",
+                        "secondary": "#126d27",
+                        "outline": "#707a6c",
+                        "primary-fixed-dim": "#88d982",
+                        "on-tertiary-fixed-variant": "#5b4137",
+                        "tertiary-fixed": "#ffdbce",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed": "#9ff79f",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-bright": "#f9f9f9",
+                        "inverse-surface": "#2f3131",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#6b4f45",
+                        "on-primary-fixed-variant": "#005312",
+                        "primary-fixed": "#a3f69c",
+                        "on-tertiary-container": "#ffeee8",
+                        "on-surface": "#1a1c1c",
+                        "surface-tint": "#1b6d24",
+                        "on-background": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#9cf49c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xxl": "48px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { color: #0d631b; font-weight: 700; }
+        .step-inactive { color: #707a6c; }
+        .payment-radio:checked + label { border-color: #0d631b; background-color: #f3f3f3; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar (Shared Component Identity) -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface shadow-sm">
+<div class="flex items-center gap-md">
+<span class="text-title-md font-title-md font-bold text-primary">AgriSmart Pro</span>
+<div class="hidden md:flex gap-lg items-center ml-xl">
+<a class="text-on-surface-variant font-medium hover:bg-surface-container transition-colors px-sm py-xs rounded" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary" href="#">Marketplace</a>
+<a class="text-on-surface-variant font-medium hover:bg-surface-container transition-colors px-sm py-xs rounded" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">language</span>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ml-sm">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a modern agronomist with a friendly expression. The lighting is bright and natural, reflecting a clean and professional light-mode aesthetic. The background is a slightly blurred office setting with subtle green plant accents, maintaining a premium minimalist look with high clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_5PW1AsxV1xb1m0HC9noAFNCiY7gexJpALe4qTcdBgve9TlrfdUwWgz5cPDau9_rbAhIDkyqOwDXXwbAZmDxFn-AuKV_3t_eX28Ta2ZUOg0P6dzj24dANauGaoc0ev32Z-5Rd-wMYSZvBsKEFPHnaKWVOjJWt4N5VFeSeAtt8GM12aKJFbdGLSF2JUCBEsxDRhocThbB2Mb0P8Ypku5aiIGeXThpGEC8Hc1VCsj0WrNFLonzohIkCMUTg_caWCcIXQ93gOj2UrA"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-lg py-xl">
+<!-- Header & Progress Indicator -->
+<div class="mb-xl text-center">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-md">Checkout | Hoàn tất Đơn hàng</h1>
+<div class="flex items-center justify-center gap-sm max-w-2xl mx-auto mt-lg">
+<div class="flex items-center gap-xs step-active">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-label-sm">1</span>
+<span class="text-label-sm">Vận chuyển</span>
+</div>
+<div class="w-16 h-0.5 bg-outline-variant"></div>
+<div class="flex items-center gap-xs step-inactive">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm">2</span>
+<span class="text-label-sm">Thanh toán</span>
+</div>
+<div class="w-16 h-0.5 bg-outline-variant"></div>
+<div class="flex items-center gap-xs step-inactive">
+<span class="flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm">3</span>
+<span class="text-label-sm">Xem lại</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl">
+<!-- Left Column: Shipping & Contact Forms -->
+<div class="md:col-span-7 space-y-lg">
+<!-- Contact Details -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">contact_page</span>
+<h2 class="text-title-md font-title-md text-on-surface">Thông tin liên hệ</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Họ và Tên</label>
+<input class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Nguyễn Văn A" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Số điện thoại</label>
+<input class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="090 123 4567" type="tel"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Email</label>
+<input class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="nva@agri-farm.com" type="email"/>
+</div>
+</div>
+</section>
+<!-- Shipping Address -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<h2 class="text-title-md font-title-md text-on-surface">Địa chỉ giao hàng</h2>
+</div>
+<div class="grid grid-cols-1 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Địa chỉ chi tiết</label>
+<input class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Số nhà, Tên đường" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Tỉnh/Thành phố</label>
+<select class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all bg-white">
+<option>TP. Hồ Chí Minh</option>
+<option>Hà Nội</option>
+<option>Đồng Tháp</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Quận/Huyện</label>
+<select class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all bg-white">
+<option>Quận 1</option>
+<option>Cao Lãnh</option>
+</select>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm text-on-surface-variant">Phường/Xã</label>
+<select class="border border-outline-variant rounded-lg p-sm focus:ring-2 focus:ring-primary focus:outline-none transition-all bg-white">
+<option>Bến Nghé</option>
+<option>Mỹ Tân</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">payments</span>
+<h2 class="text-title-md font-title-md text-on-surface">Phương thức thanh toán</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="relative">
+<input checked="" class="payment-radio hidden" id="momo" name="payment" type="radio"/>
+<label class="flex flex-col items-center gap-sm p-md border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all text-center" for="momo">
+<img alt="MoMo" class="h-10 w-10 object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7xFOzewOVhrh2_yHekvGHEhGbEe4qjchyk70cvcZUMfQrpkWt0XTAVQVNBAPsdNPybvmRKLCEqdRWS8tc_t6jA53K3RL5LML6NgsBr_QHhWmpltmQGelE96-hK6F5u92eV_HRyt6SViQTviCj6MoSwcX7LyyRGN5nAYX8bT-87ZqMgSbIpNEcerJsE5geV3EyVaGbDrf7ZYhpcJUVQNtAJtEDb8mKBnVycx4_z_FhuqFBcmOTXoY1VTJ8I3tyNU9Nn-tho-N58w"/>
+<span class="text-label-sm font-bold">Ví MoMo</span>
+</label>
+</div>
+<div class="relative">
+<input class="payment-radio hidden" id="zalopay" name="payment" type="radio"/>
+<label class="flex flex-col items-center gap-sm p-md border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all text-center" for="zalopay">
+<img alt="ZaloPay" class="h-10 w-10 object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfaVPhSCOVRUqzSATrRrjdoggKpJc1Olb5XfFRWEh6NbMwFRu_AabSJ50XzXDVmAkAzHZz6x1aacYcGMkLdIW_mrHJw2JpOArBf7xVFVNY8FsQQ5fOv16B_J3At9L9tChYOJJh6XLEoofQsZGoV00g0rMpKYZJ8lAg2eusR_QXq-OaXu9e5WqRScZwakV08mKm5v543w6TLD0jZsrXnCvbt89WX5OK265959JLkjQMYMOKwx6ANC-rQFOuKGYDl7jyXU_hW3PIgw"/>
+<span class="text-label-sm font-bold">ZaloPay</span>
+</label>
+</div>
+<div class="relative">
+<input class="payment-radio hidden" id="credit" name="payment" type="radio"/>
+<label class="flex flex-col items-center gap-sm p-md border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all text-center" for="credit">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl">credit_card</span>
+<span class="text-label-sm font-bold">Credit Card</span>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="md:col-span-5">
+<div class="sticky top-24 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-lg p-lg overflow-hidden">
+<h2 class="text-title-md font-title-md text-on-surface mb-lg">Tóm tắt đơn hàng</h2>
+<!-- Line Items -->
+<div class="space-y-md max-h-96 overflow-y-auto pr-sm no-scrollbar mb-lg border-b border-outline-variant pb-lg">
+<div class="flex gap-md items-center">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img alt="Organic Wheat" class="w-full h-full object-cover" data-alt="A macro shot of organic golden wheat stalks against a clear bright sky. The lighting is golden hour, emphasizing textures and organic purity. The aesthetic is clean and premium, showcasing agricultural excellence with soft focus in the background to highlight the product quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeC4m5XQuY4yH42vfN7zeGsmpf_ATjxd34thUmargRmO0wyo4bTia_LjlRFX4_s0bcKb_SpFU1SFLHwJuy0ZmGD8uDUllFzWmRTl1wh9794-PdrqbJeogeVuXJIqSc94CX2wpSQh7yIhhWblnJC7Ryygyrv8Qg-mmNnyDSfWEhUqI48dO2DqtOeCxjbJaKzbD29XUh6OtYlH1tQ_46e65cUJtE-d2Ftkcz3aVythTEbZ5ZYOz7R0FhdxKHgccP4dKxnGbh_-sz4g"/>
+</div>
+<div class="flex-grow">
+<h3 class="text-body-md font-bold text-on-surface">Organic Wheat - Grade A</h3>
+<p class="text-label-sm text-on-surface-variant">Số lượng: 200 kg</p>
+</div>
+<div class="text-right">
+<span class="text-body-md font-bold text-primary">12.000.000₫</span>
+</div>
+</div>
+<div class="flex gap-md items-center">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img alt="Soil Moisture Sensors" class="w-full h-full object-cover" data-alt="Close-up of high-tech IoT soil moisture sensors embedded in rich dark fertile earth. Minimalist digital interface icons overlay the image conceptually. The color palette features deep greens and earthy browns with bright, clean studio lighting to reflect industrial precision and data-driven farming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJx0MGvKf8_QJ1UxDEKSPDYrC2z1pwB_br7kQeOckp3GF4nt54C9P1PQYaybmEqKFRcxAaYQILaM51cs_EgQOp5fPZUWpDPYlsDxAN4FExvnKnQeK0Gn4bR6ZcbI4mLUH-nfmKD4For5F3bm4gObq8mjZlyQ4_G9PqqYWZmZmXOr4FYrmcjOkgi87Vep0ckp2LbKJ99qFx5zwVVTad6SDnG1wJYegnCEiN1XGCEePippXuRambJFtOxIIBt0oHXu5IzdPo_fNLGA"/>
+</div>
+<div class="flex-grow">
+<h3 class="text-body-md font-bold text-on-surface">Soil Moisture Sensor v3</h3>
+<p class="text-label-sm text-on-surface-variant">Số lượng: 5 cái</p>
+</div>
+<div class="text-right">
+<span class="text-body-md font-bold text-primary">2.500.000₫</span>
+</div>
+</div>
+</div>
+<!-- Pricing Breakdown -->
+<div class="space-y-sm text-on-surface-variant border-b border-outline-variant pb-lg mb-lg">
+<div class="flex justify-between">
+<span class="text-body-md">Tạm tính</span>
+<span class="text-body-md">14.500.000₫</span>
+</div>
+<div class="flex justify-between">
+<span class="text-body-md">Phí vận chuyển</span>
+<span class="text-body-md">250.000₫</span>
+</div>
+<div class="flex justify-between">
+<span class="text-body-md">Thuế (VAT 8%)</span>
+<span class="text-body-md">1.160.000₫</span>
+</div>
+<div class="flex justify-between items-center text-primary font-medium bg-secondary-container/20 p-sm rounded-lg">
+<span class="text-label-sm">Mã giảm giá (FARM2024)</span>
+<span class="text-label-sm">-500.000₫</span>
+</div>
+</div>
+<!-- Total -->
+<div class="flex justify-between items-end mb-xl">
+<span class="text-title-md font-bold text-on-surface">Tổng cộng</span>
+<div class="text-right">
+<p class="text-headline-lg font-headline-lg text-primary">15.410.000₫</p>
+<p class="text-label-sm text-on-surface-variant italic">Bao gồm VAT</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-md rounded-xl font-bold text-lg hover:bg-primary-container transition-all transform active:scale-95 shadow-md shadow-primary/20">
+                        Xác nhận &amp; Thanh toán
+                    </button>
+<p class="text-center text-label-sm text-on-surface-variant mt-md">
+                        Bằng cách đặt hàng, bạn đồng ý với <a class="text-primary underline" href="#">Điều khoản &amp; Chính sách</a> của AgriSmart.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim mt-xxl border-t border-outline-variant">
+<div class="flex flex-col items-center md:items-start gap-sm">
+<span class="text-title-md font-title-md font-bold text-primary">AgriSmart Ecosystem</span>
+<p class="text-label-sm text-on-surface-variant">© 2024 AgriSmart Ecosystem. Data-Driven Growth.</p>
+</div>
+<div class="flex gap-lg">
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Privacy Policy</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Terms of Service</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Sustainability</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Contact</a>
+</div>
+</footer>
+<!-- Micro-interaction for form validation feel -->
+<script>
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.classList.add('transition-transform');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Simple feedback for payment method switching
+        const paymentRadios = document.querySelectorAll('.payment-radio');
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                console.log(`Payment method selected: ${e.target.id}`);
+            });
+        });
+    </script>
+</body></html>

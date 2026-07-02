@@ -1,0 +1,217 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - agriculture-net
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - agriculture-net
+
+  postgres-auth:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: auth_db
+    volumes:
+      - pg-auth-data:/var/lib/postgresql/data
+    networks:
+      - agriculture-net
+
+  postgres-user:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: user_db
+    volumes:
+      - pg-user-data:/var/lib/postgresql/data
+    networks:
+      - agriculture-net
+
+  # postgres-crop:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER:-postgres}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+  #     POSTGRES_DB: crop_db
+  #   volumes:
+  #     - pg-crop-data:/var/lib/postgresql/data
+  #   networks:
+  #     - agriculture-net
+
+  # postgres-notification:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER:-postgres}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+  #     POSTGRES_DB: notification_db
+  #   volumes:
+  #     - pg-notification-data:/var/lib/postgresql/data
+  #   networks:
+  #     - agriculture-net
+
+  # mongodb:
+  #   image: mongo:6.0
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-admin}
+  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-admin123}
+  #   volumes:
+  #     - mongo-data:/data/db
+  #   networks:
+  #     - agriculture-net
+
+  # Infrastructure Management (Optional entry points)
+  discovery-service:
+    build:
+      context: ./backend/discovery-service
+    ports:
+      - "8761:8761"
+    networks:
+      - agriculture-net
+
+  api-gateway:
+    build:
+      context: ./backend/api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-service
+    environment:
+      - EUREKA_HOST=discovery-service
+    networks:
+      - agriculture-net
+
+  auth-service:
+    build:
+      context: ./backend/auth-service
+    depends_on:
+      - discovery-service
+      - postgres-auth
+    environment:
+      - EUREKA_HOST=discovery-service
+      - DB_HOST=postgres-auth
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-auth:5432/auth_db
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - APP_JWT_SECRET=${JWT_SECRET}
+    networks:
+      - agriculture-net
+
+  user-service:
+    build:
+      context: ./backend/user-service
+    depends_on:
+      - discovery-service
+      - postgres-user
+    environment:
+      - EUREKA_HOST=discovery-service
+      - DB_HOST=postgres-user
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-user:5432/user_db
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+    networks:
+      - agriculture-net
+
+  # crop-service:
+  #   build:
+  #     context: ./backend/crop-service
+  #   depends_on:
+  #     - discovery-service
+  #     - postgres-crop
+  #   environment:
+  #     - EUREKA_HOST=discovery-service
+  #     - DB_HOST=postgres-crop
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-crop:5432/crop_db
+  #     - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
+  #     - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+  #   networks:
+  #     - agriculture-net
+
+  # weather-service:
+  #   build:
+  #     context: ./backend/weather-service
+  #   depends_on:
+  #     - discovery-service
+  #     - mongodb
+  #     - kafka
+  #   environment:
+  #     - EUREKA_HOST=discovery-service
+  #     - MONGO_HOST=mongodb
+  #     - SPRING_DATA_MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-admin123}@mongodb:27017/weather_db?authSource=admin
+  #     - KAFKA_HOST=kafka
+  #   networks:
+  #     - agriculture-net
+
+  # forum-service:
+  #   build:
+  #     context: ./backend/forum-service
+  #   depends_on:
+  #     - discovery-service
+  #     - mongodb
+  #   environment:
+  #     - EUREKA_HOST=discovery-service
+  #     - SPRING_DATA_MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-admin123}@mongodb:27017/forum_db?authSource=admin
+  #   networks:
+  #     - agriculture-net
+
+  # notification-service:
+  #   build:
+  #     context: ./backend/notification-service
+  #   depends_on:
+  #     - discovery-service
+  #     - postgres-notification
+  #     - kafka
+  #   environment:
+  #     - EUREKA_HOST=discovery-service
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-notification:5432/notification_db
+  #     - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
+  #     - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+  #     - KAFKA_HOST=kafka
+  #   networks:
+  #     - agriculture-net
+
+  # ai-service:
+  #   build:
+  #     context: ./ai-service
+  #   ports:
+  #     - "8000:8000"
+  #   networks:
+  #     - agriculture-net
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://localhost:8080
+  #   networks:
+  #     - agriculture-net
+
+networks:
+  agriculture-net:
+    driver: bridge
+
+volumes:
+  pg-auth-data:
+  pg-user-data:
+  pg-crop-data:
+  pg-notification-data:
+  mongo-data:

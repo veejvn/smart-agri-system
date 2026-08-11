@@ -14,11 +14,7 @@ import {
   Play,
   TrendingUp,
   Award,
-  LayoutDashboard,
-  Users,
   Plus,
-  Store,
-  User
 } from "lucide-react";
 import Header from "@/components/header";
 
@@ -335,29 +331,6 @@ export default function Community() {
           </div>
         </main>
       </div>
-
-      {/* Mobile Bottom NavBar */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low flex justify-around items-center py-md border-t border-outline-variant z-50">
-        <Link className="flex flex-col items-center text-on-surface-variant" href="/dashboard">
-          <LayoutDashboard className="w-5 h-5" />
-          <span className="text-label-sm">Home</span>
-        </Link>
-        <Link className="flex flex-col items-center text-primary" href="/community">
-          <Users className="w-5 h-5" />
-          <span className="text-label-sm font-bold">Community</span>
-        </Link>
-        <div className="bg-primary text-on-primary p-md rounded-full -mt-10 shadow-lg cursor-pointer hover:scale-105 active:scale-95 transition-transform">
-          <Plus className="w-5 h-5" />
-        </div>
-        <Link className="flex flex-col items-center text-on-surface-variant" href="/marketplace">
-          <Store className="w-5 h-5" />
-          <span className="text-label-sm">Shop</span>
-        </Link>
-        <a className="flex flex-col items-center text-on-surface-variant" href="#profile">
-          <User className="w-5 h-5" />
-          <span className="text-label-sm">Profile</span>
-        </a>
-      </nav>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function Footer({ appName = "AgriSmart Pro", className = "" }: Fo
       <div className="flex flex-col items-center md:items-start gap-xs">
         <span className="text-title-md font-title-md font-bold text-primary">{appName}</span>
         <p className="text-body-md font-body-md text-on-surface-variant">
-          © 2024 AgriSmart Ecosystem. Data-Driven Growth.
+          © {new Date().getFullYear()} AgriSmart Ecosystem. Data-Driven Growth.
         </p>
       </div>
       <div className="flex gap-lg flex-wrap justify-center">

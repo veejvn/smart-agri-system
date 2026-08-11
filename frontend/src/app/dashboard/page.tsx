@@ -1,50 +1,16 @@
 "use client";
 
-import { Search, Bell, Thermometer, Globe, Leaf, TrendingUp, ShoppingCart, Brain, LineChart, Reply, Filter, Bot, CloudLightning, UserCheck, Download } from "lucide-react";
+import { Leaf, TrendingUp, ShoppingCart, Brain, LineChart, Reply, Filter, Bot, CloudLightning, UserCheck, Download } from "lucide-react";
 
-import { useEffect } from "react";
 import Link from "next/link";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
 
 export default function Dashboard() {
-
-
-  useEffect(() => {
-    // Micro-interactions: Animate chart bars on load
-    const timer = setTimeout(() => {
-      const bars = document.querySelectorAll(".chart-bar-dashboard");
-      bars.forEach((bar) => {
-        const h = bar.getAttribute("data-height") || "10%";
-        (bar as HTMLElement).style.height = h;
-      });
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  useChartAnimation("chart-bar-dashboard");
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
-        {/* TopNavBar */}
-        <Header
-          showSearch
-          searchPlaceholder="Search farm data..."
-          showStats
-          showUser
-          user={{
-            name: "Marcus",
-            role: "Owner",
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDFggpoE1gb4uJ_24FX6BDlA8zsjw7gfTmfuBFqRl0ATSra7867WXBuMhPzfivqV2Yovcsu--7bHy-HgQ2RuO_UWJBadpKLBHQsK2ZLIPbdgrHF8CjVm7_C9pND9nZwS3OFS2DaIPAUN_wW7KXIr4UMriSMMTLtXTRaS_16q0P97kRLDx3Zh6FeahyZEWe74S5Lr-GIRAmDMd1-YHlrl_xMQhhB6AJaiUm8llcgwmZh9H7YTgZxSJfc8r1TTYflsO9WecCfoXq7Nw"
-          }}
-        />
-
-
-        {/* Dashboard Canvas */}
-        <div className="p-lg md:p-xl space-y-lg grow">
+    <DashboardLayout searchPlaceholder="Search farm data...">
           {/* Welcome Header */}
           <section className="flex flex-col md:flex-row md:items-end justify-between gap-md">
             <div>
@@ -313,16 +279,10 @@ export default function Dashboard() {
               </table>
             </div>
           </section>
-        </div>
-
-        {/* Footer */}
-        <Footer className="mt-auto" />
-      </main>
-
       {/* FAB for AI Assistant (Contextual for Dashboard on Mobile) */}
       <Link href="/agroai" className="fixed bottom-lg right-lg w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform z-50 md:hidden">
         <Bot className=" shrink-0"  />
       </Link>
-    </div>
+    </DashboardLayout>
   );
 }

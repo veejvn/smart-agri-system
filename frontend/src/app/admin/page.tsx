@@ -1,48 +1,20 @@
 "use client";
 
-import { Bell, Thermometer, Globe, CreditCard, TrendingUp, Sprout, TrendingDown, Brain, MoreVertical, Info, Plus, UserCheck, FileWarning } from "lucide-react";
+import { CreditCard, TrendingUp, Sprout, TrendingDown, Brain, MoreVertical, Info, Plus, UserCheck, FileWarning } from "lucide-react";
 
-import { useEffect } from "react";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
+import { useChartAnimation } from "@/hooks/useChartAnimation";
 
 export default function AdminDashboard() {
-
-
-  useEffect(() => {
-    // Micro-interactions: Animate chart bars on load
-    const timer = setTimeout(() => {
-      const bars = document.querySelectorAll(".chart-bar-admin");
-      bars.forEach((bar) => {
-        const h = bar.getAttribute("data-height") || "10%";
-        (bar as HTMLElement).style.height = h;
-      });
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  useChartAnimation("chart-bar-admin");
 
   return (
-    <div className="min-h-screen bg-background text-on-surface">
-      <Sidebar />
-
-      {/* Main Content Canvas */}
-      <main className="flex-1 md:ml-64 flex flex-col min-h-screen">
-        {/* TopNavBar Component */}
-        <Header
-          showSearch
-          searchPlaceholder="Tìm kiếm hệ thống..."
-          showStats
-          showRoleSwitcher
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCg-2Hhz5jWxLU8DqVXjHHj0JxnztlLFIS7vp3duIMeVklZ8XkxitFpb5_ehMxd-5xZuV-r6tAmyA7HloTXprHHkG8EeQ3vhMFdPelohFS8Pg4YgRwMnHFS7eO_KxNvIKrZETsrAO5sE2f9STlI9ndM7p0-BMFxywYSq1UVOAynXloG1j0fjPYNRFZCv2Uj4_-HiBQf_qmtvKXU2FLg7Rg6PzpYZ8sE1PMwgaoNs6ODhsPVT1e94v2y03LwWPuSOe2r4PqdsM9B8A"
-          }}
-        />
-
-
-        {/* Dashboard Body */}
-        <div className="p-lg flex flex-col gap-lg max-w-container-max mx-auto w-full grow">
+    <DashboardLayout
+      searchPlaceholder="Tìm kiếm hệ thống..."
+      showRoleSwitcher
+      footerAppName="AgriSmart Ecosystem"
+      contentClassName="p-lg flex flex-col gap-lg max-w-container-max mx-auto w-full grow"
+    >
           {/* KPI Section */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {/* Card: Total Revenue */}
@@ -290,16 +262,10 @@ export default function AdminDashboard() {
               </section>
             </aside>
           </div>
-        </div>
-
-        {/* Footer Component */}
-        <Footer appName="AgriSmart Ecosystem" className="mt-auto" />
-      </main>
-
       {/* Global Floating Action Button for Mobile Context */}
       <button className="md:hidden fixed bottom-6 right-6 w-14 h-14 rounded-full bg-primary text-on-primary shadow-xl flex items-center justify-center z-50">
         <Plus className=" shrink-0"  />
       </button>
-    </div>
+    </DashboardLayout>
   );
 }

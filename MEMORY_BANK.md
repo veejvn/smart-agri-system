@@ -38,7 +38,7 @@ The system employs a microservices architecture communicating synchronously via 
 - **Route Synchronization**: Renamed all Vietnamese route directories (`quan-ly-don-hang` -> `order-management`, `chuyen-gia` -> `experts`, `dat-lich` -> `book-consultation`, `chi-tiet-don-hang` -> `order-details`), refactored all internal link references (in `sidebar.tsx`, `checkout/page.tsx`, etc.), and verified that the production build (`npm run build`) compiles successfully.
 - **Homepage Standardization**: Promoted the AgroStream IoT Monitoring module (`/agrostream`) to become the main entry point (homepage `/`) of the frontend application, refactored sidebar/mobile bottom navigation links, removed the redundant `/agrostream` directory, and verified successful compilation of all 14 routes.
 - **Icon Library Migration**: Replaced the entire frontend icon system from Material Symbols Outlined (CDN-based) with the native `lucide-react` library. Created and executed an automated node script to map 70+ occurrences of Material Icons to proper Lucide React component syntax, and subsequently cleaned up all remaining Google Icons on the 4 pages (Knowledge, Experts, Book Consultation, AgroAI) during this session, achieving 100% migration and successful production build.
-- **Shared Layout Components Refactoring**: Created shared `Header` (TopNavBar) and `Footer` components in `src/components/`, replacing duplicate layout blocks across all 13 frontend pages, and successfully verified that the production build compiles cleanly without errors.
+- **Frontend API Integration Architecture**: Created design spec (`2026-08-11-frontend-api-integration-design.md`) and implementation plan (`2026-08-11-frontend-api-integration.md`). Installed `@tanstack/react-query` & `axios`, configured `.env.local`, set up `QueryClientProvider` and `AuthContext` in root layout, created `apiClient` Axios instance with JWT request/response interceptors, created React Query hooks (`useLoginMutation`, `useRegisterMutation`, `useUserProfileQuery`, `useUpdateProfileMutation`), connected `Header` component to auth state, and verified clean production build (`npm run build`).
 
 - **Successfully Verified**: Full flow from Register -> Login (JWT) -> Create Profile via API Gateway.
 - **Recent Fixes**:
@@ -51,7 +51,7 @@ The system employs a microservices architecture communicating synchronously via 
   - Fixed missing import Link and Search in community/page.tsx and order-management/page.tsx during layout refactoring.
 
 ## Execution Roadmap / Next Steps for Developer
-1. **Frontend API Integration:** Connect the newly created 12 Next.js pages with backend microservices via API Gateway (`http://localhost:8080`). Add fetch/Axios requests and React context states to substitute mock data with actual data.
+1. **Frontend API Integration (Feature-level Hooks):** Connect remaining pages (AgroStream IoT, Knowledge, Marketplace, Forum, Experts, AgroAI) with their respective microservices APIs via React Query custom hooks.
 2. **Model Training:** Replace the `mock_predictor` in `ai-service` with actual trained Scikit-learn `.pkl` models using realistic agricultural datasets (e.g., from Kaggle).
 3. **Inter-Service Communication (OpenFeign):** Implement Feign clients for synchronous requests (e.g., Forum Service fetching User profile data from User Service).
 4. **Security Enhancements:** Move API secrets, JWT keys, and DB passwords to a centralized Configuration Server (Spring Cloud Config) or HashiCorp Vault. Currently handled via `.env`.

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search, Bell, Thermometer, Globe } from "lucide-react";
+import { Search, Bell, Thermometer, Globe, LogOut, User } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 import type { HeaderUser, HeaderProps } from "@/types";
 
@@ -17,18 +18,25 @@ export default function Header({
   onSearchChange,
   showStats = false,
   showUser = false,
-  user,
+  user: propUser,
   showRoleSwitcher = false,
   containerClassName = "",
 }: HeaderProps) {
   const [searchFocused, setSearchFocused] = useState(false);
+  const { user: authUser, isAuthenticated, logout } = useAuth();
 
   const defaultAvatar =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDFggpoE1gb4uJ_24FX6BDlA8zsjw7gfTmfuBFqRl0ATSra7867WXBuMhPzfivqV2Yovcsu--7bHy-HgQ2RuO_UWJBadpKLBHQsK2ZLIPbdgrHF8CjVm7_C9pND9nZwS3OFS2DaIPAUN_wW7KXIr4UMriSMMTLtXTRaS_16q0P97kRLDx3Zh6FeahyZEWe74S5Lr-GIRAmDMd1-YHlrl_xMQhhB6AJaiUm8llcgwmZh9H7YTgZxSJfc8r1TTYflsO9WecCfoXq7Nw";
 
-  const userName = user?.name || "Marcus";
-  const userRole = user?.role || "Owner";
-  const userAvatar = user?.avatarUrl || defaultAvatar;
+  const currentUser = propUser || (isAuthenticated && authUser ? {
+    name: authUser.fullName || authUser.username,
+    role: authUser.roles?.[0] || "Farmer",
+    avatarUrl: authUser.avatarUrl || defaultAvatar,
+  } : null);
+
+  const userName = currentUser?.name || "Marcus";
+  const userRole = currentUser?.role || "Owner";
+  const userAvatar = currentUser?.avatarUrl || defaultAvatar;
 
   return (
     <header
@@ -131,19 +139,26 @@ export default function Header({
           </button>
         )}
 
-        {showUser && (
+        {(showUser || isAuthenticated) && (
           <div className="flex items-center gap-md pl-sm">
-            {user?.name && (
-              <span className="hidden lg:block text-label-sm font-label-sm text-primary font-bold bg-primary-fixed px-sm py-1 rounded-full">
-                {userName} ({userRole})
-              </span>
-            )}
+            <span className="hidden lg:block text-label-sm font-label-sm text-primary font-bold bg-primary-fixed px-sm py-1 rounded-full">
+              {userName} ({userRole})
+            </span>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="User profile photo"
               className="w-10 h-10 rounded-full border-2 border-primary object-cover"
               src={userAvatar}
             />
+            {isAuthenticated && (
+              <button
+                onClick={logout}
+                title="Đăng xuất"
+                className="p-2 text-on-surface-variant hover:text-error hover:bg-surface-container rounded-full transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            )}
           </div>
         )}
       </div>

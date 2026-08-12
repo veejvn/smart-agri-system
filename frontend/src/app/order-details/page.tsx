@@ -4,9 +4,7 @@ import { ChevronRight, Printer, Package, Info, Send, Plus, CheckCircle2, Truck, 
 
 import { useState } from "react";
 import Link from "next/link";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import type { OrderItem, ChatMessage } from "@/types";
 
 
@@ -91,26 +89,12 @@ export default function OrderDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
-        {/* TopNavBar */}
-        <Header
-          showSearch
-          searchPlaceholder="Tìm kiếm..."
-          showStats
-          showRoleSwitcher
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDwigNBSqUJlBlxcYGh_RCb4AgJfU8qr9Ou3ANmhxwt2nGEyw_PrYqYKUJ45b1a-vHXxtO2pkS9uA_0mYRKrZz3FP2_ZnjAFal3F4_5De9dbVj23xAbDSqWuXNxXVLFOc85fP4SuCXPI08gDSCRA1vjT11OFAcCyzjlpQcKuvLw_kEX94rwReUMZROyoFLrIuhDlEzaxkKYcvXHe2hzoZ_ZmF_DGkkDNVrzeZTTb1jHKCQ36dMhjqE7vAwpDgFVI_Qv3o3e5w0dAA"
-          }}
-        />
-
-
-        {/* Main Content Canvas */}
-        <div className="p-lg md:p-xl max-w-6xl mx-auto grow w-full space-y-lg">
+    <DashboardLayout
+      searchPlaceholder="Tìm kiếm..."
+      showRoleSwitcher
+      footerAppName="AgriSmart Ecosystem"
+      contentClassName="p-lg md:p-xl max-w-6xl mx-auto grow w-full space-y-lg"
+    >
           {/* Breadcrumbs & Header */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-md">
             <div>
@@ -379,11 +363,6 @@ export default function OrderDetails() {
               </section>
             </div>
           </div>
-        </div>
-
-        {/* Footer */}
-        <Footer appName="AgriSmart Ecosystem" className="mt-auto" />
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

@@ -9,6 +9,10 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
   /** Header search placeholder text */
   searchPlaceholder?: string;
+  /** Header search input value */
+  searchValue?: string;
+  /** Header search input change handler */
+  onSearchChange?: (value: string) => void;
   /** Show stats icons (bell, thermometer, globe) in header */
   showStats?: boolean;
   /** Show role switcher button in header */
@@ -27,6 +31,8 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({
   children,
   searchPlaceholder = "Search farm data...",
+  searchValue,
+  onSearchChange,
   showStats = true,
   showRoleSwitcher = false,
   footerAppName,
@@ -40,6 +46,8 @@ export default function DashboardLayout({
         <Header
           showSearch
           searchPlaceholder={searchPlaceholder}
+          searchValue={searchValue}
+          onSearchChange={onSearchChange}
           showStats={showStats}
           showRoleSwitcher={showRoleSwitcher}
         />

@@ -4,9 +4,7 @@ import { BadgeCheck, ChevronRight, Mail, ChevronLeft, Star } from "lucide-react"
 
 import { useState } from "react";
 import Link from "next/link";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import type { Expert } from "@/types";
 
 
@@ -104,26 +102,11 @@ export default function ExpertDirectory() {
     : experts.filter((e) => e.specialty === activeSpecialty);
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
-        {/* Top Bar */}
-        <Header
-          showSearch
-          searchPlaceholder="Search experts, specialties, or topics..."
-          showStats
-          showRoleSwitcher
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3l9dlfZGDxeqFXgV0tcbCAf-6-w4eccFmlUu75UyLOzr2Mk3JXN-mWY4VMgVD5aRvScTuePWib93HtXTvIlK7o1gbFqa10IHgRVMYp54fqKhK7yWFtB708LIZQpOY8PCyvtOftk6xLjok2NGoEm7yRMuYZnIdexorJ4e2--ovc41dYPgTV3gIPNVFFz_UuMbjaN9HHMG7z8O4_Pd6TA3e_llC7MCJ77VM6FqsXVGk9e3mLJwXzAkLLE9ZH_gEUA-TnyXUAknGWg"
-          }}
-        />
-
-
-        {/* Content Canvas */}
-        <div className="p-lg md:p-xl max-w-6xl mx-auto grow w-full space-y-xl">
+    <DashboardLayout
+      searchPlaceholder="Search experts, specialties, or topics..."
+      showRoleSwitcher
+      contentClassName="p-lg md:p-xl max-w-6xl mx-auto grow w-full space-y-xl"
+    >
           {/* Hero / Featured Section */}
           <section className="space-y-lg">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
@@ -292,11 +275,6 @@ export default function ExpertDirectory() {
               <ChevronRight className=" shrink-0"  />
             </button>
           </section>
-        </div>
-
-        {/* Footer */}
-        <Footer className="mt-auto" />
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

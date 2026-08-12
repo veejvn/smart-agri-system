@@ -3,9 +3,7 @@
 import { LineChart, MoreVertical, Map, Share2, TrendingUp, AlertTriangle } from "lucide-react";
 
 import { useState } from "react";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import type { Commodity, CommodityData } from "@/types";
 
 
@@ -103,26 +101,11 @@ export default function MarketTrends() {
   const activeData = commodityDetails[activeTab];
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
-        {/* TopNavBar */}
-        <Header
-          showSearch
-          searchPlaceholder="Search commodities, news, or trends..."
-          showStats
-          showRoleSwitcher
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDQV_SB6Mp1Lhe9WEaaS53DCT8caO6eWGVcp3f5-0INeVR2cVklALUUM5WZ7ibVBRciG-vZVN4SrtX-YaR-AoKHi8mwh27ceCdK85R9lNkVI7bk-kMfYXB2WZjxb5hDhwdxV9MH713vamzibwwmTK0_VjWbnLO6VnLMJOiNYhq8UN7YNAGKIct8BxjXoi_mS0DQIp9HUuP7t6KrQpaLwGaiP7peJZqJ05A1WEZV8RRTmYZyuIhnEA50XRXevW3iO02n6Xc9uZ8sQ"
-          }}
-        />
-
-
-        {/* Dashboard Content */}
-        <div className="p-lg md:p-xl max-w-6xl mx-auto w-full space-y-lg grow">
+    <DashboardLayout
+      searchPlaceholder="Search commodities, news, or trends..."
+      showRoleSwitcher
+      contentClassName="p-lg md:p-xl max-w-6xl mx-auto w-full space-y-lg grow"
+    >
           {/* Commodity Selector & Hero Section */}
           <section className="flex flex-col md:flex-row md:items-end justify-between gap-md">
             <div>
@@ -355,11 +338,6 @@ export default function MarketTrends() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Footer */}
-        <Footer className="mt-auto" />
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

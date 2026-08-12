@@ -3,8 +3,7 @@
 import { Pill, Shield, CreditCard, Mic, Image, Send, Sparkles, BarChart2, Upload, Brain } from "lucide-react";
 
 import { useState, useRef, useEffect } from "react";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import type { Message } from "@/types";
 
 
@@ -87,22 +86,9 @@ export default function AgroAI() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-on-background flex overflow-hidden">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="flex-1 md:ml-64 h-screen flex flex-col relative">
-        {/* TopAppBar */}
-        <Header
-          showStats
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwiej5hn3V2velHAP2bA5Nw7zB96z_P2FH2xtiWRRtMobYSLSYBMP9X5Rs9cIHVNZ5sez5rAE2xq29O_hGpwVRTQV-9gyah47FUuykgLJIc6mOsShwJlnmiTnmQmB1vTLaCFkBYkOsyC6ioU-4VjDETFRPtRkYRKEBcFCs-leZ1uiC6KSd66JO5sEPao9kNlVXdQRAMmVfadYbu0EaJ7rykh9a11QQb95CgG1voCap0Ed2t6wOtikhAzal9KFwuFcLS1c81fTDpg"
-          }}
-        />
-
-
-        {/* Chat Canvas */}
+    <DashboardLayout
+      contentClassName="flex-1 overflow-y-auto p-md md:p-xl flex flex-col items-center"
+    >
         <section className="flex-1 overflow-y-auto p-md md:p-xl flex flex-col items-center">
           <div className="w-full max-w-3xl flex flex-col gap-xl">
             {/* Welcome State */}
@@ -293,7 +279,6 @@ export default function AgroAI() {
             </div>
           </div>
         )}
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

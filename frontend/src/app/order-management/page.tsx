@@ -4,9 +4,7 @@ import { Search, ChevronRight, Download, Plus, ShoppingBag, Clock, Truck, Credit
 
 import { useState } from "react";
 import Link from "next/link";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 import type { Order } from "@/types";
 
 
@@ -33,27 +31,14 @@ export default function OrderManagement() {
   });
 
   return (
-    <div className="min-h-screen bg-background text-on-surface">
-      <Sidebar />
-
-      {/* Main Content Canvas */}
-      <main className="flex-1 md:ml-64 p-md md:p-xl transition-all">
-        {/* TopNavBar */}
-        <Header
-          showSearch
-          searchPlaceholder="Search orders..."
-          searchValue={searchTerm}
-          onSearchChange={setSearchTerm}
-          showStats
-          showRoleSwitcher
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBzyOssb4DRz93l1Ljdv6qsjFiDn-8O5pKPq1SsynOLIqZLoXIK8N84dIkNtKY77zB82WiMuQPUZn5_Pm7pMhahj3D_-2OlQry8RrgON3SDdLgWYSC_gmHeponuy0ghfuKygAEPNau3RSM_3WZ7t-rgYKX7buBcSY1ds20PsMeJweMAdgwR4daJE7cgbNIsvzQsQ71sejjk94tN_jIJlMgrfmj1rVU5XcnXWbc73Gfmc8LWNNK4xRHMnZ7Pk8738ct7BUwl-vK9jg"
-          }}
-        />
-
-
-        {/* Content Container */}
+    <DashboardLayout
+      searchPlaceholder="Search orders..."
+      searchValue={searchTerm}
+      onSearchChange={setSearchTerm}
+      showRoleSwitcher
+      footerAppName="AgriSmart Ecosystem"
+      contentClassName="max-w-container-max mx-auto mt-md p-md md:p-xl"
+    >
         <div className="max-w-container-max mx-auto mt-md">
           {/* Header Section */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
@@ -304,10 +289,6 @@ export default function OrderManagement() {
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <Footer appName="AgriSmart Ecosystem" className="mt-xxl" />
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

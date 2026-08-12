@@ -2,32 +2,19 @@
 
 import { Clock, User, ArrowRight, Bug, Cpu, Brain, Sun, Headphones, Play } from "lucide-react";
 
-import Link from "next/navigation";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 
 
 export default function KnowledgeCenter() {
 
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
-        {/* TopNavBar */}
-        <Header
-          showSearch
-          searchPlaceholder="Search for disease treatment, farming techniques..."
-          showStats
-          showRoleSwitcher
-        />
-
-
-        {/* Canvas Area */}
-        <div className="p-lg md:p-xl max-w-6xl mx-auto space-y-xl grow w-full">
+    <DashboardLayout
+      searchPlaceholder="Search for disease treatment, farming techniques..."
+      showRoleSwitcher
+      footerAppName="AgriSmart Ecosystem"
+      contentClassName="p-lg md:p-xl max-w-6xl mx-auto space-y-xl grow w-full"
+    >
           {/* Hero Header */}
           <section className="space-y-sm">
             <h1 className="text-headline-lg font-headline-lg text-on-surface tracking-tight">
@@ -192,11 +179,6 @@ export default function KnowledgeCenter() {
               </div>
             </div>
           </section>
-        </div>
-
-        {/* Footer */}
-        <Footer appName="AgriSmart Ecosystem" className="mt-auto" />
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

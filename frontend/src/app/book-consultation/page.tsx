@@ -4,9 +4,7 @@ import { ChevronRight, MessageSquare, MapPin, ArrowRight, UserCircle, BookOpen, 
 
 import { useState } from "react";
 import Link from "next/link";
-import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 
 
 type ConsultationType = "video" | "message" | "field";
@@ -35,25 +33,10 @@ export default function BookConsultation() {
   const times = ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM"];
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
-        {/* TopNavBar */}
-        <Header
-          showSearch
-          searchPlaceholder="Search experts, articles, tools..."
-          showStats
-          showUser
-          user={{
-            avatarUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCpJOqVwLnCkLIlUgLvnJjx9ygutEkyGXVorf5SGP0xHXAoxrwO1tmSDiVWBvGV7apXF6KI1JcCtu5lsSoBtQYFfv8Bnj_8akxxI2AjXle6MOuuuPbFyR41GTA4Zy0ve_DYnX1QF5Va7OtteyQ87Uof7MCDCivuukxein8QgZvhePLT0eRTPZMkQ2mMRWqjIzToFOBpwDiL_OruwTUd0D-swIj04MVOcq9hNOWrROEwdrR1kBDs41Jq7XuqN7tGEkikUcG2QpRqsw"
-          }}
-        />
-
-
-        {/* Main Content Canvas */}
-        <div className="p-lg md:p-xl max-w-6xl mx-auto grow w-full space-y-xl">
+    <DashboardLayout
+      searchPlaceholder="Search experts, articles, tools..."
+      contentClassName="p-lg md:p-xl max-w-6xl mx-auto grow w-full space-y-xl"
+    >
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-xs text-on-surface-variant font-label-sm">
             <Link href="/experts" className="hover:text-primary font-medium">
@@ -395,11 +378,6 @@ export default function BookConsultation() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Footer */}
-        <Footer />
-      </main>
-    </div>
+    </DashboardLayout>
   );
 }

@@ -42,7 +42,7 @@ export default function BookConsultation() {
             <Link href="/experts" className="hover:text-primary font-medium">
               Experts
             </Link>
-            <ChevronRight className="text-[16px] shrink-0"  />
+            <ChevronRight className="w-4 h-4 shrink-0"  />
             <span className="text-primary font-bold">Dr. Elena Vance</span>
           </nav>
 
@@ -259,7 +259,7 @@ export default function BookConsultation() {
                           {[1, 2, 3, 4, 5].map((s) => (
                             <Star
                               key={s}
-                              className="w-[18px] h-[18px] fill-current text-primary shrink-0"
+                              className="w-4.5 h-4.5 fill-current text-primary shrink-0"
                             />
                           ))}
                         </div>
@@ -281,7 +281,7 @@ export default function BookConsultation() {
                           {[1, 2, 3, 4, 5].map((s) => (
                             <Star
                               key={s}
-                              className="w-[18px] h-[18px] fill-current text-primary shrink-0"
+                              className="w-4.5 h-4.5 fill-current text-primary shrink-0"
                             />
                           ))}
                         </div>
@@ -351,7 +351,7 @@ export default function BookConsultation() {
                     <FileText className="text-tertiary text-display-lg shrink-0"  />
                     <div>
                       <p className="font-bold text-on-surface text-body-md leading-tight">Soil Health Checklist (PDF)</p>
-                      <p className="text-[11px] text-on-surface-variant mt-1">Free Download • 2MB</p>
+                      <p className="text-2.75 text-on-surface-variant mt-1">Free Download • 2MB</p>
                     </div>
                     <button className="ml-auto p-xs rounded-full hover:bg-surface-container flex items-center justify-center text-primary">
                       <Download className=" shrink-0"  />
@@ -373,7 +373,7 @@ export default function BookConsultation() {
                 </div>
                 {/* Subtle graphic element */}
                 <div className="absolute -right-10 -bottom-10 opacity-10 text-primary pointer-events-none select-none">
-                  <FlaskConical className="text-[160px] shrink-0"  />
+                  <FlaskConical className="w-40 h-40 shrink-0"  />
                 </div>
               </div>
             </div>

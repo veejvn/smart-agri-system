@@ -129,7 +129,7 @@ export default function ExpertDirectory() {
             {/* Featured Expert Card */}
             <div className="relative overflow-hidden rounded-2xl bg-primary-container text-on-primary-container p-xl flex flex-col md:flex-row gap-xl items-center shadow-xl">
               <div className="absolute top-0 right-0 p-lg">
-                <span className="bg-secondary-container text-on-secondary-container px-md py-xs rounded-full text-[10px] font-bold flex items-center gap-xs">
+                <span className="bg-secondary-container text-on-secondary-container px-md py-xs rounded-full text-2.5 font-bold flex items-center gap-xs">
                   <Star className="w-4 h-4 fill-current shrink-0" />
                   FEATURED EXPERT
                 </span>
@@ -151,10 +151,10 @@ export default function ExpertDirectory() {
                 </div>
                 <div className="flex flex-wrap gap-md">
                   <span className="flex items-center gap-xs bg-white/10 px-md py-xs rounded-full border border-white/20 text-label-sm font-semibold">
-                    <BadgeCheck className="text-[18px] shrink-0"  /> 15+ Years Exp.
+                    <BadgeCheck className="w-4.5 h-4.5 shrink-0"  /> 15+ Years Exp.
                   </span>
                   <span className="flex items-center gap-xs bg-white/10 px-md py-xs rounded-full border border-white/20 text-label-sm font-semibold">
-                    <Star className="w-[18px] h-[18px] fill-current shrink-0" />{" "}
+                    <Star className="w-4.5 h-4.5 fill-current shrink-0" />{" "}
                     4.9 (128 Reviews)
                   </span>
                 </div>
@@ -234,7 +234,7 @@ export default function ExpertDirectory() {
                       </span>
                     </div>
                     <p className="text-label-sm text-on-surface-variant font-medium">{exp.specialty}</p>
-                    <p className="text-[11px] text-outline mt-xs font-semibold">{exp.available}</p>
+                    <p className="text-2.75 text-outline mt-xs font-semibold">{exp.available}</p>
                   </div>
                 </div>
                 <p className="text-body-md text-on-surface-variant mb-md grow leading-relaxed">{exp.description}</p>

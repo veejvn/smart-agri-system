@@ -25,7 +25,7 @@ export default function Home() {
 
 
         {/* Hero Section */}
-        <section className="relative min-h-[600px] flex items-center overflow-hidden px-margin-mobile md:px-xxl py-xl">
+        <section className="relative min-h-150 flex items-center overflow-hidden px-margin-mobile md:px-xxl py-xl">
           <div className="absolute inset-0 z-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -85,7 +85,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-lg">
             {/* Feature 1 */}
-            <div className="md:col-span-8 bg-surface-container-lowest rounded-xl p-lg border border-outline-variant flex flex-col justify-between overflow-hidden relative group min-h-[280px] hover:shadow-md transition-shadow">
+            <div className="md:col-span-8 bg-surface-container-lowest rounded-xl p-lg border border-outline-variant flex flex-col justify-between overflow-hidden relative group min-h-70 hover:shadow-md transition-shadow">
               <div className="relative z-10">
                 <Brain className="text-primary w-10 h-10 mb-md shrink-0" />
                 <h3 className="text-title-md font-title-md mb-sm">AI-Powered Farming</h3>
@@ -107,7 +107,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2 */}
-            <div className="md:col-span-4 bg-primary text-on-primary rounded-xl p-lg flex flex-col justify-between min-h-[280px] hover:shadow-md transition-shadow">
+            <div className="md:col-span-4 bg-primary text-on-primary rounded-xl p-lg flex flex-col justify-between min-h-70 hover:shadow-md transition-shadow">
               <div>
                 <TrendingUp className="w-10 h-10 mb-md shrink-0" />
                 <h3 className="text-title-md font-title-md mb-sm">Market Intelligence</h3>
@@ -119,7 +119,7 @@ export default function Home() {
             </div>
 
             {/* Feature 3 */}
-            <div className="md:col-span-4 bg-secondary-container text-on-secondary-container rounded-xl p-lg flex flex-col justify-between overflow-hidden relative min-h-[280px] hover:shadow-md transition-shadow">
+            <div className="md:col-span-4 bg-secondary-container text-on-secondary-container rounded-xl p-lg flex flex-col justify-between overflow-hidden relative min-h-70 hover:shadow-md transition-shadow">
               <div>
                 <Users className="w-10 h-10 mb-md shrink-0" />
                 <h3 className="text-title-md font-title-md mb-sm">Expert Consultation</h3>
@@ -129,12 +129,12 @@ export default function Home() {
             </div>
 
             {/* Feature 4 */}
-            <div className="md:col-span-8 bg-surface-container rounded-xl p-lg flex flex-col md:flex-row gap-lg items-center min-h-[280px] hover:shadow-md transition-shadow border border-outline-variant">
+            <div className="md:col-span-8 bg-surface-container rounded-xl p-lg flex flex-col md:flex-row gap-lg items-center min-h-70 hover:shadow-md transition-shadow border border-outline-variant">
               <div className="flex-1">
                 <h3 className="text-title-md font-title-md mb-sm">Satellite Monitoring</h3>
                 <p className="text-body-md text-on-surface-variant">Continuous field monitoring with sub-meter resolution, providing real-time alerts on crop stress or irrigation leaks.</p>
               </div>
-              <div className="w-full md:w-1/2 h-full rounded-lg overflow-hidden border border-outline-variant min-h-[160px]">
+              <div className="w-full md:w-1/2 h-full rounded-lg overflow-hidden border border-outline-variant min-h-40">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="w-full h-full object-cover"
@@ -172,7 +172,7 @@ export default function Home() {
                 <div className="p-md">
                   <div className="flex justify-between items-center mb-xs">
                     <h4 className="text-title-md font-bold">Premium Seeds</h4>
-                    <span className="bg-secondary-container text-on-secondary-container text-[10px] px-sm py-[2px] rounded-full font-bold">TOP CATEGORY</span>
+                    <span className="bg-secondary-container text-on-secondary-container text-2.5 px-sm py-0.5 rounded-full font-bold">TOP CATEGORY</span>
                   </div>
                   <p className="text-body-md text-on-surface-variant mb-md">Drought-resistant hybrids and heritage varieties.</p>
                   <div className="flex justify-between items-center">
@@ -309,10 +309,10 @@ export default function Home() {
 
         {/* Final CTA */}
         <section className="py-xxl px-margin-mobile relative overflow-hidden w-full">
-          <div className="max-w-container-max mx-auto bg-primary text-on-primary rounded-[32px] p-xl md:p-xxl relative overflow-hidden flex flex-col md:flex-row items-center gap-xxl">
+          <div className="max-w-container-max mx-auto bg-primary text-on-primary rounded-4xl p-xl md:p-xxl relative overflow-hidden flex flex-col md:flex-row items-center gap-xxl">
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+              <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
             </div>
             <div className="relative z-10 flex-1">
               <h2 className="text-headline-lg font-headline-lg mb-md">Ready to scale your farm&apos;s potential?</h2>

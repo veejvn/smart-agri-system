@@ -126,7 +126,7 @@ export default function AgroAI() {
                     ) : (
                       <div className="flex gap-md items-start max-w-[90%] md:max-w-[80%]">
                         <div className="w-8 h-8 rounded-lg bg-secondary-container shrink-0 flex items-center justify-center text-on-secondary-container shadow-sm">
-                          <Sparkles className="text-[18px] shrink-0"  />
+                          <Sparkles className="w-4.5 h-4.5 shrink-0"  />
                         </div>
                         <div className="flex flex-col gap-md">
                           <div className="bg-white border border-outline-variant p-md rounded-2xl rounded-tl-none shadow-sm">
@@ -140,7 +140,7 @@ export default function AgroAI() {
                                   <span className="text-label-sm font-label-sm font-bold text-on-surface-variant uppercase tracking-wider">
                                     Condition
                                   </span>
-                                  <div className="bg-error-container text-on-error-container px-sm py-1 rounded-full text-[10px] font-bold">
+                                  <div className="bg-error-container text-on-error-container px-sm py-1 rounded-full text-2.5 font-bold">
                                     {msg.diagnosis.condition}
                                   </div>
                                 </div>
@@ -148,7 +148,7 @@ export default function AgroAI() {
                                   <h3 className="text-title-md font-title-md text-primary font-bold">{msg.diagnosis.disease}</h3>
                                   <div className="ml-auto flex items-center gap-sm">
                                     <div className="text-right">
-                                      <p className="text-[10px] font-bold text-outline-variant leading-none">CONFIDENCE</p>
+                                      <p className="text-2.5 font-bold text-outline-variant leading-none">CONFIDENCE</p>
                                       <p className="text-title-md font-title-md text-secondary font-bold">
                                         {msg.diagnosis.confidence}
                                       </p>
@@ -177,7 +177,7 @@ export default function AgroAI() {
                         </div>
                       </div>
                     )}
-                    <span className={`text-[10px] text-on-surface-variant font-bold uppercase ${isUser ? "px-sm" : "ml-10 px-xl"}`}>
+                    <span className={`text-2.5 text-on-surface-variant font-bold uppercase ${isUser ? "px-sm" : "ml-10 px-xl"}`}>
                       {msg.time} • {isUser ? "You" : "AgriSmart AI"}
                     </span>
                   </div>
@@ -195,21 +195,21 @@ export default function AgroAI() {
               onClick={() => setInputVal("Give me some yield optimization tips for my crops.")}
               className="whitespace-nowrap px-md py-sm bg-white border border-outline-variant rounded-full text-body-md font-body-md hover:bg-surface-container transition-colors flex items-center gap-xs shadow-sm"
             >
-              <BarChart2 className="text-[18px] text-secondary shrink-0"  />
+              <BarChart2 className="w-4.5 h-4.5 text-secondary shrink-0"  />
               Yield optimization tips
             </button>
             <button
               onClick={() => setInputVal("What is the current market price for Durian?")}
               className="whitespace-nowrap px-md py-sm bg-white border border-outline-variant rounded-full text-body-md font-body-md hover:bg-surface-container transition-colors flex items-center gap-xs shadow-sm"
             >
-              <CreditCard className="text-[18px] text-secondary shrink-0"  />
+              <CreditCard className="w-4.5 h-4.5 text-secondary shrink-0"  />
               Market price for Durian
             </button>
             <button
               onClick={() => setInputVal("Diagnose this crop leaf issue.")}
               className="whitespace-nowrap px-md py-sm bg-white border border-outline-variant rounded-full text-body-md font-body-md hover:bg-surface-container transition-colors flex items-center gap-xs shadow-sm"
             >
-              <Upload className="text-[18px] text-secondary shrink-0"  />
+              <Upload className="w-4.5 h-4.5 text-secondary shrink-0"  />
               Diagnose this leaf
             </button>
           </div>
@@ -222,7 +222,7 @@ export default function AgroAI() {
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="w-full bg-transparent border-none focus:ring-0 py-md pl-md pr-xxl text-body-lg font-body-lg resize-none min-h-[56px] max-h-48 outline-none"
+                className="w-full bg-transparent border-none focus:ring-0 py-md pl-md pr-xxl text-body-lg font-body-lg resize-none min-h-14 max-h-48 outline-none"
                 placeholder="Ask AgriSmart about your crops, weather, or market prices..."
                 rows={1}
               />
@@ -261,7 +261,7 @@ export default function AgroAI() {
               <div className="relative">
                 <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping"></div>
                 <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-on-primary relative z-10">
-                  <Mic className="text-[40px] shrink-0"  />
+                  <Mic className="w-10 h-10 shrink-0"  />
                 </div>
               </div>
               <div>

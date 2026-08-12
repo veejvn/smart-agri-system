@@ -79,7 +79,7 @@ export default function Community() {
                     <div className="flex flex-col">
                       <div className="flex items-center gap-sm">
                         <span className="font-bold text-on-surface">TS. Nguyễn Văn Minh</span>
-                        <span className="px-sm py-[2px] bg-primary/10 text-primary rounded text-[10px] font-bold uppercase tracking-wider">Expert</span>
+                        <span className="px-sm py-0.5 bg-primary/10 text-primary rounded text-2.5 font-bold uppercase tracking-wider">Expert</span>
                       </div>
                       <span className="text-label-sm text-on-surface-variant">2 giờ trước • Toàn quốc</span>
                     </div>
@@ -137,7 +137,7 @@ export default function Community() {
                     <div className="flex flex-col">
                       <div className="flex items-center gap-sm">
                         <span className="font-bold text-on-surface">Chị Hạnh (Long An)</span>
-                        <span className="px-sm py-[2px] bg-secondary/10 text-secondary rounded text-[10px] font-bold uppercase tracking-wider">Farmer</span>
+                        <span className="px-sm py-0.5 bg-secondary/10 text-secondary rounded text-2.5 font-bold uppercase tracking-wider">Farmer</span>
                       </div>
                       <span className="text-label-sm text-on-surface-variant">5 giờ trước</span>
                     </div>
@@ -236,7 +236,7 @@ export default function Community() {
           </div>
 
           {/* Sidebar Column */}
-          <div className="flex-1 flex flex-col gap-lg min-w-[300px]">
+          <div className="flex-1 flex flex-col gap-lg min-w-75">
             {/* Trending Topics */}
             <section className="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/30">
               <h3 className="text-title-md font-bold mb-md flex items-center gap-sm">

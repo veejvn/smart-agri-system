@@ -56,7 +56,7 @@ export default function KnowledgeCenter() {
           {/* Featured Articles & Expert CTA (Bento Layout) */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-lg">
             {/* Featured Article 1 */}
-            <div className="lg:col-span-8 relative overflow-hidden rounded-xl h-[400px] group border border-outline-variant/30 shadow-md">
+            <div className="lg:col-span-8 relative overflow-hidden rounded-xl h-100 group border border-outline-variant/30 shadow-md">
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent z-10"></div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

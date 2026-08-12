@@ -45,7 +45,7 @@ export default function OrderManagement() {
             <div>
               <nav className="flex items-center gap-xs text-on-surface-variant text-label-sm mb-xs">
                 <span>Marketplace</span>
-                <ChevronRight className="text-[14px] shrink-0"  />
+                <ChevronRight className="w-3.5 h-3.5 shrink-0"  />
                 <span className="text-primary font-semibold">Orders</span>
               </nav>
               <h1 className="text-headline-lg font-headline-lg text-on-surface">Order Management</h1>
@@ -53,10 +53,10 @@ export default function OrderManagement() {
             </div>
             <div className="flex gap-sm">
               <button className="flex items-center gap-xs border border-outline-variant px-md py-sm rounded-lg text-label-sm font-medium hover:bg-surface-container transition-colors">
-                <Download className="text-[18px] shrink-0"  /> Export CSV
+                <Download className="w-4.5 h-4.5 shrink-0"  /> Export CSV
               </button>
               <button className="flex items-center gap-xs bg-primary text-on-primary px-md py-sm rounded-lg text-label-sm font-medium hover:shadow-md transition-all">
-                <Plus className="text-[18px] shrink-0"  /> Create Order
+                <Plus className="w-4.5 h-4.5 shrink-0"  /> Create Order
               </button>
             </div>
           </div>
@@ -67,36 +67,36 @@ export default function OrderManagement() {
               <div className="flex items-center justify-between mb-sm">
                 <span className="text-on-surface-variant text-label-sm">Total Orders</span>
                 <div className="p-xs bg-surface-container-high rounded-full">
-                  <ShoppingBag className="text-[18px] text-primary shrink-0"  />
+                  <ShoppingBag className="w-4.5 h-4.5 text-primary shrink-0"  />
                 </div>
               </div>
               <div className="flex items-end justify-between">
                 <h3 className="text-title-md font-bold">1,284</h3>
-                <span className="text-primary text-[11px] font-bold bg-primary-container/20 px-xs rounded">+12%</span>
+                <span className="text-primary text-2.75 font-bold bg-primary-container/20 px-xs rounded">+12%</span>
               </div>
             </div>
             <div className="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-sm transition-shadow">
               <div className="flex items-center justify-between mb-sm">
                 <span className="text-on-surface-variant text-label-sm">Pending</span>
                 <div className="p-xs bg-surface-container-high rounded-full">
-                  <Clock className="text-[18px] text-tertiary shrink-0"  />
+                  <Clock className="w-4.5 h-4.5 text-tertiary shrink-0"  />
                 </div>
               </div>
               <div className="flex items-end justify-between">
                 <h3 className="text-title-md font-bold">42</h3>
-                <span className="text-tertiary text-[11px] font-bold bg-tertiary-fixed/40 px-xs rounded">-3%</span>
+                <span className="text-tertiary text-2.75 font-bold bg-tertiary-fixed/40 px-xs rounded">-3%</span>
               </div>
             </div>
             <div className="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-sm transition-shadow">
               <div className="flex items-center justify-between mb-sm">
                 <span className="text-on-surface-variant text-label-sm">Shipping</span>
                 <div className="p-xs bg-surface-container-high rounded-full">
-                  <Truck className="text-[18px] text-secondary shrink-0"  />
+                  <Truck className="w-4.5 h-4.5 text-secondary shrink-0"  />
                 </div>
               </div>
               <div className="flex items-end justify-between">
                 <h3 className="text-title-md font-bold">156</h3>
-                <span className="text-secondary text-[11px] font-bold bg-secondary-fixed/40 px-xs rounded">+8%</span>
+                <span className="text-secondary text-2.75 font-bold bg-secondary-fixed/40 px-xs rounded">+8%</span>
               </div>
             </div>
             <div className="bg-surface-container-lowest border border-outline-variant p-md rounded-xl hover:shadow-sm transition-shadow overflow-hidden relative">
@@ -104,12 +104,12 @@ export default function OrderManagement() {
                 <div className="flex items-center justify-between mb-sm">
                   <span className="text-on-surface-variant text-label-sm">Gross Revenue</span>
                   <div className="p-xs bg-surface-container-high rounded-full">
-                    <CreditCard className="text-[18px] text-on-secondary-container shrink-0"  />
+                    <CreditCard className="w-4.5 h-4.5 text-on-secondary-container shrink-0"  />
                   </div>
                 </div>
                 <div className="flex items-end justify-between">
                   <h3 className="text-title-md font-bold">$42.8k</h3>
-                  <span className="text-on-secondary-container text-[11px] font-bold bg-secondary-container/50 px-xs rounded">+24%</span>
+                  <span className="text-on-secondary-container text-2.75 font-bold bg-secondary-container/50 px-xs rounded">+24%</span>
                 </div>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function OrderManagement() {
               </div>
               <div className="flex items-center gap-sm">
                 <div className="relative">
-                  <Search className="absolute left-xs top-1/2 -translate-y-1/2 text-outline text-[18px] shrink-0"  />
+                  <Search className="absolute left-xs top-1/2 -translate-y-1/2 text-outline w-4.5 h-4.5 shrink-0"  />
                   <input
                     className="pl-xl pr-md py-xs bg-surface border border-outline-variant rounded text-label-sm focus:ring-1 focus:ring-primary focus:outline-none w-48 lg:w-64"
                     placeholder="Filter by ID, Customer..."
@@ -157,7 +157,7 @@ export default function OrderManagement() {
                   />
                 </div>
                 <button className="flex items-center gap-xs border border-outline-variant px-sm py-xs rounded text-label-sm font-medium hover:bg-surface-container transition-colors">
-                  <Filter className="text-[16px] shrink-0"  /> Filter
+                  <Filter className="w-4 h-4 shrink-0"  /> Filter
                 </button>
               </div>
             </div>
@@ -166,7 +166,7 @@ export default function OrderManagement() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-surface-container-low text-[11px] uppercase tracking-wider text-on-surface-variant font-bold border-b border-outline-variant">
+                  <tr className="bg-surface-container-low text-2.75 uppercase tracking-wider text-on-surface-variant font-bold border-b border-outline-variant">
                     <th className="px-md py-sm">Order ID</th>
                     <th className="px-md py-sm">Date</th>
                     <th className="px-md py-sm">Customer</th>
@@ -185,7 +185,7 @@ export default function OrderManagement() {
                         <td className="px-md py-md text-on-surface-variant">{order.date}</td>
                         <td className="px-md py-md">
                           <div className="flex items-center gap-sm">
-                            <div className="w-6 h-6 rounded-full bg-surface-dim flex items-center justify-center text-[10px] font-bold">
+                            <div className="w-6 h-6 rounded-full bg-surface-dim flex items-center justify-center text-2.5 font-bold">
                               {order.customerInitials}
                             </div>
                             <span>{order.customer}</span>
@@ -194,7 +194,7 @@ export default function OrderManagement() {
                         <td className="px-md py-md text-right font-semibold">${order.amount.toFixed(2)}</td>
                         <td className="px-md py-md">
                           <span
-                            className={`inline-flex items-center gap-xs px-xs py-[2px] rounded text-label-sm font-bold ${
+                            className={`inline-flex items-center gap-xs px-xs py-0.5 rounded text-label-sm font-bold ${
                               order.status === "Shipped"
                                 ? "bg-secondary-container/30 text-on-secondary-container"
                                 : order.status === "Delivered"
@@ -217,13 +217,13 @@ export default function OrderManagement() {
                         <td className="px-md py-md text-right">
                           <div className="flex justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
                             <Link href="/order-details" className="p-xs hover:bg-surface-container-high rounded text-on-surface-variant" title="View Details">
-                              <Eye className="text-[20px] shrink-0"  />
+                              <Eye className="w-5 h-5 shrink-0"  />
                             </Link>
                             <button className="p-xs hover:bg-surface-container-high rounded text-on-surface-variant" title="Print Invoice">
-                              <Printer className="text-[20px] shrink-0"  />
+                              <Printer className="w-5 h-5 shrink-0"  />
                             </button>
                             <button className="p-xs hover:bg-surface-container-high rounded text-on-surface-variant" title="Update Status">
-                              <MoreVertical className="text-[20px] shrink-0"  />
+                              <MoreVertical className="w-5 h-5 shrink-0"  />
                             </button>
                           </div>
                         </td>
@@ -277,13 +277,13 @@ export default function OrderManagement() {
                   <div className="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
                     <div className="h-full bg-primary w-[85%]"></div>
                   </div>
-                  <span className="text-[11px] font-bold w-16 text-right">Tomatoes</span>
+                  <span className="text-2.75 font-bold w-16 text-right">Tomatoes</span>
                 </div>
                 <div className="flex items-center gap-md">
                   <div className="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
                     <div className="h-full bg-secondary w-[45%]"></div>
                   </div>
-                  <span className="text-[11px] font-bold w-16 text-right">Lettuce</span>
+                  <span className="text-2.75 font-bold w-16 text-right">Lettuce</span>
                 </div>
               </div>
             </div>

@@ -132,7 +132,7 @@ export default function MarketTrends() {
           {/* Bento Grid Main Dashboard */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-lg">
             {/* Historical Price Trends (8 columns) */}
-            <div className="col-span-12 lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col justify-between min-h-[400px]">
+            <div className="col-span-12 lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col justify-between min-h-100">
               <div className="flex justify-between items-center mb-lg">
                 <div className="flex items-center gap-sm">
                   <LineChart className="text-primary shrink-0"  />
@@ -142,7 +142,7 @@ export default function MarketTrends() {
                   <span className="px-sm py-xs bg-secondary-container text-on-secondary-container rounded text-label-sm font-bold">
                     Last 15 Days
                   </span>
-                  <button className="text-on-surface-variant text-[18px] shrink-0"><MoreVertical className="w-5 h-5"  /></button>
+                  <button className="text-on-surface-variant w-4.5 h-4.5 shrink-0"><MoreVertical className="w-5 h-5"  /></button>
                 </div>
               </div>
               <div className="flex items-end justify-between gap-xs px-sm h-64">
@@ -193,7 +193,7 @@ export default function MarketTrends() {
                   <p className="text-body-md text-on-surface-variant leading-relaxed">{t.desc}</p>
                   <div className="mt-md flex items-center gap-sm">
                     <span
-                      className={`px-sm py-1 rounded-full text-[10px] font-bold ${
+                      className={`px-sm py-1 rounded-full text-2.5 font-bold ${
                         t.type === "up" ? "bg-primary-fixed text-on-primary-fixed" : "bg-error-container text-on-error-container"
                       }`}
                     >
@@ -208,48 +208,34 @@ export default function MarketTrends() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-lg">
             {/* Heat Map (7 columns) */}
-            <div className="col-span-12 lg:col-span-7 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm h-[450px] relative overflow-hidden">
+            <div className="col-span-12 lg:col-span-7 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm h-112.5 relative overflow-hidden">
               <div className="flex justify-between items-center mb-lg relative z-10">
                 <div className="flex items-center gap-sm">
                   <Map className="text-primary shrink-0"  />
-                  <h3 className="text-title-md font-title-md font-bold">Regional Price Heat Map</h3>
+                  <h3 className="text-title-md font-title-md font-bold">Regional Pricing Map</h3>
                 </div>
-                <div className="flex items-center gap-md">
-                  <div className="flex items-center gap-xs">
-                    <div className="w-3 h-3 bg-primary rounded-full"></div>
-                    <span className="text-label-sm font-medium">High Price</span>
-                  </div>
-                  <div className="flex items-center gap-xs">
-                    <div className="w-3 h-3 bg-secondary-container rounded-full"></div>
-                    <span className="text-label-sm font-medium">Low Price</span>
-                  </div>
-                </div>
+                <button className="text-primary text-label-sm font-bold flex items-center gap-xs hover:underline">
+                  <Share2 className="text-sm shrink-0"  /> Expand Map
+                </button>
               </div>
-              <div className="absolute inset-0 opacity-20 grayscale brightness-125 select-none pointer-events-none">
+
+              {/* Map Canvas Visual Mockup */}
+              <div className="absolute inset-0 bg-surface-container-low/50 flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  className="w-full h-full object-cover"
-                  alt="Topographic map of Vietnam's central highlands"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkYhe9yLGS9MViZqvw5p0M7mvuVRNi6fmZxGRVcD0y_dOVMwIwS7qA7I2jb1ukvM7n5qkhnYSJUobJvWjRn4Ol0naJIVf4Yxbi12HdOvkLeYNKddUmeSR1PNVS2lbssASBC5fhet1XvbwHoVSF7UJpndZ66PBSY476wVusTaMx_wynHSudkDEB1ehfkAAgRpQaxwyVk--nr_432WsoOZyp4TDjPJWjfZ4FCqfHVZszMSvYvpWhnk55hnbQFiFG7qzDBwn3PT5DyA"
+                  alt="Agricultural pricing heatmap"
+                  className="w-full h-full object-cover opacity-60"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfTnvsb52WxwDRKLQE6zeyoQ2NozI0pUkWGjMrH-NTfi28NgKR1vmI35xguF6P5Yi0E9QoJlqdSmlbDWgaXPPzNAeX1DyW40d7Tb5XZ8dErHkfwYK3gh3ZrM670WQOm7EfnByM4GAz5S9e83jd0ygKjxjXJcxRHM0QObmuWZEEYSRXYwJQp4oPcvhe5d8gq1unFB7i7W8WPmu7H0HaBxfp-0fggvZ63BnsvVbpeEWVkJjqfl97sOrhiGT0z4D7d0lJCPOricOYlw"
                 />
               </div>
-              {/* Overlaying Heatmap Blobs */}
-              <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-primary/40 rounded-full blur-3xl animate-pulse"></div>
-              <div
-                className="absolute bottom-1/4 right-1/3 w-48 h-48 bg-primary-fixed/50 rounded-full blur-3xl animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-              <div
-                className="absolute top-1/2 right-1/4 w-24 h-24 bg-secondary-container/60 rounded-full blur-3xl animate-pulse"
-                style={{ animationDelay: "2s" }}
-              ></div>
-              {/* Market Dots */}
-              <div className="absolute top-1/4 left-1/2 p-md bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-outline-variant flex flex-col gap-xs z-10 cursor-pointer hover:scale-105 transition-transform">
-                <p className="text-label-sm font-bold text-primary">Central Highlands</p>
-                <p className="text-title-md font-bold">
+
+              {/* Simulated Map Markers */}
+              <div className="absolute top-1/3 left-1/3 bg-surface-container-lowest p-sm rounded-lg shadow-xl border border-outline-variant z-10">
+                <p className="text-label-sm font-bold">Central Valley</p>
+                <p className="text-title-sm text-primary font-bold">
                   $1,450 <span className="text-label-sm text-primary font-bold">+1.2%</span>
                 </p>
-                <p className="text-[10px] text-on-surface-variant">Top Yield Zone</p>
+                <p className="text-2.5 text-on-surface-variant">Top Yield Zone</p>
               </div>
               <div className="absolute bottom-1/3 left-1/4 w-4 h-4 bg-primary border-2 border-white rounded-full shadow-lg cursor-pointer"></div>
               <div className="absolute top-1/2 right-1/3 w-4 h-4 bg-secondary rounded-full shadow-lg border-2 border-white cursor-pointer"></div>
@@ -263,7 +249,7 @@ export default function MarketTrends() {
                     <h3 className="text-title-md font-title-md font-bold">Market News Feed</h3>
                     <button className="text-primary text-label-sm font-bold hover:underline">View All</button>
                   </div>
-                  <div className="space-y-md pr-sm max-h-[200px] overflow-y-auto custom-scrollbar">
+                  <div className="space-y-md pr-sm max-h-50 overflow-y-auto custom-scrollbar">
                     <div className="flex gap-md group cursor-pointer border-b border-outline-variant pb-md last:border-0 last:pb-0">
                       <div className="w-16 h-16 rounded-lg bg-surface-container overflow-hidden shrink-0">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -274,7 +260,7 @@ export default function MarketTrends() {
                         />
                       </div>
                       <div className="grow">
-                        <span className="text-[10px] uppercase font-bold text-primary opacity-70">Supply Chain</span>
+                        <span className="text-2.5 uppercase font-bold text-primary opacity-70">Supply Chain</span>
                         <h5 className="text-body-md font-bold group-hover:text-primary transition-colors">
                           Port congestion eases in Southeast terminals
                         </h5>
@@ -294,7 +280,7 @@ export default function MarketTrends() {
                         />
                       </div>
                       <div className="grow">
-                        <span className="text-[10px] uppercase font-bold text-primary opacity-70">Expert Insight</span>
+                        <span className="text-2.5 uppercase font-bold text-primary opacity-70">Expert Insight</span>
                         <h5 className="text-body-md font-bold group-hover:text-primary transition-colors">
                           Yield forecasts for late harvest rice
                         </h5>
@@ -330,7 +316,7 @@ export default function MarketTrends() {
                     </div>
                   </div>
                   <div className="mt-md p-sm bg-primary-container/10 border border-primary/20 rounded-lg">
-                    <p className="text-[11px] text-primary italic font-medium">
+                    <p className="text-2.75 text-primary italic font-medium">
                       &quot;Market condition suggests a Seller&apos;s advantage for the next 14 days.&quot;
                     </p>
                   </div>

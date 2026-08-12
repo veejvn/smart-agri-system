@@ -139,7 +139,7 @@ export default function AdminDashboard() {
                           </div>
                         </td>
                         <td className="px-lg py-md">
-                          <span className="px-sm py-base bg-secondary-container/20 text-secondary rounded text-[10px] font-bold uppercase">Farmer</span>
+                          <span className="px-sm py-base bg-secondary-container/20 text-secondary rounded text-2.5 font-bold uppercase">Farmer</span>
                         </td>
                         <td className="px-lg py-md">
                           <div className="flex items-center gap-xs text-secondary text-body-md">
@@ -161,7 +161,7 @@ export default function AdminDashboard() {
                           </div>
                         </td>
                         <td className="px-lg py-md">
-                          <span className="px-sm py-base bg-tertiary-container/20 text-tertiary rounded text-[10px] font-bold uppercase">Expert</span>
+                          <span className="px-sm py-base bg-tertiary-container/20 text-tertiary rounded text-2.5 font-bold uppercase">Expert</span>
                         </td>
                         <td className="px-lg py-md">
                           <div className="flex items-center gap-xs text-secondary text-body-md">
@@ -183,7 +183,7 @@ export default function AdminDashboard() {
                           </div>
                         </td>
                         <td className="px-lg py-md">
-                          <span className="px-sm py-base bg-secondary-container/20 text-secondary rounded text-[10px] font-bold uppercase">Farmer</span>
+                          <span className="px-sm py-base bg-secondary-container/20 text-secondary rounded text-2.5 font-bold uppercase">Farmer</span>
                         </td>
                         <td className="px-lg py-md">
                           <div className="flex items-center gap-xs text-outline text-body-md">
@@ -208,20 +208,20 @@ export default function AdminDashboard() {
               <section className="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
                 <div className="flex justify-between items-center mb-md">
                   <h4 className="text-body-lg font-bold text-on-surface">System Alerts</h4>
-                  <span className="w-5 h-5 bg-error text-on-error rounded-full flex items-center justify-center text-[10px] font-bold">3</span>
+                  <span className="w-5 h-5 bg-error text-on-error rounded-full flex items-center justify-center text-2.5 font-bold">3</span>
                 </div>
                 <div className="flex flex-col gap-sm">
                   <div className="p-sm bg-error-container text-on-error-container rounded-lg border-l-4 border-error">
                     <p className="text-label-sm font-bold flex items-center gap-xs">
                       <FileWarning className="text-sm shrink-0"  /> High Server Load
                     </p>
-                    <p className="text-[11px] opacity-90 mt-xs">AI Inference engine operating at 92% capacity.</p>
+                    <p className="text-2.75 opacity-90 mt-xs">AI Inference engine operating at 92% capacity.</p>
                   </div>
                   <div className="p-sm bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-lg border-l-4 border-tertiary">
                     <p className="text-label-sm font-bold flex items-center gap-xs">
                       <Info className="text-sm shrink-0"  /> Update Scheduled
                     </p>
-                    <p className="text-[11px] opacity-90 mt-xs">v2.4.0 core engine migration tonight at 02:00.</p>
+                    <p className="text-2.75 opacity-90 mt-xs">v2.4.0 core engine migration tonight at 02:00.</p>
                   </div>
                 </div>
               </section>
@@ -234,26 +234,26 @@ export default function AdminDashboard() {
                   <div className="relative pl-8">
                     <div className="absolute left-1 top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-surface"></div>
                     <p className="text-label-sm font-bold">New Expert Verified</p>
-                    <p className="text-[11px] text-on-surface-variant">Dr. Nguyen completed credential validation.</p>
-                    <span className="text-[10px] text-outline">2 mins ago</span>
+                    <p className="text-2.75 text-on-surface-variant">Dr. Nguyen completed credential validation.</p>
+                    <span className="text-2.5 text-outline">2 mins ago</span>
                   </div>
                   <div className="relative pl-8">
                     <div className="absolute left-1 top-1 w-4 h-4 rounded-full bg-secondary ring-4 ring-surface"></div>
                     <p className="text-label-sm font-bold">Payout Processed</p>
-                    <p className="text-[11px] text-on-surface-variant">Weekly payouts to 450 experts completed.</p>
-                    <span className="text-[10px] text-outline">45 mins ago</span>
+                    <p className="text-2.75 text-on-surface-variant">Weekly payouts to 450 experts completed.</p>
+                    <span className="text-2.5 text-outline">45 mins ago</span>
                   </div>
                   <div className="relative pl-8">
                     <div className="absolute left-1 top-1 w-4 h-4 rounded-full bg-outline ring-4 ring-surface"></div>
                     <p className="text-label-sm font-bold">System Backup</p>
-                    <p className="text-[11px] text-on-surface-variant">Automated cloud backup successful.</p>
-                    <span className="text-[10px] text-outline">3 hours ago</span>
+                    <p className="text-2.75 text-on-surface-variant">Automated cloud backup successful.</p>
+                    <span className="text-2.5 text-outline">3 hours ago</span>
                   </div>
                   <div className="relative pl-8">
                     <div className="absolute left-1 top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-surface"></div>
                     <p className="text-label-sm font-bold">Campaign Launch</p>
-                    <p className="text-[11px] text-on-surface-variant">&quot;Green Tech 2024&quot; initiative live for users.</p>
-                    <span className="text-[10px] text-outline">5 hours ago</span>
+                    <p className="text-2.75 text-on-surface-variant">&quot;Green Tech 2024&quot; initiative live for users.</p>
+                    <span className="text-2.5 text-outline">5 hours ago</span>
                   </div>
                 </div>
                 <button className="w-full mt-lg py-sm text-label-sm font-bold text-primary border border-primary rounded-lg hover:bg-primary-container/10 transition-colors">

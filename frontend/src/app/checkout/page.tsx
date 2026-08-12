@@ -40,7 +40,7 @@ export default function Checkout() {
         <div className="max-w-container-max mx-auto px-lg py-xl w-full grow">
           {success ? (
             <div className="max-w-xl mx-auto bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant text-center space-y-lg shadow-lg my-xl animate-fade-in">
-              <CheckCircle2 className="text-primary text-[80px] bg-secondary-container/20 p-md rounded-full shrink-0"  />
+              <CheckCircle2 className="text-primary w-20 h-20 bg-secondary-container/20 p-md rounded-full shrink-0"  />
               <h2 className="text-headline-lg font-bold text-primary">Đặt hàng thành công!</h2>
               <p className="text-body-lg text-on-surface-variant">
                 Cảm ơn bạn đã lựa chọn AgriSmart Pro. Mã đơn hàng của bạn là <strong className="text-primary font-mono">#ORD-90251</strong>.

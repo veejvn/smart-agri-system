@@ -30,7 +30,7 @@ export default function Dashboard() {
           {/* Quick Stats Bento Grid */}
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
             {/* Revenue Chart Widget */}
-            <div className="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-[160px]">
+            <div className="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-40">
               <div className="flex justify-between items-start">
                 <span className="text-label-sm font-label-sm text-on-surface-variant">Weekly Revenue</span>
                 <span className="text-primary font-bold">+8.4%</span>
@@ -48,7 +48,7 @@ export default function Dashboard() {
             </div>
 
             {/* Active Orders */}
-            <div className="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-[160px]">
+            <div className="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-40">
               <div className="flex items-center gap-sm">
                 <div className="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
                   <ShoppingCart className="text-on-secondary-fixed text-md shrink-0"  />
@@ -62,7 +62,7 @@ export default function Dashboard() {
             </div>
 
             {/* Weather Alert */}
-            <div className="bg-error-container text-on-error-container p-md rounded-xl shadow-sm border border-error/20 flex flex-col justify-between min-h-[160px]">
+            <div className="bg-error-container text-on-error-container p-md rounded-xl shadow-sm border border-error/20 flex flex-col justify-between min-h-40">
               <div className="flex items-center justify-between">
                 <span className="text-label-sm font-label-sm font-bold uppercase tracking-wider">Alert</span>
                 <CloudLightning className=" shrink-0"  />
@@ -75,7 +75,7 @@ export default function Dashboard() {
             </div>
 
             {/* AI Recommendation */}
-            <div className="bg-tertiary-container text-on-tertiary-container p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-[160px]">
+            <div className="bg-tertiary-container text-on-tertiary-container p-md rounded-xl shadow-sm border border-outline-variant flex flex-col justify-between min-h-40">
               <div className="flex items-center gap-sm">
                 <Brain className=" shrink-0"  />
                 <span className="text-label-sm font-label-sm">AI Advice</span>
@@ -105,7 +105,7 @@ export default function Dashboard() {
               <div className="p-lg grow relative h-64 bg-slate-50/30 flex items-end justify-between px-xxl">
                 {/* Simulated Chart Path */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <LineChart className="text-[200px] shrink-0"  />
+                  <LineChart className="w-50 h-50 shrink-0"  />
                 </div>
                 {/* Grid lines */}
                 <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col justify-between py-md px-lg pointer-events-none">
@@ -128,9 +128,9 @@ export default function Dashboard() {
             <div className="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col">
               <div className="p-lg border-b border-outline-variant flex justify-between items-center">
                 <h3 className="text-title-md font-title-md text-on-surface">Updates</h3>
-                <span className="w-6 h-6 bg-error text-on-error rounded-full flex items-center justify-center text-[10px] font-bold">3</span>
+                <span className="w-6 h-6 bg-error text-on-error rounded-full flex items-center justify-center text-2.5 font-bold">3</span>
               </div>
-              <div className="grow overflow-y-auto max-h-[350px]">
+              <div className="grow overflow-y-auto max-h-87.5">
                 {/* Notification Item */}
                 <div className="p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
                   <div className="flex gap-md">
@@ -140,7 +140,7 @@ export default function Dashboard() {
                     <div className="space-y-1">
                       <p className="text-body-md font-bold">Community Reply</p>
                       <p className="text-label-sm text-on-surface-variant">Sara M. replied to your post on &quot;Pest Control Strategies&quot;.</p>
-                      <p className="text-[10px] text-outline">12 min ago</p>
+                      <p className="text-2.5 text-outline">12 min ago</p>
                     </div>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function Dashboard() {
                     <div className="space-y-1">
                       <p className="text-body-md font-bold">Market Update</p>
                       <p className="text-label-sm text-on-surface-variant">Corn futures up by 3.2% today. Optimal selling window opening.</p>
-                      <p className="text-[10px] text-outline">2 hours ago</p>
+                      <p className="text-2.5 text-outline">2 hours ago</p>
                     </div>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function Dashboard() {
                     <div className="space-y-1">
                       <p className="text-body-md font-bold">System Status</p>
                       <p className="text-label-sm text-on-surface-variant">Drone fleet #4 diagnostics completed. All systems nominal.</p>
-                      <p className="text-[10px] text-outline">Yesterday</p>
+                      <p className="text-2.5 text-outline">Yesterday</p>
                     </div>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function Dashboard() {
                     <td className="px-lg py-md text-body-md text-on-surface-variant">1,200 kg</td>
                     <td className="px-lg py-md text-body-md font-bold">$3,450.00</td>
                     <td className="px-lg py-md">
-                      <span className="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase">
+                      <span className="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-2.5 font-bold uppercase">
                         Shipped
                       </span>
                     </td>
@@ -246,7 +246,7 @@ export default function Dashboard() {
                     <td className="px-lg py-md text-body-md text-on-surface-variant">850 kg</td>
                     <td className="px-lg py-md text-body-md font-bold">$2,100.00</td>
                     <td className="px-lg py-md">
-                      <span className="px-sm py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-[10px] font-bold uppercase">
+                      <span className="px-sm py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-2.5 font-bold uppercase">
                         Processing
                       </span>
                     </td>
@@ -270,7 +270,7 @@ export default function Dashboard() {
                     <td className="px-lg py-md text-body-md text-on-surface-variant">2,000 kg</td>
                     <td className="px-lg py-md text-body-md font-bold">$5,820.00</td>
                     <td className="px-lg py-md">
-                      <span className="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase">
+                      <span className="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-2.5 font-bold uppercase">
                         Delivered
                       </span>
                     </td>

@@ -106,23 +106,23 @@ export default function Sidebar() {
 
       {/* Mobile Bottom Bar */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant flex justify-around items-center py-xs px-sm z-40 shadow-lg">
-        <Link href="/dashboard" className={`flex flex-col items-center gap-xs text-[10px] ${pathname === "/dashboard" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
+        <Link href="/dashboard" className={`flex flex-col items-center gap-xs text-2.5 ${pathname === "/dashboard" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
           <LayoutDashboard className="w-5 h-5" />
           <span>Dashboard</span>
         </Link>
-        <Link href="/marketplace" className={`flex flex-col items-center gap-xs text-[10px] ${pathname === "/marketplace" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
+        <Link href="/marketplace" className={`flex flex-col items-center gap-xs text-2.5 ${pathname === "/marketplace" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
           <Store className="w-5 h-5" />
           <span>Market</span>
         </Link>
-        <Link href="/" className={`flex flex-col items-center gap-xs text-[10px] ${pathname === "/" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
+        <Link href="/" className={`flex flex-col items-center gap-xs text-2.5 ${pathname === "/" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
           <Radio className="w-5 h-5" />
           <span>Stream</span>
         </Link>
-        <Link href="/agroai" className={`flex flex-col items-center gap-xs text-[10px] ${pathname === "/agroai" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
+        <Link href="/agroai" className={`flex flex-col items-center gap-xs text-2.5 ${pathname === "/agroai" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
           <Bot className="w-5 h-5" />
           <span>AI Chat</span>
         </Link>
-        <Link href="/experts" className={`flex flex-col items-center gap-xs text-[10px] ${pathname === "/experts" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
+        <Link href="/experts" className={`flex flex-col items-center gap-xs text-2.5 ${pathname === "/experts" ? "text-primary font-bold" : "text-on-surface-variant"}`}>
           <Users className="w-5 h-5" />
           <span>Experts</span>
         </Link>

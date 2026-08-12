@@ -102,24 +102,26 @@ export default function OrderDetails() {
                 <Link href="/marketplace" className="hover:text-primary font-medium">
                   Marketplace
                 </Link>
-                <ChevronRight className="text-[14px] shrink-0" />
+                <ChevronRight className="w-3.5 h-3.5 shrink-0" />
                 <Link href="/order-management" className="hover:text-primary font-medium">
-                  Order History
+                  Orders
                 </Link>
+                <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                <span className="text-primary font-bold">#ORD-90214</span>
               </nav>
-              <h1 className="text-headline-lg font-headline-lg text-on-surface font-bold flex flex-wrap items-center gap-md">
-                Order #ORD-2024-8842
-                <span className="text-label-sm bg-secondary-container text-on-secondary-container px-md py-1 rounded-full font-bold">
-                  In Transit
-                </span>
+              <h1 className="text-headline-lg font-headline-lg text-on-surface font-bold">
+                Order #ORD-90214
               </h1>
+              <p className="text-body-md font-body-md text-on-surface-variant mt-xs">
+                Placed on Oct 12, 2024 • 4 Items • Total $2,450.00
+              </p>
             </div>
-            <div className="flex gap-sm">
-              <button className="flex items-center gap-sm px-md py-sm border border-outline-variant rounded-lg font-label-sm text-label-sm hover:bg-surface-container-low transition-colors font-bold">
-                <Printer className="text-[18px] shrink-0" /> Print Invoice
+            <div className="flex items-center gap-sm">
+              <button className="flex items-center gap-sm px-md py-sm bg-surface-container hover:bg-surface-container-high text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant transition-colors shadow-sm font-medium">
+                <Printer className="w-4.5 h-4.5 shrink-0" /> Print Invoice
               </button>
               <button className="flex items-center gap-sm px-md py-sm bg-primary text-on-primary rounded-lg font-label-sm text-label-sm hover:opacity-90 transition-opacity shadow-sm font-bold">
-                <Package className="text-[18px] shrink-0" /> Edit Order
+                <Package className="w-4.5 h-4.5 shrink-0" /> Edit Order
               </button>
             </div>
           </div>
@@ -132,8 +134,8 @@ export default function OrderDetails() {
               <section className="bg-surface-container-lowest p-lg md:p-xl rounded-xl border border-outline-variant shadow-sm space-y-lg">
                 <h2 className="text-title-md font-title-md text-on-surface font-bold">Shipping Progress</h2>
                 <div className="relative px-md pt-2">
-                  <div className="absolute top-[26px] left-[40px] right-[40px] h-[2px] bg-outline-variant"></div>
-                  <div className="absolute top-[26px] left-[40px] w-2/3 h-[2px] bg-primary"></div>
+                  <div className="absolute top-6.5 left-10 right-10 h-0.5 bg-outline-variant"></div>
+                  <div className="absolute top-6.5 left-10 w-2/3 h-0.5 bg-primary"></div>
                   <div className="relative flex justify-between">
                     <div className="flex flex-col items-center text-center gap-base">
                       <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary z-10 shadow-sm">
@@ -266,12 +268,12 @@ export default function OrderDetails() {
                 </div>
                 <div className="space-y-md">
                   <div>
-                    <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Contact</p>
+                    <p className="text-2.5 font-bold text-on-surface-variant uppercase tracking-wider">Contact</p>
                     <p className="text-body-md font-medium text-on-surface mt-1">silas.thorne@prairiefarms.com</p>
                     <p className="text-body-md font-medium text-on-surface mt-0.5">+1 (555) 382-9012</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Shipping Address</p>
+                    <p className="text-2.5 font-bold text-on-surface-variant uppercase tracking-wider">Shipping Address</p>
                     <p className="text-body-md font-medium text-on-surface mt-1 leading-relaxed">
                       4920 Harvest Moon Lane
                       <br />
@@ -281,7 +283,7 @@ export default function OrderDetails() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Payment Status</p>
+                    <p className="text-2.5 font-bold text-on-surface-variant uppercase tracking-wider">Payment Status</p>
                     <div className="flex items-center gap-sm mt-1">
                       <BadgeCheck className="text-primary w-5 h-5 shrink-0" />
                       <p className="text-body-md font-bold text-primary">Paid via Visa ending in 4429</p>
@@ -291,10 +293,10 @@ export default function OrderDetails() {
               </section>
 
               {/* Communication History */}
-              <section className="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col h-[400px]">
+              <section className="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex flex-col h-100">
                 <div className="p-lg border-b border-outline-variant flex items-center justify-between bg-white rounded-t-xl">
                   <h2 className="text-title-md font-title-md text-on-surface font-bold">Communication</h2>
-                  <span className="bg-error-container text-on-error-container text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <span className="bg-error-container text-on-error-container text-2.5 font-bold px-2 py-0.5 rounded-full">
                     2 Unread
                   </span>
                 </div>
@@ -349,7 +351,7 @@ export default function OrderDetails() {
                 <div className="flex items-center justify-between mb-md">
                   <h2 className="text-title-md font-title-md text-on-surface font-bold">Internal Notes</h2>
                   <button className="text-primary font-bold text-label-sm hover:underline flex items-center gap-xs">
-                    <Plus className="text-[16px] shrink-0" /> Add Note
+                    <Plus className="w-4 h-4 shrink-0" /> Add Note
                   </button>
                 </div>
                 <div className="space-y-md">
@@ -357,7 +359,7 @@ export default function OrderDetails() {
                     <p className="text-body-md font-body-md text-on-surface leading-relaxed">
                       Check calibration certificates for Gen 4 probes before warehouse dispatch.
                     </p>
-                    <p className="text-[10px] text-on-surface-variant mt-sm font-bold">Mark J. • Oct 12, 10:15 AM</p>
+                    <p className="text-2.5 text-on-surface-variant mt-sm font-bold">Mark J. • Oct 12, 10:15 AM</p>
                   </div>
                 </div>
               </section>

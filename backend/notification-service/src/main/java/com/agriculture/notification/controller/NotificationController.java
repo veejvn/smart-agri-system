@@ -16,12 +16,12 @@ public class NotificationController {
     private final NotificationService notificationService;
 
     @GetMapping
-    public ResponseEntity<List<Notification>> getNotifications(@RequestHeader(value = "X-User-Id", required = false, defaultValue = "1") Long userId) {
+    public ResponseEntity<List<Notification>> getNotifications(@RequestHeader("X-User-Id") Long userId) {
         return ResponseEntity.ok(notificationService.getUserNotifications(userId));
     }
 
     @GetMapping("/unread")
-    public ResponseEntity<List<Notification>> getUnreadNotifications(@RequestHeader(value = "X-User-Id", required = false, defaultValue = "1") Long userId) {
+    public ResponseEntity<List<Notification>> getUnreadNotifications(@RequestHeader("X-User-Id") Long userId) {
         return ResponseEntity.ok(notificationService.getUnreadNotifications(userId));
     }
 

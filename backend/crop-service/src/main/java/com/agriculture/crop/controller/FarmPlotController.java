@@ -17,12 +17,12 @@ public class FarmPlotController {
     private final CropService cropService;
 
     @GetMapping
-    public ResponseEntity<List<FarmPlot>> getPlots(@RequestHeader(value = "X-User-Id", required = false, defaultValue = "1") Long userId) {
+    public ResponseEntity<List<FarmPlot>> getPlots(@RequestHeader("X-User-Id") Long userId) {
         return ResponseEntity.ok(cropService.getPlotsByUser(userId));
     }
 
     @PostMapping
-    public ResponseEntity<FarmPlot> createPlot(@RequestHeader(value = "X-User-Id", required = false, defaultValue = "1") Long userId,
+    public ResponseEntity<FarmPlot> createPlot(@RequestHeader("X-User-Id") Long userId,
                                                @RequestBody FarmPlotDTO dto) {
         return ResponseEntity.ok(cropService.createPlot(userId, dto));
     }

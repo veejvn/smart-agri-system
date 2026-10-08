@@ -95,6 +95,7 @@ services:
       - discovery-service
     environment:
       - EUREKA_HOST=discovery-service
+      - APP_JWT_SECRET=${JWT_SECRET}
     networks:
       - agriculture-net
 

@@ -1,6 +1,11 @@
 server:
   port: 8080
 
+app:
+  jwt:
+    # Must match auth-service app.jwt.secret; override in both services with the same value.
+    secret: ${APP_JWT_SECRET:926D96C90030DD58429D2751AC1BDBBC926D96C90030DD58429D2751AC1BDBBC}
+
 spring:
   application:
     name: api-gateway

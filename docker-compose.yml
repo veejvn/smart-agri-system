@@ -12,7 +12,7 @@ services:
       timeout: 10s
       retries: 10
     networks:
-      - agriculture-net
+      - backend-net
 
   kafka:
     image: confluentinc/cp-kafka:7.4.0
@@ -34,7 +34,7 @@ services:
       retries: 15
       start_period: 20s
     networks:
-      - agriculture-net
+      - backend-net
 
   postgres-auth:
     image: postgres:15-alpine
@@ -45,7 +45,7 @@ services:
     volumes:
       - pg-auth-data:/var/lib/postgresql/data
     networks:
-      - agriculture-net
+      - backend-net
 
   postgres-user:
     image: postgres:15-alpine
@@ -56,7 +56,7 @@ services:
     volumes:
       - pg-user-data:/var/lib/postgresql/data
     networks:
-      - agriculture-net
+      - backend-net
 
   # postgres-crop:
   #   image: postgres:15-alpine
@@ -67,7 +67,7 @@ services:
   #   volumes:
   #     - pg-crop-data:/var/lib/postgresql/data
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # postgres-notification:
   #   image: postgres:15-alpine
@@ -78,7 +78,7 @@ services:
   #   volumes:
   #     - pg-notification-data:/var/lib/postgresql/data
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # mongodb:
   #   image: mongo:6.0
@@ -88,16 +88,17 @@ services:
   #   volumes:
   #     - mongo-data:/data/db
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # Infrastructure Management (Optional entry points)
   discovery-service:
     build:
       context: ./backend/discovery-service
-    ports:
-      - "8761:8761"
+    environment:
+      - EUREKA_USER=${EUREKA_USER:-eureka}
+      - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
     networks:
-      - agriculture-net
+      - backend-net
 
   api-gateway:
     build:
@@ -108,8 +109,11 @@ services:
       - discovery-service
     environment:
       - EUREKA_HOST=discovery-service
+      - EUREKA_USER=${EUREKA_USER:-eureka}
+      - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
       - APP_JWT_SECRET=${JWT_SECRET}
     networks:
+      - backend-net
       - agriculture-net
 
   auth-service:
@@ -120,13 +124,15 @@ services:
       - postgres-auth
     environment:
       - EUREKA_HOST=discovery-service
+      - EUREKA_USER=${EUREKA_USER:-eureka}
+      - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
       - DB_HOST=postgres-auth
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-auth:5432/auth_db
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - APP_JWT_SECRET=${JWT_SECRET}
     networks:
-      - agriculture-net
+      - backend-net
 
   user-service:
     build:
@@ -136,12 +142,14 @@ services:
       - postgres-user
     environment:
       - EUREKA_HOST=discovery-service
+      - EUREKA_USER=${EUREKA_USER:-eureka}
+      - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
       - DB_HOST=postgres-user
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-user:5432/user_db
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
     networks:
-      - agriculture-net
+      - backend-net
 
   # crop-service:
   #   build:
@@ -151,12 +159,14 @@ services:
   #     - postgres-crop
   #   environment:
   #     - EUREKA_HOST=discovery-service
+  #     - EUREKA_USER=${EUREKA_USER:-eureka}
+  #     - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
   #     - DB_HOST=postgres-crop
   #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-crop:5432/crop_db
   #     - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
   #     - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # weather-service:
   #   build:
@@ -167,11 +177,13 @@ services:
   #     - kafka
   #   environment:
   #     - EUREKA_HOST=discovery-service
+  #     - EUREKA_USER=${EUREKA_USER:-eureka}
+  #     - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
   #     - MONGO_HOST=mongodb
   #     - SPRING_DATA_MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-admin123}@mongodb:27017/weather_db?authSource=admin
   #     - KAFKA_HOST=kafka
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # forum-service:
   #   build:
@@ -181,9 +193,11 @@ services:
   #     - mongodb
   #   environment:
   #     - EUREKA_HOST=discovery-service
+  #     - EUREKA_USER=${EUREKA_USER:-eureka}
+  #     - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
   #     - SPRING_DATA_MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-admin123}@mongodb:27017/forum_db?authSource=admin
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # notification-service:
   #   build:
@@ -194,20 +208,20 @@ services:
   #     - kafka
   #   environment:
   #     - EUREKA_HOST=discovery-service
+  #     - EUREKA_USER=${EUREKA_USER:-eureka}
+  #     - EUREKA_PASSWORD=${EUREKA_PASSWORD:-eureka}
   #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-notification:5432/notification_db
   #     - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-postgres}
   #     - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
   #     - KAFKA_HOST=kafka
   #   networks:
-  #     - agriculture-net
+  #     - backend-net
 
   # ai-service:
   #   build:
   #     context: ./ai-service
   #   ports:
   #     - "8000:8000"
-  #   networks:
-  #     - agriculture-net
 
   # frontend:
   #   build:
@@ -216,12 +230,13 @@ services:
   #     - "3000:3000"
   #   environment:
   #     - NEXT_PUBLIC_API_URL=http://localhost:8080
-  #   networks:
-  #     - agriculture-net
 
 networks:
   agriculture-net:
     driver: bridge
+  backend-net:
+    driver: bridge
+    internal: true
 
 volumes:
   pg-auth-data:

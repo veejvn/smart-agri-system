@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: discovery-service
+  security:
+    user:
+      name: ${EUREKA_USER:eureka}
+      password: ${EUREKA_PASSWORD:eureka}
 
 eureka:
   instance:

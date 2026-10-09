@@ -5,18 +5,23 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Locale;
 import java.util.Set;
@@ -24,6 +29,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtAuthenticationGlobalFilter implements GlobalFilter, Ordered {
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationGlobalFilter.class);
     private static final String USER_ID_HEADER = "X-User-Id";
     private static final String USERNAME_HEADER = "X-Username";
     private static final String ROLES_HEADER = "X-Roles";
@@ -103,8 +109,9 @@ public class JwtAuthenticationGlobalFilter implements GlobalFilter, Ordered {
     }
 
     private static boolean isPublicPath(String path) {
-        return path.equals("/api/auth")
-                || path.startsWith("/api/auth/")
+        return path.equals("/api/auth/login")
+                || path.equals("/api/auth/register")
+                || path.equals("/api/auth/refresh")
                 || path.equals("/error")
                 || path.equals("/actuator/health")
                 || path.startsWith("/actuator/health/");
@@ -142,7 +149,15 @@ public class JwtAuthenticationGlobalFilter implements GlobalFilter, Ordered {
     }
 
     private static Mono<Void> unauthorized(ServerWebExchange exchange) {
-        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-        return exchange.getResponse().setComplete();
+        var response = exchange.getResponse();
+        response.setStatusCode(HttpStatus.UNAUTHORIZED);
+        response.getHeaders().set(HttpHeaders.WWW_AUTHENTICATE, "Bearer error=\"invalid_token\"");
+        response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+        LOGGER.warn("Unauthorized request to {}", exchange.getRequest().getPath().pathWithinApplication().value());
+
+        byte[] body = "{\"status\":401,\"error\":\"Unauthorized\",\"message\":\"Authentication is required or the token is invalid\"}"
+                .getBytes(StandardCharsets.UTF_8);
+        DataBuffer buffer = response.bufferFactory().wrap(body);
+        return response.writeWith(Mono.just(buffer));
     }
 }

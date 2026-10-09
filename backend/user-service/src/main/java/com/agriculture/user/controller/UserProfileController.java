@@ -1,12 +1,15 @@
 package com.agriculture.user.controller;
 
 import com.agriculture.user.dto.UserProfileDTO;
+import com.agriculture.user.dto.UserProfileBatchRequestDTO;
 import com.agriculture.user.dto.UserProfileViewDTO;
 import com.agriculture.user.entity.UserProfile;
 import com.agriculture.user.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users/profile")
@@ -34,6 +37,12 @@ public class UserProfileController {
             return ResponseEntity.ok(UserProfileViewDTO.from(profile));
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/batch")
+    public ResponseEntity<List<UserProfileViewDTO>> getProfilesByUserIds(
+            @RequestBody UserProfileBatchRequestDTO request) {
+        return ResponseEntity.ok(userProfileService.getProfilesByUserIds(request.getUserIds()));
     }
 
     @PutMapping

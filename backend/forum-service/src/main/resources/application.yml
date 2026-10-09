@@ -4,9 +4,23 @@ server:
 spring:
   application:
     name: forum-service
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
   data:
     mongodb:
       uri: mongodb://${MONGO_USER:admin}:${MONGO_PASSWORD:admin123}@${MONGO_HOST:localhost}:27017/forum_db?authSource=admin
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
 
 eureka:
   client:

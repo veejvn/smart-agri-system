@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: smart-agri-config
+data:
+  EUREKA_HOST: discovery-service
+  EUREKA_USER: eureka
+  DB_USER: postgres
+  KAFKA_HOST: kafka
+  MONGO_HOST: mongodb
+  MONGO_USER: admin
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: smart-agri-secrets
+type: Opaque
+stringData:
+  # Do NOT keep real secrets in git. In production source these from an external
+  # secret manager (External Secrets Operator, Vault, sealed-secrets, ...).
+  APP_JWT_SECRET: replace-with-a-64-hex-char-secret
+  EUREKA_PASSWORD: replace-me
+  DB_PASSWORD: replace-me
+  MONGO_PASSWORD: replace-me

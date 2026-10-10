@@ -23,6 +23,6 @@ eureka:
 
 app:
   jwt:
-    secret: ${APP_JWT_SECRET:926D96C90030DD58429D2751AC1BDBBC926D96C90030DD58429D2751AC1BDBBC}
+    secret: ${APP_JWT_SECRET}
     expiration: 86400000 # 24 hours
     refresh-expiration: 604800000 # 7 days

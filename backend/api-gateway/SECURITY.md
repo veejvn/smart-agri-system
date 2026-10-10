@@ -14,4 +14,4 @@ Before forwarding, the gateway removes every client-supplied header whose name b
 - `X-Username`: `sub` claim (with `username` as a fallback)
 - `X-Roles`: `roles` claim, serialized as comma-separated values when it is an array
 
-Claim assumption: T1 access tokens provide `userId` and `roles` claims, with the username in `sub` or `username`. The gateway does not query auth-service to supplement missing claims. `APP_JWT_SECRET` can override this service's default secret; configure it to the same value used by auth-service. The current auth-service configuration stores the shared secret as a Base64-compatible string and decodes it with JJWT's Base64 decoder.
+Claim assumption: T1 access tokens provide `userId` and `roles` claims, with the username in `sub` or `username`. The gateway does not query auth-service to supplement missing claims. `APP_JWT_SECRET` is required (there is no default value) and must be set to the same value used by auth-service. The current auth-service configuration stores the shared secret as a Base64-compatible string and decodes it with JJWT's Base64 decoder.

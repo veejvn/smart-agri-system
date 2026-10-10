@@ -161,6 +161,15 @@ export default function Header({
             )}
           </div>
         )}
+
+        {!isAuthenticated && (
+          <Link
+            href="/login"
+            className="bg-primary text-on-primary px-lg py-sm rounded-full font-bold text-label-sm hover:opacity-90 transition-opacity"
+          >
+            Đăng nhập
+          </Link>
+        )}
       </div>
     </header>
   );

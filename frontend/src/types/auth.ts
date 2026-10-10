@@ -25,3 +25,21 @@ export interface RegisterPayload {
   fullName?: string;
   phone?: string;
 }
+
+/** Profile resource backed by user-service (entity / view DTO fields). */
+export interface ProfileDetails {
+  id?: number;
+  userId?: number;
+  fullName?: string;
+  phone?: string;
+  avatarUrl?: string;
+  bio?: string;
+  createdAt?: string;
+}
+
+export interface UpdateProfilePayload {
+  fullName?: string;
+  phone?: string;
+  avatarUrl?: string;
+  bio?: string;
+}

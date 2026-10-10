@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '@/lib/api-client';
+import { mapLoginResponse } from '@/lib/auth-mapper';
 import { LoginPayload, RegisterPayload, AuthResponse } from '@/types/auth';
 import { useAuth } from '@/context/AuthContext';
 
@@ -9,12 +10,10 @@ export function useLoginMutation() {
   return useMutation({
     mutationFn: async (payload: LoginPayload): Promise<AuthResponse> => {
       const response = await apiClient.post('/auth/login', payload);
-      return response.data;
+      return mapLoginResponse(response.data);
     },
     onSuccess: (data) => {
-      if (data.token && data.user) {
-        login(data.token, data.user);
-      }
+      login(data.token, data.user);
     },
   });
 }

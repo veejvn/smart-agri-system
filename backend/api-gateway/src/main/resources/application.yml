@@ -19,7 +19,7 @@ spring:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
           '[/**]':
-            allowedOrigins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+            allowedOrigins: ${CORS_ALLOWED_ORIGINS}
             allowedMethods:
               - GET
               - POST
@@ -41,26 +41,6 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
-        - id: crop-service
-          uri: lb://crop-service
-          predicates:
-            - Path=/api/crops/**
-        - id: weather-service
-          uri: lb://weather-service
-          predicates:
-            - Path=/api/weather/**
-        - id: forum-service
-          uri: lb://forum-service
-          predicates:
-            - Path=/api/forum/**
-        - id: notification-service
-          uri: lb://notification-service
-          predicates:
-            - Path=/api/notifications/**
-        - id: ai-service
-          uri: http://ai-service:8090 # Python service is not registered in Eureka, route directly
-          predicates:
-            - Path=/api/advice/**
 
 eureka:
   instance:
@@ -69,7 +49,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://${EUREKA_USER:eureka}:${EUREKA_PASSWORD:eureka}@${EUREKA_HOST:localhost}:8761/eureka/
+      defaultZone: http://${EUREKA_USER}:${EUREKA_PASSWORD}@${EUREKA_HOST}:8761/eureka/
 
 management:
   endpoints:
@@ -78,7 +58,7 @@ management:
         include: health,info
   endpoint:
     health:
-      show-details: always
+      show-details: never
       probes:
         enabled: true
   tracing:

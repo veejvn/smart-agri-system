@@ -6,17 +6,17 @@ spring:
     name: discovery-service
   security:
     user:
-      name: ${EUREKA_USER:eureka}
-      password: ${EUREKA_PASSWORD:eureka}
+      name: ${EUREKA_USER}
+      password: ${EUREKA_PASSWORD}
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_HOST}
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${EUREKA_USER}:${EUREKA_PASSWORD}@${eureka.instance.hostname}:${server.port}/eureka/
 
 management:
   endpoints:
@@ -25,7 +25,7 @@ management:
         include: health,info
   endpoint:
     health:
-      show-details: always
+      show-details: never
       probes:
         enabled: true
   tracing:

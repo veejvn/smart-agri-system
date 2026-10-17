@@ -3,8 +3,8 @@ package com.agriculture.user.controller;
 import com.agriculture.user.service.UserProfileService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -22,7 +22,7 @@ class UserProfileControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockitoBean
     private UserProfileService userProfileService;
 
     @Test
@@ -44,8 +44,8 @@ class UserProfileControllerTest {
         when(userProfileService.getProfilesByUserIds(List.of(1L, 2L))).thenReturn(List.of());
 
         mockMvc.perform(post("/api/users/profile/batch")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"userIds\":[1,2]}"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"userIds\":[1,2]}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray());
     }
@@ -55,8 +55,8 @@ class UserProfileControllerTest {
         when(userProfileService.getProfilesByUserIds(List.of(7L))).thenReturn(List.of());
 
         mockMvc.perform(post("/api/users/profile/batch")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"userIds\":[7]}"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"userIds\":[7]}"))
                 .andExpect(status().isOk());
     }
 }

@@ -51,7 +51,7 @@ public class JwtAuthenticationGlobalFilter implements GlobalFilter, Ordered {
         }
 
         ServerHttpRequest requestWithoutClientIdentity = exchange.getRequest().mutate()
-                .headers(headers -> headers.keySet().removeIf(JwtAuthenticationGlobalFilter::isUserHeader))
+                .headers(headers -> headers.headerNames().removeIf(JwtAuthenticationGlobalFilter::isUserHeader))
                 .build();
         ServerWebExchange sanitizedExchange = exchange.mutate().request(requestWithoutClientIdentity).build();
 

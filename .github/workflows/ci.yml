@@ -59,7 +59,7 @@ jobs:
       - run: npm run test
       - run: npm run build
         env:
-          NEXT_PUBLIC_API_URL: http://localhost:8080
+          NEXT_PUBLIC_API_GATEWAY_URL: http://localhost:8080/api
 
   e2e:
     name: e2e (playwright)
@@ -80,7 +80,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
         env:
-          NEXT_PUBLIC_API_URL: http://localhost:8080
+          NEXT_PUBLIC_API_GATEWAY_URL: http://localhost:8080/api
 
   images:
     name: build & push images

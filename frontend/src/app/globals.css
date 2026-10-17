@@ -64,7 +64,7 @@
   --spacing-container-max: 1280px;
 
   /* Font Families */
-  --font-sans: "Inter", Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-inter), "Inter", Arial, Helvetica, sans-serif;
   
   /* Typography Classes equivalent spacing & sizes */
   --font-size-title-md: 20px;

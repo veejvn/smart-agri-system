@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search, Bell, Thermometer, Globe, LogOut, User } from "lucide-react";
+import { Search, Bell, Thermometer, Globe, LogOut } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
-import type { HeaderUser, HeaderProps } from "@/types";
+import type { HeaderProps } from "@/types";
 
 
 export default function Header({

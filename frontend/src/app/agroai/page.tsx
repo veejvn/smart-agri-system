@@ -1,6 +1,6 @@
 "use client";
 
-import { Pill, Shield, CreditCard, Mic, Image, Send, Sparkles, BarChart2, Upload, Brain } from "lucide-react";
+import { Pill, Shield, CreditCard, Mic, Image as ImageIcon, Send, Sparkles, BarChart2, Upload, Brain } from "lucide-react";
 
 import { useState, useRef, useEffect } from "react";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
@@ -238,7 +238,7 @@ export default function AgroAI() {
                   className="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors"
                   title="Upload Image"
                 >
-                  <Image className=" shrink-0"  />
+                  <ImageIcon className="shrink-0" aria-hidden="true" />
                 </button>
                 <button
                   onClick={handleSendMessage}

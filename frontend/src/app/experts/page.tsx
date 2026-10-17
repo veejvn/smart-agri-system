@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck, ChevronRight, Mail, ChevronLeft, Star } from "lucide-react";
+import { BadgeCheck, ChevronRight, ChevronLeft, Star } from "lucide-react";
 
 import { useState } from "react";
 import Link from "next/link";

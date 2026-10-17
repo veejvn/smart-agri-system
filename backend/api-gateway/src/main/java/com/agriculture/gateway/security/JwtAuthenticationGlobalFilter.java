@@ -143,7 +143,8 @@ public class JwtAuthenticationGlobalFilter implements GlobalFilter, Ordered {
 
     private static String formatRoles(Object roles) {
         if (roles instanceof Collection<?> collection) {
-            return collection.stream().map(Object::toString).collect(Collectors.joining(","));
+            return collection.stream().map(role -> role == null ? "" : role.toString())
+                    .collect(Collectors.joining(","));
         }
         return roles.toString();
     }

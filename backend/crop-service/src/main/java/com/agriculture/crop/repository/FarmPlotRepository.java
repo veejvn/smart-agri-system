@@ -1,7 +1,5 @@
 package com.agriculture.crop.repository;
 
-import com.agriculture.crop.entity.Crop;
-import com.agriculture.crop.entity.CropLog;
 import com.agriculture.crop.entity.FarmPlot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

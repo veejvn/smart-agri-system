@@ -124,7 +124,7 @@ public class AuthController {
 
         return refreshTokenService.findByToken(requestRefreshToken)
                 .map(refreshTokenService::verifyExpiration)
-                .map(RefreshToken::getUser)
+                .map(refreshToken -> refreshToken.getUser())
                 .map(user -> {
                     String token = jwtUtils.generateTokenFromUserDetails(UserDetailsImpl.build(user));
                     return ResponseEntity.ok(new TokenRefreshResponse(token, requestRefreshToken));

@@ -40,7 +40,7 @@ public class ForumService {
     public List<PostResponseDTO> getAllPosts() {
         List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
         Map<Long, AuthorProfileDTO> authors = getAuthorProfiles(
-                posts.stream().map(Post::getAuthorId).toList());
+            posts.stream().map(post -> post.getAuthorId()).toList());
         return posts.stream()
                 .map(post -> toPostResponse(post, authors))
                 .toList();
@@ -68,7 +68,7 @@ public class ForumService {
     public List<CommentResponseDTO> getComments(String postId) {
         List<Comment> comments = commentRepository.findByPostIdOrderByCreatedAtAsc(postId);
         Map<Long, AuthorProfileDTO> authors = getAuthorProfiles(
-                comments.stream().map(Comment::getAuthorId).toList());
+                comments.stream().map(comment -> comment.getAuthorId()).toList());
         return comments.stream()
                 .map(comment -> toCommentResponse(comment, authors))
                 .toList();

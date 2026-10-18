@@ -1,0 +1,180 @@
+services:
+  - type: web
+    name: smart-agri-api-gateway
+    runtime: docker
+    repo: https://github.com/veejvn/smart-agri-system
+    branch: main
+    region: singapore
+    plan: 0.5c-512mb
+    dockerfilePath: ./backend/api-gateway/Dockerfile
+    dockerContext: ./backend/api-gateway
+    healthCheckPath: /actuator/health/readiness
+    envVars:
+      - key: EUREKA_HOST
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          property: host
+      - key: EUREKA_USER
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          envVarKey: EUREKA_USER
+      - key: EUREKA_PASSWORD
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          envVarKey: EUREKA_PASSWORD
+      - key: EUREKA_INSTANCE_HOSTNAME
+        fromService:
+          type: web
+          name: smart-agri-api-gateway
+          property: host
+      - key: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+        value: "false"
+      - key: APP_JWT_SECRET
+        fromService:
+          type: pserv
+          name: smart-agri-auth
+          envVarKey: APP_JWT_SECRET
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+
+  - type: pserv
+    name: smart-agri-discovery
+    runtime: docker
+    repo: https://github.com/veejvn/smart-agri-system
+    branch: main
+    region: singapore
+    plan: 0.5c-512mb
+    dockerfilePath: ./backend/discovery-service/Dockerfile
+    dockerContext: ./backend/discovery-service
+    envVars:
+      - key: EUREKA_HOST
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          property: host
+      - key: EUREKA_USER
+        sync: false
+      - key: EUREKA_PASSWORD
+        sync: false
+
+  - type: pserv
+    name: smart-agri-auth
+    runtime: docker
+    repo: https://github.com/veejvn/smart-agri-system
+    branch: main
+    region: singapore
+    plan: 0.5c-512mb
+    dockerfilePath: ./backend/auth-service/Dockerfile
+    dockerContext: ./backend/auth-service
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: smart-agri-auth-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: smart-agri-auth-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: smart-agri-auth-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: smart-agri-auth-db
+          property: password
+      - key: EUREKA_HOST
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          property: host
+      - key: EUREKA_USER
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          envVarKey: EUREKA_USER
+      - key: EUREKA_PASSWORD
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          envVarKey: EUREKA_PASSWORD
+      - key: EUREKA_INSTANCE_HOSTNAME
+        fromService:
+          type: pserv
+          name: smart-agri-auth
+          property: host
+      - key: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+        value: "false"
+      - key: APP_JWT_SECRET
+        generateValue: true
+
+  - type: pserv
+    name: smart-agri-user
+    runtime: docker
+    repo: https://github.com/veejvn/smart-agri-system
+    branch: main
+    region: singapore
+    plan: 0.5c-512mb
+    dockerfilePath: ./backend/user-service/Dockerfile
+    dockerContext: ./backend/user-service
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: smart-agri-user-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: smart-agri-user-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: smart-agri-user-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: smart-agri-user-db
+          property: password
+      - key: EUREKA_HOST
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          property: host
+      - key: EUREKA_USER
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          envVarKey: EUREKA_USER
+      - key: EUREKA_PASSWORD
+        fromService:
+          type: pserv
+          name: smart-agri-discovery
+          envVarKey: EUREKA_PASSWORD
+      - key: EUREKA_INSTANCE_HOSTNAME
+        fromService:
+          type: pserv
+          name: smart-agri-user
+          property: host
+      - key: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+        value: "false"
+
+databases:
+  - name: smart-agri-auth-db
+    databaseName: auth_db
+    user: auth_user
+    postgresMajorVersion: "15"
+    region: singapore
+    plan: 0.1c-256mb
+    diskSizeGB: 1
+    ipAllowList: []
+
+  - name: smart-agri-user-db
+    databaseName: user_db
+    user: user_user
+    postgresMajorVersion: "15"
+    region: singapore
+    plan: 0.1c-256mb
+    diskSizeGB: 1
+    ipAllowList: []

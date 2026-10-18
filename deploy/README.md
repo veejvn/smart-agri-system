@@ -1,12 +1,19 @@
 # Deployment (Kubernetes)
 
-Container images are built and pushed to GHCR by the `images` job in
-`.github/workflows/ci.yml` on every push to `main`:
+The CI workflow builds and pushes only the four services in the minimal
+production Compose deployment after all required test jobs pass on a push to
+`main`. Images are tagged with the full commit SHA; the production workflow does
+not publish or deploy `latest`:
 
 ```
-ghcr.io/<owner>/smart-agri-system/<service>:<sha>
-ghcr.io/<owner>/smart-agri-system/<service>:latest
+ghcr.io/veejvn/smart-agri-system/<service>:<full-commit-sha>
 ```
+
+The Compose VPS rollout and rollback procedures are documented in
+[`ci-cd/README.md`](ci-cd/README.md). The Kubernetes manifests below remain
+unchanged. They include additional services which are outside this CI/CD
+deployment milestone; those images must be published by a later pipeline before
+applying the staging overlay.
 
 ## Apply with Kustomize
 

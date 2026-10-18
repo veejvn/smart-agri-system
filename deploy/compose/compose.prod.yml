@@ -36,9 +36,7 @@ services:
       start_period: 10s
 
   discovery-service:
-    build:
-      context: ../../backend/discovery-service
-      dockerfile: Dockerfile
+    image: "${IMAGE_PREFIX:?Set IMAGE_PREFIX in deploy/compose/.env}/discovery-service:${IMAGE_TAG:?Set IMAGE_TAG to a full commit SHA}"
     restart: unless-stopped
     environment:
       EUREKA_HOST: discovery-service
@@ -56,9 +54,7 @@ services:
       start_period: 60s
 
   auth-service:
-    build:
-      context: ../../backend/auth-service
-      dockerfile: Dockerfile
+    image: "${IMAGE_PREFIX:?Set IMAGE_PREFIX in deploy/compose/.env}/auth-service:${IMAGE_TAG:?Set IMAGE_TAG to a full commit SHA}"
     restart: unless-stopped
     environment:
       DB_HOST: postgres-auth
@@ -84,9 +80,7 @@ services:
       start_period: 60s
 
   user-service:
-    build:
-      context: ../../backend/user-service
-      dockerfile: Dockerfile
+    image: "${IMAGE_PREFIX:?Set IMAGE_PREFIX in deploy/compose/.env}/user-service:${IMAGE_TAG:?Set IMAGE_TAG to a full commit SHA}"
     restart: unless-stopped
     environment:
       DB_HOST: postgres-user
@@ -111,9 +105,7 @@ services:
       start_period: 60s
 
   api-gateway:
-    build:
-      context: ../../backend/api-gateway
-      dockerfile: Dockerfile
+    image: "${IMAGE_PREFIX:?Set IMAGE_PREFIX in deploy/compose/.env}/api-gateway:${IMAGE_TAG:?Set IMAGE_TAG to a full commit SHA}"
     restart: unless-stopped
     environment:
       EUREKA_HOST: discovery-service

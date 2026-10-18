@@ -24,8 +24,8 @@ here. Their Gateway routes are not enabled in this minimal profile.
 
 ## Prerequisites
 
-- Linux VPS with Docker Engine and the Docker Compose v2 plugin.
-- Git checkout containing this repository; Docker builds use local source.
+- Docker Engine and Docker Compose v2.20 or newer on the VPS.
+- Network access to the GHCR image prefix configured below (packages may be private).
 - OpenSSL for generating random credentials.
 - A frontend origin name for CORS. The frontend itself is not deployed here.
 - Host-level HTTPS reverse proxy (for example, a separately managed Nginx or
@@ -35,7 +35,8 @@ here. Their Gateway routes are not enabled in this minimal profile.
 
 ## Environment configuration
 
-Create the private environment file on the VPS:
+Create the private environment file on the VPS. The deployment script selects
+`IMAGE_TAG` for each release; manual Compose commands must select a tag too.
 
 ```sh
 cp deploy/compose/.env.example deploy/compose/.env
@@ -62,6 +63,8 @@ managed secret store if the deployment grows.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
+| `IMAGE_PREFIX` | Yes | GHCR package prefix; defaults in the template to the existing `ghcr.io/veejvn/smart-agri-system` convention. |
+| `IMAGE_TAG` | Yes for manual Compose commands | Full 40-character commit SHA selected for the four application images. CI passes this from the triggering commit. |
 | `AUTH_DB_USER` | Yes | PostgreSQL login and database owner for `auth_db`. |
 | `AUTH_DB_PASSWORD` | Yes | Password for the Auth database role. |
 | `USER_DB_USER` | Yes | PostgreSQL login and database owner for `user_db`. |
@@ -80,7 +83,8 @@ host, port, and credentials through `DB_HOST`, `DB_PORT`, `DB_USER`, and
 `EUREKA_PASSWORD`. These internal application settings are set by Compose and do
 not need duplicate entries in `.env`.
 
-Compose rejects empty required variables. A malformed JWT key also prevents the
+Compose rejects empty required variables. The deployment script overrides
+`IMAGE_TAG` with the commit being deployed; it never deploys `latest`. A malformed JWT key also prevents the
 applications from signing or validating tokens at startup or request time.
 
 ## Validate, build, and start
@@ -89,24 +93,23 @@ From the repository root, validate the Compose model without printing resolved
 environment values:
 
 ```sh
-docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml config --quiet
+IMAGE_TAG="$(git rev-parse HEAD)" docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml config --quiet
 ```
 
-Validation on 2026-10-18 confirmed that Compose configuration parses and rejects
-empty required values; all four application images build; and all six containers
-start and reach healthy status. The Gateway health endpoint returned `UP`, and
-Eureka registered `API-GATEWAY`, `AUTH-SERVICE`, and `USER-SERVICE`. A short-lived
-JWT smoke request reached the User service through the Gateway and returned the
-expected `404` for a profile that does not exist. The Dockerfiles use
-`-DskipTests`, so this run verified compilation and packaging but did not execute
-Maven unit tests. The smoke-test environment file is local, ignored by Git, and
-contains generated credentials; it is not committed.
+The CI workflow validates this file using non-production placeholder values.
+The Dockerfiles use `-DskipTests`; Maven tests run separately in CI before image
+publishing.
 
-Build the four local Spring Boot images and start the minimal stack:
+Pull the four application images for the desired full commit SHA and start the
+minimal stack (PostgreSQL images are pulled from Docker Hub):
 
 ```sh
-docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml up --build -d
+IMAGE_TAG="$(git rev-parse HEAD)" docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml pull
+IMAGE_TAG="$(git rev-parse HEAD)" docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml up -d --no-build --pull never --wait --wait-timeout 180
 ```
+
+The commit selected for manual startup must already have its four images
+published to GHCR.
 
 PostgreSQL health checks wait for each configured database to accept connections.
 Auth and User wait for their database and the authenticated Eureka health check;
@@ -118,10 +121,15 @@ user and include `curl` for their container health checks.
 Inspect container state and health without dumping the resolved Compose config:
 
 ```sh
+export IMAGE_TAG="$(cat /opt/smart-agri-system/current-release)"
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml ps
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml logs --tail=100
 curl --fail http://127.0.0.1:8080/actuator/health
 ```
+
+After an automated deployment, run
+`export IMAGE_TAG="$(cat /opt/smart-agri-system/current-release)"` first so
+later Compose commands use the selected immutable image tag.
 
 Only `/actuator/health` on the Gateway is intentionally reachable through its
 published loopback port; it reports status without detailed component data. The
@@ -130,6 +138,7 @@ Eureka dashboard and its health endpoint are private to the Docker network.
 Stop containers while retaining named database volumes:
 
 ```sh
+export IMAGE_TAG="$(cat /opt/smart-agri-system/current-release)"
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml down
 ```
 
@@ -142,6 +151,7 @@ names already present inside each PostgreSQL container, so no password appears
 in the command line:
 
 ```sh
+export IMAGE_TAG="$(cat /opt/smart-agri-system/current-release)"
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml exec -T postgres-auth sh -c 'pg_dump -U "$POSTGRES_USER" "$POSTGRES_DB"' > auth_db.sql
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml exec -T postgres-user sh -c 'pg_dump -U "$POSTGRES_USER" "$POSTGRES_DB"' > user_db.sql
 ```
@@ -152,6 +162,7 @@ Do not pipe a dump into a populated database as a replacement strategy; use a
 reviewed restore procedure and take a current backup first:
 
 ```sh
+export IMAGE_TAG="$(cat /opt/smart-agri-system/current-release)"
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml stop auth-service
 cat auth_db.sql | docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml exec -T postgres-auth sh -c 'psql -v ON_ERROR_STOP=1 -U "$POSTGRES_USER" "$POSTGRES_DB"'
 
@@ -170,8 +181,8 @@ remain private. Do not change `GATEWAY_BIND_ADDRESS` to `0.0.0.0` unless a
 separately reviewed network design requires it.
 
 This is a single-host, single-instance setup. Compose `.env` values are not
-managed secrets; there is no TLS termination, automated backup, database
-migration framework, or deployment automation here. Auth and User currently use
+managed secrets; there is no TLS termination, automated backup, or database
+migration framework here. Auth and User currently use
 Hibernate `ddl-auto: update`, which should be replaced with managed schema
 migrations before relying on controlled production schema changes. Requests for
 crop, weather, forum, notification, or AI features will not be served until those
@@ -185,4 +196,3 @@ services and their dependencies are included in later phases.
    secret-management strategy.
 3. Add schema migrations and review single-host resource limits and recovery.
 4. Design later phases for the remaining microservices and their data stores.
-5. Implement CI/CD and controlled VPS deployment in a separate task.

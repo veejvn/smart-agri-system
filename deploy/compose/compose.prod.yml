@@ -132,6 +132,7 @@ services:
       - "${GATEWAY_BIND_ADDRESS:-127.0.0.1}:${GATEWAY_HOST_PORT:-8080}:8080"
     networks:
       - backend
+      - gateway-edge
     healthcheck:
       test: ["CMD-SHELL", "curl --fail --silent --show-error http://127.0.0.1:8080/actuator/health/readiness > /dev/null"]
       interval: 10s
@@ -143,6 +144,8 @@ networks:
   backend:
     driver: bridge
     internal: true
+  gateway-edge:
+    driver: bridge
 
 volumes:
   auth-postgres-data:

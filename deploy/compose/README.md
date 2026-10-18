@@ -8,13 +8,14 @@ development Compose stacks remain available and unchanged.
 ## Architecture
 
 All six containers attach to the Compose `backend` bridge network, which is
-marked `internal`. Compose DNS names (`discovery-service`, `postgres-auth`, and
-`postgres-user`) provide service discovery; no fixed addresses are used.
+marked `internal`. Only the Gateway also attaches to `gateway-edge`, the
+non-internal bridge required for its host-published entry point. Compose DNS
+names (`discovery-service`, `postgres-auth`, and `postgres-user`) provide service
+discovery; no fixed addresses are used.
 PostgreSQL volumes persist independently as `auth-postgres-data` and
 `user-postgres-data`. Only `api-gateway` publishes a port, bound by default to
 `127.0.0.1:8080`. The registry and application ports are not published on the
-host. There is no host-facing Docker network because a host reverse proxy can
-reach the loopback-bound Gateway directly.
+host. A host reverse proxy can reach the loopback-bound Gateway directly.
 
 The Gateway routes `/api/auth/**` to `auth-service` and `/api/users/**` to
 `user-service` through Eureka. Other platform services, Kafka, MongoDB, Redis,
@@ -91,12 +92,15 @@ environment values:
 docker compose --env-file deploy/compose/.env -f deploy/compose/compose.prod.yml config --quiet
 ```
 
-In this repository checkout, Compose configuration was parsed with a temporary
-non-production test environment. The check confirmed the six intended services,
-the sole Gateway host port, both named database volumes, the internal backend
-network, and rejection of empty required variables. Docker image builds and live
-container health checks were not run in that environment because its Docker
-Engine was unavailable; Maven builds were not run because Maven was not installed.
+Validation on 2026-10-18 confirmed that Compose configuration parses and rejects
+empty required values; all four application images build; and all six containers
+start and reach healthy status. The Gateway health endpoint returned `UP`, and
+Eureka registered `API-GATEWAY`, `AUTH-SERVICE`, and `USER-SERVICE`. A short-lived
+JWT smoke request reached the User service through the Gateway and returned the
+expected `404` for a profile that does not exist. The Dockerfiles use
+`-DskipTests`, so this run verified compilation and packaging but did not execute
+Maven unit tests. The smoke-test environment file is local, ignored by Git, and
+contains generated credentials; it is not committed.
 
 Build the four local Spring Boot images and start the minimal stack:
 
